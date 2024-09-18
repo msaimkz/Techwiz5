@@ -27,6 +27,7 @@
     <link href="{{ asset('Asset/Admin/vendor/quill/quill.bubble.css') }}" rel="stylesheet">
     <link href="{{ asset('Asset/Admin/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
     <link href="{{ asset('Asset/Admin/vendor/simple-datatables/style.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('Asset/Admin/js/dropzone/dropzone.css')}}">
 
     <!-- Template Main CSS File -->
     <link href="{{asset('Asset/Admin/css/style.css')}}" rel="stylesheet">
@@ -134,7 +135,7 @@
 
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="users-profile.html">
+                <a class="nav-link collapsed" href="{{route('Admin.gallery')}}">
                     <i class="bi bi-images"></i>
                     <span>Gallery</span>
                 </a>
@@ -183,6 +184,7 @@
     
     <!-- Vendor JS Files -->
     <script src="{{asset('Asset/Admin/js/jquery/jquery.js')}}"></script>
+    <script src="{{asset('Asset/Admin/js/dropzone/dropzone.js')}}"></script>
     <script src="{{asset('Asset/Admin/vendor/apexcharts/apexcharts.min.js')}}"></script>
     <script src="{{asset('Asset/Admin/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{asset('Asset/Admin/vendor/chart.js/chart.umd.js')}}"></script>
