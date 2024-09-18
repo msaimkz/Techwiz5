@@ -6,7 +6,7 @@
 
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">Create Category</h5>
+            <h5 class="card-title">Edit Category</h5>
 
             <!-- Floating Labels Form -->
             <form class="row g-3" id="CategoryForm" name="CategoryForm" action="" method="post">
@@ -14,7 +14,7 @@
 
                 <div class="col-md-6">
                     <div class="form-floating">
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Name" value="{{ $category->name }}">
                         <span></span>
                         <label for="name">Name</label>
                     </div>
@@ -22,7 +22,7 @@
 
                 <div class="col-md-6">
                     <div class="form-floating">
-                        <input type="text" class="form-control" id="slug" name="slug" readonly placeholder="Slug">
+                        <input type="text" class="form-control" id="slug" name="slug" readonly placeholder="Slug" value="{{ $category->slug }}">
                         <span></span>
                         <label for="slug">Slug</label>
                     </div>
@@ -31,14 +31,14 @@
                 <div class="col-md-6">
                     <label for="status" class="form-label">Status</label>
                     <select id="status" name="status" class="form-select">
-                        <option value="1">Active</option>
-                        <option value="0">Block</option>
+                        <option value="1"  {{ ($category->status == 1) ? 'selected' : ''}}>Active</option>
+                        <option value="0"  {{ ($category->status == 0) ? 'selected' : ''}}>Block</option>
                     </select>
                     <span></span>
                 </div>
 
                 <div class="text-start">
-                    <button type="submit" class="btn btn-primary">Create</button>
+                    <button type="submit" class="btn btn-primary">Update</button>
                     <a href="{{ route('Admin.category') }}" class="btn btn-secondary">Back</a>
                 </div>
             </form><!-- End floating Labels Form -->
@@ -55,18 +55,15 @@ $(document).ready(function() {
 
 
 $('#CategoryForm').submit(function(event) {
-$('button[type=submit]').prop('disabled', true)
-
 event.preventDefault();
 var element = $(this)
 
 $.ajax({
-url:'{{ route("Admin.category.store") }}',
+url:'{{ route("Admin.category.update",$category->id) }}',
 type:'post',
 data: element.serializeArray(),
 dataType:'json',
 success:function(response){
-    $('button[type=submit]').prop('disabled', false)
 
 if(response.status == true){
     window.location.href = "{{ route('Admin.category') }}"
