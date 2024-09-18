@@ -7,11 +7,11 @@
     @include('Message.message')
 
     <div class="pagetitle">
-        <h1>Categories</h1>
+        <h1>Sub Categories</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('Admin.dashboard') }}">Home</a></li>
-                <li class="breadcrumb-item active">Categories</li>
+                <li class="breadcrumb-item active">Sub Categories</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
@@ -20,7 +20,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="p-3 d-flex justify-content-end">
-                    <a href="{{ route('Admin.category.create') }}" class="btn btn-primary">Create Categroy</a>
+                    <a href="{{ route('Admin.sub-category.create') }}" class="btn btn-primary">Create Sub-Categroy</a>
                 </div>
 
                 <div class="card">
@@ -36,20 +36,22 @@
                                     </th>
                                     <th><b>Name</b></th>
                                     <th>Slug</th>
+                                    <th>Category</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @if (!empty($categories))
+                                @if (!empty($subcategories))
 
-                                @foreach ($categories as $category )
+                                @foreach ($subcategories as $subcategory )
                                 <tr>
-                                    <td>{{$category->id}}</td>
-                                    <td>{{$category->name}}</td>
-                                    <td>{{$category->slug}}</td>
+                                    <td>{{$subcategory->id}}</td>
+                                    <td>{{$subcategory->name}}</td>
+                                    <td>{{$subcategory->slug}}</td>
+                                    <td>{{$subcategory->category->name}}</td>
                                     <td>
-                                        @if($category->status == 1)
+                                        @if($subcategory->status == 1)
                                         <svg class="text-success-500 h-6 w-6 text-success" width="30px"
                                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                             stroke-width="2" stroke="currentColor" aria-hidden="true">
@@ -67,7 +69,7 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <a href="{{ route('Admin.category.edit',$category->id) }}" class="btn btn-success">
+                                        <a href="{{ route('Admin.sub-category.edit', $subcategory->id) }}" class="btn btn-success">
                                             <svg class="filament-link-icon w-4 h-4 mr-1" width="20px"
                                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
                                                 fill="currentColor" aria-hidden="true">
@@ -77,7 +79,7 @@
                                             </svg>
                                         </a>
 
-                                        <a href="javascript:void(0)" class="btn btn-danger" onclick="deleteCategory('{{$category->id}}')">
+                                        <a href="javascript:void(0)" class="btn btn-danger" onclick="deleteSubCategory('{{$subcategory->id}}')">
                                             <svg wire:loading.remove.delay="" wire:target=""
                                                 class="filament-link-icon w-4 h-4 mr-1" width="20px"
                                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
@@ -113,8 +115,8 @@
 
 
 @section('js')
-function deleteCategory(id) {
-    var url = '{{route("Admin.category.delete","ID")}}';
+function deleteSubCategory(id) {
+    var url = '{{route("Admin.sub-category.delete","ID")}}';
     var newurl = url.replace('ID', id)
     if (confirm('Are You sure want to delete')) {
         $.ajax({
@@ -124,11 +126,11 @@ function deleteCategory(id) {
             dataType: 'json',
             success: function(response) {
                 if (response['status']) {
-                    window.location.href = '{{route("Admin.category")}}'
+                    window.location.href = '{{route("Admin.sub-category")}}'
 
                 }
                 else{
-                    window.location.href = '{{route("Admin.category")}}'
+                    window.location.href = '{{route("Admin.sub-category")}}'
 
                 }
             }
