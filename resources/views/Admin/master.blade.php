@@ -124,6 +124,13 @@
                 </a>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ route('Admin.sub-category') }}">
+                    <i class="bi bi-images"></i>
+                    <span>Sub Category</span>
+                </a>
+            </li>
+
 
 
             <li class="nav-item">

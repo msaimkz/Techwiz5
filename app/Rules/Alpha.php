@@ -2,24 +2,23 @@
 
 namespace App\Rules;
 
-use Closure;
-use Illuminate\Contracts\Validation\ValidationRule;
+use Illuminate\Contracts\Validation\Rule;
 
-class Alpha implements ValidationRule
+class Alpha implements Rule
 {
-    /**
-     * Run the validation rule.
-     *
-     *  *
-     * @param  string  $attribute
-     * @param  mixed  $value
-     * @param  Closure  $fail
-     */
-     
-    public function validateAlphabetical(string $attribute, mixed $value, Closure $fail): void
+    public function passes($attribute, $value)
     {
-        if (!is_string($value) || !preg_match('/^[a-zA-Z]+$/', $value)) {
-            $fail("The $attribute must be alphabetic and cannot contain numbers.");
+        // Check if the value is a string and contains only alphabetic characters
+        if (!is_string($value) || !preg_match('/^[a-zA-Z\s]+$/', $value)) {
+            return false; // Validation failed
         }
+        
+        return true; // Validation passed
+    }
+
+    public function message()
+    {
+        return 'The :attribute must be alphabetic and cannot contain numbers.';
     }
 }
+
