@@ -31,6 +31,9 @@
     <!-- Template Main CSS File -->
     <link href="{{asset('Asset/Admin/css/style.css')}}" rel="stylesheet">
 
+    <meta name="csrf-token" content="{{csrf_token()}}">
+
+
 </head>
 
 <body>
@@ -113,14 +116,14 @@
                     <span>Dashboard</span>
                 </a>
             </li>
-            
+
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('Admin.category') }}">
                     <i class="bi bi-images"></i>
                     <span>Category</span>
                 </a>
             </li>
-            
+
 
 
             <li class="nav-item">
@@ -163,17 +166,16 @@
     <!-- ======= Footer ======= -->
     <footer id="footer" class="footer">
         <div class="copyright">
-            &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
+            &copy; Copyright <strong><span>DecorVista</span></strong>. All Rights Reserved
         </div>
-        <div class="credits">
-            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-        </div>
+        
     </footer><!-- End Footer -->
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-            class="bi bi-arrow-up-short"></i></a>
-
+    class="bi bi-arrow-up-short"></i></a>
+    
     <!-- Vendor JS Files -->
+    <script src="{{asset('Asset/Admin/js/jquery/jquery.js')}}"></script>
     <script src="{{asset('Asset/Admin/vendor/apexcharts/apexcharts.min.js')}}"></script>
     <script src="{{asset('Asset/Admin/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{asset('Asset/Admin/vendor/chart.js/chart.umd.js')}}"></script>
@@ -183,8 +185,22 @@
     <script src="{{asset('Asset/Admin/vendor/tinymce/tinymce.min.js')}}"></script>
     <script src="{{ asset('Asset/Admin/vendor/php-email-form/validate.js') }}"></script>
 
+     <script type="text/javascript">
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    </script> 
+
+
     <!-- Template Main JS File -->
     <script src="{{asset( 'Asset/Admin/js/main.js' )}}"></script>
+
+   <script>
+     @yield('js')
+   </script>
+
 
 </body>
 
