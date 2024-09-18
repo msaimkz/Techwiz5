@@ -7,11 +7,11 @@
     @include('Message.message')
 
     <div class="pagetitle">
-        <h1>Categories</h1>
+        <h1>Blogs</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('Admin.dashboard') }}">Home</a></li>
-                <li class="breadcrumb-item active">Categories</li>
+                <li class="breadcrumb-item active">Blogs</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
@@ -20,7 +20,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="p-3 d-flex justify-content-end">
-                    <a href="{{ route('Admin.category.create') }}" class="btn btn-primary">Create Categroy</a>
+                    <a href="{{ url('Admin/Create-Blog') }}" class="btn btn-primary">Create BLog</a>
                 </div>
 
                 <div class="card">
@@ -34,22 +34,23 @@
                                     <th>
                                         <b>ID</b>
                                     </th>
-                                    <th><b>Name</b></th>
+                                    <th><b>Blog Title</b></th>
                                     <th>Slug</th>
-                                    <th>Status</th>
+                                    <th>Description</th>
+                                    <th>Image</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @if (!empty($categories))
+                                @if (!empty($Blogs))
 
-                                @foreach ($categories as $category )
+                                @foreach ($blogs as $blog )
                                 <tr>
-                                    <td>{{$category->id}}</td>
-                                    <td>{{$category->name}}</td>
-                                    <td>{{$category->slug}}</td>
+                                    <td>{{$blog->id}}</td>
+                                    <td>{{$blog->name}}</td>
+                                    <td>{{$blog->slug}}</td>
                                     <td>
-                                        @if($category->status == 1)
+                                        @if($blog->status == 1)
                                         <svg class="text-success-500 h-6 w-6 text-success" width="30px"
                                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                             stroke-width="2" stroke="currentColor" aria-hidden="true">
@@ -67,7 +68,7 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <a href="{{ route('Admin.category.edit',$category->id) }}" class="btn btn-success">
+                                        <a href="{{ route('Admin.Blog.edit',$category->id) }}" class="btn btn-success">
                                             <svg class="filament-link-icon w-4 h-4 mr-1" width="20px"
                                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
                                                 fill="currentColor" aria-hidden="true">
@@ -77,7 +78,7 @@
                                             </svg>
                                         </a>
 
-                                        <a href="javascript:void(0)" class="btn btn-danger" onclick="deleteCategory('{{$category->id}}')">
+                                        <a href="javascript:void(0)" class="btn btn-danger" onclick="deleteBlog('{{$blog->id}}')">
                                             <svg wire:loading.remove.delay="" wire:target=""
                                                 class="filament-link-icon w-4 h-4 mr-1" width="20px"
                                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
@@ -113,8 +114,8 @@
 
 
 @section('js')
-function deleteCategory(id) {
-    var url = '{{route("Admin-category-delete","ID")}}';
+function deleteBlog(id) {
+    var url = '{{route("Admin-blog-delete","ID")}}';
     var newurl = url.replace('ID', id)
     if (confirm('Are You sure want to delete')) {
         $.ajax({
@@ -124,7 +125,7 @@ function deleteCategory(id) {
             dataType: 'json',
             success: function(response) {
                 if (response['status']) {
-                    window.location.href = '{{route("Admin.category")}}'
+                    window.location.href = '{{route("Admin.Blog")}}'
 
                 }
             }
