@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -25,5 +26,11 @@ Route::get('/Admin/My-Profile',[AdminController::class,'profile'])->name('Admin.
 
 
 Route::get('/Admin/Dashboard',[AdminController::class,'dashboard'])->name('Admin.dashboard');
+
+// Category Routes
+
+Route::get('/Admin/Category',[CategoryController::class,'index'])->name('Admin.category');
+Route::get('/Admin/Create-Category',[CategoryController::class,'create'])->name('Admin.category.create');
+
 
 require __DIR__.'/auth.php';

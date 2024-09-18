@@ -115,7 +115,7 @@
             </li>
             
             <li class="nav-item">
-                <a class="nav-link collapsed" href="users-profile.html">
+                <a class="nav-link collapsed" href="{{ route('Admin.category') }}">
                     <i class="bi bi-images"></i>
                     <span>Category</span>
                 </a>
