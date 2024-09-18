@@ -31,7 +31,7 @@
                 
                 <div class="col-md-6">
                     <div class="form-floating">
-                        <input type="text" class="form-control" id="discription" name="discription" placeholder="Blog discription">
+                        <input type="text" class="form-control" id="description" name="description" placeholder="Blog discription">
                         <span></span>
                         <label for="name">Discription</label>
                     </div>
@@ -87,19 +87,21 @@ success:function(response){
 if(response.status == true){
     window.location.href = "{{ route('Admin.Blog') }}"
 
-$('#name').removeClass('is-invalid').siblings('span').removeClass('invalid-feedback')
+$('#title').removeClass('is-invalid').siblings('span').removeClass('invalid-feedback')
 .html('')
 $('#slug').removeClass('is-invalid').siblings('span').removeClass('invalid-feedback')
+.html('')
+$('#description').removeClass('is-invalid').siblings('span').removeClass('invalid-feedback')
 .html('')
 
 }
 else{
 var error = response['errors']
-if (error['name']) {
-$('#name').addClass('is-invalid').siblings('span').addClass('invalid-feedback')
-.html(error['name'])
+if (error['title']) {
+$('#title').addClass('is-invalid').siblings('span').addClass('invalid-feedback')
+.html(error['title'])
 } else {
-$('#name').removeClass('is-invalid').siblings('span').removeClass(
+$('#title').removeClass('is-invalid').siblings('span').removeClass(
 'invalid-feedback').html('')
 }
 if (error['slug']) {
@@ -109,6 +111,14 @@ $('#slug').addClass('is-invalid').siblings('span').addClass('invalid-feedback')
 $('#slug').removeClass('is-invalid').siblings('span').removeClass(
 'invalid-feedback').html('')
 }
+
+if (error['description']) {
+    $('#description').addClass('is-invalid').siblings('span').addClass('invalid-feedback')
+    .html(error['description'])
+    } else {
+    $('#description').removeClass('is-invalid').siblings('span').removeClass(
+    'invalid-feedback').html('')
+    }
 }
 
 },
@@ -116,7 +126,7 @@ $('#slug').removeClass('is-invalid').siblings('span').removeClass(
 });
 });
 
-$('#name').change(function() {
+$('#title').change(function() {
 var element = $(this).val();
 $('button[type=submit]').prop('disabled', true)
 $.ajax({

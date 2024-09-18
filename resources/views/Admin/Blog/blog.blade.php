@@ -38,17 +38,21 @@
                                     <th>Slug</th>
                                     <th>Description</th>
                                     <th>Image</th>
+                                    <th>status</th>
+
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @if (!empty($Blogs))
+                                @if (!empty($blogs))
 
                                 @foreach ($blogs as $blog )
                                 <tr>
                                     <td>{{$blog->id}}</td>
-                                    <td>{{$blog->name}}</td>
+                                    <td>{{$blog->title}}</td>
                                     <td>{{$blog->slug}}</td>
+                                    <td>{{$blog->description}}</td>
+                                    <td>{{$blog->thumbnail}}</td>
                                     <td>
                                         @if($blog->status == 1)
                                         <svg class="text-success-500 h-6 w-6 text-success" width="30px"
@@ -68,7 +72,7 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <a href="{{ route('Admin.Blog.edit',$category->id) }}" class="btn btn-success">
+                                        <a href="{{ route('Admin.Blog.edit',$blog->id) }}" class="btn btn-success">
                                             <svg class="filament-link-icon w-4 h-4 mr-1" width="20px"
                                                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
                                                 fill="currentColor" aria-hidden="true">
@@ -115,7 +119,7 @@
 
 @section('js')
 function deleteBlog(id) {
-    var url = '{{route("Admin-blog-delete","ID")}}';
+    var url = '{{route("Admin-Blog-delete","ID")}}';
     var newurl = url.replace('ID', id)
     if (confirm('Are You sure want to delete')) {
         $.ajax({

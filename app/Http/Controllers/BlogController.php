@@ -89,7 +89,7 @@ class BlogController extends Controller
         $validator = Validator::make($request->all(), [
 
             'title' => ['required', 'string', 'max:255'],
-            'slug' => ['required', 'string', 'max:255', 'unique:blogs' . $blog->id . ',id'],
+            'slug' => 'required|unique:blogs,slug,' . $blog->id . ',id',
             'description' => ['required', 'string'],
             'status' => 'required',
           
@@ -98,16 +98,18 @@ class BlogController extends Controller
            if($validator->passes()){
     
            
-            $category->name = $request->name;
-            $category->slug = $request->slug;
-            $category->status = $request->status;
-            $category->update();
+        
+            $blog->title = $request->title;
+            $blog->slug = $request->slug;
+            $blog->description = $request->description;
+            $blog->status = $request->status;
+            $blog->update();
     
-            $request->session()->flash('success','Category Updated Successfully');
+            $request->session()->flash('success','blog Updated Successfully');
     
             return response()->json([
                 'status' => true,
-                'msg' =>'Category Udated Successfully',
+                'msg' =>'blog Udated Successfully',
             ]);
     
            }
@@ -123,24 +125,24 @@ class BlogController extends Controller
 
     public function destroy(Request $request,$id){
 
-        $category = Category::find($id);
+        $blog = Blog::find($id);
 
-        if(empty($category)){
+        if(empty($blog)){
 
-        $request->session()->flash('error','Category Not Found');
+        $request->session()->flash('error','Blog Not Found');
 
         return response()->json([
             'status' => false,
-            'msg' =>'Category Not  Found',
+            'msg' =>'Blog Not  Found',
         ]);
         }
 
-        $category->delete();
+        $blog->delete();
 
-        $request->session()->flash('success','Category Delete Successfully');
+        $request->session()->flash('success','Blog Delete Successfully');
         return response()->json([
             'status' => true,
-            'msg' =>'Category Delete Successfully',
+            'msg' =>'Blog Delete Successfully',
         ]);
 
 
