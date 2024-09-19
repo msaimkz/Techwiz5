@@ -8936,9 +8936,10 @@ body .ui-tooltip {
 .blog-grid__media {
   overflow: hidden;
   display: block;
+  /* margin-top: 20px; */
 }
 .blog-grid__media img {
-  height: 100%;
+  /* height: 100%; */
   -o-object-fit: cover;
      object-fit: cover;
 }

@@ -13,6 +13,54 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/about-us', function () {
+    return view('about');
+});
+
+Route::get('/contact-us', function () {
+    return view('contact');
+});
+
+Route::get('/design', function () {
+    return view('design');
+});
+
+Route::get('/gallery', function () {
+    return view('gallery');
+});
+
+Route::get('/living-room', function () {
+    return view('category.livingroom');
+});
+
+Route::get('/bedrooms', function () {
+    return view('category.bedrooms');
+});
+
+Route::get('/bathrooms', function () {
+    return view('category.bathrooms');
+});
+
+Route::get('/Kitchens', function () {
+    return view('category.kitchens');
+});
+
+Route::get('/offices', function () {
+    return view('category.offices');
+});
+
+Route::get('/outdoor-spaces', function () {
+    return view('category.outdoorspaces');
+});
+
+Route::get('/detail-page', function () {
+    return view('detail');
+});
+
+Route::get('/blog', function () {
+    return view('blog');
+});
+
 Route::get('/welcome', function () {
     return view('welcome');
 });
