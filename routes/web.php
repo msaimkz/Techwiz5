@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\TempImageController;
@@ -40,7 +41,16 @@ Route::get('/Admin/Create-Category',[CategoryController::class,'create'])->name(
 Route::post('/Admin/Store-Category',[CategoryController::class,'store'])->name('Admin.category.store');
 Route::get('/Admin/Edit-Category,/{id}',[CategoryController::class,'edit'])->name('Admin.category.edit');
 Route::post('/Admin/Update-Category,/{id}',[CategoryController::class,'update'])->name('Admin.category.update');
-Route::delete('/Admin/Delete-Category,/{id}',[CategoryController::class,'destroy'])->name('Admin.category.delete');
+Route::delete('/Admin/Delete-Category,/{id}',[CategoryController::class,'destroy'])->name('Admin-category-delete');
+
+// blog routes
+Route::get('/Admin/Blog',[BlogController::class,'index'])->name('Admin.Blog');
+Route::get('/Admin/Create-Blog',[BlogController::class,'create'])->name('Admin.Blog.create');
+Route::post('/Admin/Store-Blog',[BlogController::class,'store'])->name('Admin.Blog.store');
+Route::get('/Admin/Edit-Blog/{id}',[BlogController::class,'edit'])->name('Admin.Blog.edit');
+Route::post('/Admin/Update-Blog/{id}',[BlogController::class,'update'])->name('Admin.Blog.update');
+Route::delete('/Admin/Delete-Blog/{id}',[BlogController::class,'destroy'])->name('Admin-Blog-delete');
+
 
 // Sub Category Routes
 Route::get('/Admin/Sub-Category',[SubCategoryController::class,'index'])->name('Admin.sub-category');
