@@ -122,9 +122,15 @@ class GalleryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Request $request,string $id)
     {
-        //
+        $gallery = Gallery::with(['images','subcategory'])->find($id);
+
+       
+       
+       
+
+        return view('Admin.Gallery.view',compact('gallery'));
     }
 
    

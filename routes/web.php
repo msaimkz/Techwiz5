@@ -82,12 +82,14 @@ Route::delete('/Admin/Delete-Gallery-Image/',[GalleryController::class,'DeleteIm
 Route::post('/Admin/Update-Gallery-Image/',[GalleryController::class,'ImageUpdate'])->name('Admin.gallery.update.image');
 Route::post('/Admin/Update-Gallery/{id}',[GalleryController::class,'update'])->name('Admin.gallery.update');
 Route::delete('/Admin/Delete-Gallery,/{id}',[GalleryController::class,'destroy'])->name('Admin.gallery.delete');
+Route::get('/Admin/View-Gallery,/{id}',[GalleryController::class,'show'])->name('Admin.gallery.view');
 
 
 
 // Temp Images Route
 
 Route::post('/Admin/Temp-Images', [TempImageController::class, 'create'])->name('Temp-image');
+Route::get('/Admin/Temp-Imag', [AdminController::class, 'delete'])->name('Temp');
 
 
 
