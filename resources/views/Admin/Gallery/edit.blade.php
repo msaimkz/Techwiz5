@@ -66,8 +66,9 @@
                     <div class="col-md-3" id="row-image-{{$Image->id}}">
                         <div class="card">
                             <input type="hidden" name="img_array[]" value="{{$Image->id}}">
-                            <img src="{{asset('uploads/gallery/small/'.$Image->image)}}" class="card-img-top" alt="...">
-                            <div class="card-body">
+                            <img src="{{asset('uploads/gallery/small/'.$Image->image)}}" class="card-img-top" alt="..."
+                                width="100px">
+                            <div class="card-body p-4">
                                 <a href="javascript:void(0)" onclick="deleteTempImg({{$Image->id}})"
                                     class="btn btn-danger">delete</a>
                             </div>
@@ -95,54 +96,65 @@
 
 Dropzone.autoDiscover = false;
 const dropzone = $("#image").dropzone({
-    url: "{{route('Admin.gallery.update.image')}}",
-    maxFiles: 10,
-    paramName: 'image',
-    params:{'gallery_id': '{{$gallery->id}}'},
-    addRemoveLinks: true,
-    acceptedFiles: "image/jpeg,image/png,image/gif,image/webp",
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    },
-    success: function(file, response) {
-        // $("#image_id").val(response.image_id);
-        //console.log(response)
+init: function() {
+this.on('addedfile', function(file) {
+if (this.files.length > 4) {
+this.removeFile(this.files[0]);
+}
+});
+},
+url: "{{route('Admin.gallery.update.image')}}",
+maxFiles: 4,
+paramName: 'image',
+params:{'gallery_id': '{{$gallery->id}}'},
+addRemoveLinks: true,
+acceptedFiles: "image/jpeg,image/png,image/gif,image/webp",
+headers: {
+'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+},
+success: function(file, response) {
+if(response.ImageLimit == false){
+alert(response.error)
+}
 
-        var html = `<div class="col-md-3" id="row-image-${response.Image_id}">
-                    <div class="card">
-                    <input type="hidden" name="img_array[]" value="${response.Image_id}">  
-                    <img src="${response.Image_path}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                    <a href="javascript:void(0)" onclick = "deleteTempImg(${response.Image_id})" class="btn btn-danger">delete</a>
-                    </div>
-                    </div>
-                </div>`
+if(response.Image_id != undefined){
+var html = `<div class="col-md-3" id="row-image-${response.Image_id}">
+    <div class="card">
+        <input type="hidden" name="img_array[]" value="${response.Image_id}">
+        <img src="${response.Image_path}" class="card-img-top" alt="... " width="100px">
+        <div class="card-body p-4">
+            <a href="javascript:void(0)" onclick="deleteTempImg(${response.Image_id})" class="btn btn-danger">delete</a>
+        </div>
+    </div>
+</div>`
 
-        $('#tempimage').append(html)
-    },
-    complete: function(file) {
-        this.removeFile(file)
-    }
+$('#tempimage').append(html)
+}
+
+},
+complete: function(file) {
+this.removeFile(file)
+}
 });
 
 function deleteTempImg(id) {
-    $('#row-image-' + id).remove();
-    if(confirm('Are you Sure Went To Delete')){
-        $.ajax({
-            url:'{{route("Admin.gallery.delete.image")}}',
-            type:'delete',
-            data:{id:id},
-            success:function(reponse){
-                if(reponse.status == true){
-                    alert(reponse.msg)
-                }
-                else{
-                    alert(reponse.msg)
-                }
-            }
-        });
-    }
-  
+$('#row-image-' + id).remove();
+if(confirm('Are you Sure Went To Delete')){
+$.ajax({
+url:'{{route("Admin.gallery.delete.image")}}',
+type:'delete',
+data:{id:id},
+success:function(reponse){
+if(reponse.status == true){
+alert(reponse.msg)
+}
+else{
+alert(reponse.msg)
+}
+}
+});
+}
+
 }
 
 $(document).ready(function() {

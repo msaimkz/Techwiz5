@@ -93,6 +93,9 @@ data: element.serializeArray(),
 dataType:'json',
 success:function(response){
 $('button[type=submit]').prop('disabled', false)
+if(response.ImageLimit == false){
+    alert(response.error)
+}
 
 if(response.status == true){
 window.location.href = "{{ route('Admin.gallery') }}"
@@ -129,34 +132,46 @@ $('#description').removeClass('is-invalid').siblings('span').removeClass(
 });
 });
 
-
 Dropzone.autoDiscover = false;
 const dropzone = $("#image").dropzone({
-url: "{{route('Temp-image')}}",
-maxFiles: 10,
-paramName: 'image',
-addRemoveLinks: true,
-acceptedFiles: "image/jpeg,image/png,image/gif,image/webp",
-headers: {
-'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-},
-success: function(file, response) {
-var html = `<div class="col-md-3" id="row-image-${response.Image_id}">
-    <div class="card">
-        <input type="hidden" name="img_array[]" value="${response.Image_id}">
-        <img src="${response.Image_path}" class="card-img-top" alt="..." width="100px">
-        <div class="card-body p-4">
-            <a href="javascript:viod(0)" onclick="deleteTempImg(${response.Image_id})" class="btn btn-danger">delete</a>
-        </div>
-    </div>
-</div>`
+    init: function() {
+        this.on('addedfile', function(file) {
+            // Check if the number of files exceeds 4
+            if (this.files.length > 4) {
+                this.removeFile(file); // Remove the newly added file
+                alert('You can only upload a maximum of 4 images.');
+            }
+        });
+    },
+    url: "{{ route('Temp-image') }}",
+    maxFiles: 4, // Maximum files to allow
+    paramName: 'image',
+    addRemoveLinks: true,
+    acceptedFiles: "image/jpeg,image/png,image/gif,image/webp",
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
+    success: function(file, response) {
+        console.log(file);
+        var html = `<div class="col-md-3" id="row-image-${response.Image_id}">
+            <div class="card">
+                <input type="hidden" name="img_array[]" value="${response.Image_id}">
+                <img src="${response.Image_path}" class="card-img-top" alt="..." width="100px">
+                <div class="card-body p-4">
+                    <a href="javascript:void(0)" onclick="deleteTempImg(${response.Image_id})" class="btn btn-danger">Delete</a>
+                </div>
+            </div>
+        </div>`;
 
-$('#tempimage').append(html)
-},
-complete: function(file) {
-this.removeFile(file)
-}
+        $('#tempimage').append(html);
+    },
+    complete: function(file) {
+        // Remove the file from Dropzone after upload
+        this.removeFile(file);
+    }
 });
+
+
 
 function deleteTempImg(id) {
 $('#row-image-' + id).remove();

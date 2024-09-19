@@ -21,7 +21,8 @@ class GalleryController extends Controller
     public function index()
 
     {
-        $galleries = Gallery::with('images')->get();
+        $galleries = Gallery::with(['images','subcategory'])->get();
+    
         return view('Admin.Gallery.gallery',compact('galleries'));
     }
 
@@ -57,6 +58,14 @@ class GalleryController extends Controller
 
             // Images Here
             if(!empty($request->img_array)){
+                $length = count($request->img_array);
+                  if($length > 4){
+                    return response()->json([
+                        'ImageLimit' => false,
+                        'error' => 'You can only upload a maximum of 4 images.',
+                    ]);
+                  }
+
                 foreach($request->img_array as $tempimgid){
 
                     $tempimginfo = TempImage::find($tempimgid);
@@ -159,6 +168,15 @@ class GalleryController extends Controller
 
     public function ImageUpdate(Request $request)
     {
+
+        $ImageLength = GalleryImage::where('gallery_id',$request->gallery_id)->count();
+      
+        if($ImageLength == 4){
+            return response()->json([
+                'ImageLimit' => false,
+                'error' => 'You can only upload a maximum of 4 images.',
+            ]);
+          }
        
         $image = $request->image;
         $ext = $image->getClientOriginalExtension();
@@ -250,7 +268,7 @@ class GalleryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Request $request, string $id)
     {
         
         $gallery = Gallery::find($id);
@@ -269,7 +287,7 @@ class GalleryController extends Controller
                File::delete(public_path('uploads/gallery/large/'.$galleryImage->image));
                File::delete(public_path('uploads/gallery/small/'.$galleryImage->image));
             }
-           productimage::where('product_id',$id)->delete();
+           GalleryImage::where('gallery_id',$id)->delete();
         }
         $gallery->delete();
         $request->session()->flash('success','Gallery will be Deleted Successfully');

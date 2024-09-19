@@ -5,13 +5,18 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Dashboard - NiceAdmin Bootstrap Template</title>
+    <title>Deco-Vista | Admin Panel</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
     <!-- Favicons -->
     <link href="assets/img/favicon.png" rel="icon">
     <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- font Awsome cdn  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -43,7 +48,7 @@
     <header id="header" class="header fixed-top d-flex align-items-center">
 
         <div class="d-flex align-items-center justify-content-between">
-            <a href="index.html" class="logo d-flex align-items-center">
+            <a href="{{route('Admin.dashboard')}}" class="logo d-flex align-items-center">
                 <img src="assets/img/logo.png" alt="">
                 <span class="d-none d-lg-block">Decor Vista</span>
             </a>
@@ -120,14 +125,14 @@
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('Admin.category') }}">
-                    <i class="bi bi-images"></i>
+                    <i class="fa-solid fa-list"></i>
                     <span>Category</span>
                 </a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('Admin.sub-category') }}">
-                    <i class="bi bi-images"></i>
+                <i class="fa-solid fa-layer-group"></i>
                     <span>Sub Category</span>
                 </a>
             </li>
@@ -176,12 +181,12 @@
         <div class="copyright">
             &copy; Copyright <strong><span>DecorVista</span></strong>. All Rights Reserved
         </div>
-        
+
     </footer><!-- End Footer -->
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-    class="bi bi-arrow-up-short"></i></a>
-    
+            class="bi bi-arrow-up-short"></i></a>
+
     <!-- Vendor JS Files -->
     <script src="{{asset('Asset/Admin/js/jquery/jquery.js')}}"></script>
     <script src="{{asset('Asset/Admin/js/dropzone/dropzone.js')}}"></script>
@@ -194,21 +199,21 @@
     <script src="{{asset('Asset/Admin/vendor/tinymce/tinymce.min.js')}}"></script>
     <script src="{{ asset('Asset/Admin/vendor/php-email-form/validate.js') }}"></script>
 
-     <script type="text/javascript">
+    <script type="text/javascript">
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-    </script> 
+    </script>
 
 
     <!-- Template Main JS File -->
     <script src="{{asset( 'Asset/Admin/js/main.js' )}}"></script>
 
-   <script>
-     @yield('js')
-   </script>
+    <script>
+    @yield('js')
+    </script>
 
 
 </body>

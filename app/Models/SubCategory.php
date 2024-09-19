@@ -13,4 +13,10 @@ class SubCategory extends Model
         return $this->belongsTo(Category::class);
     }
 
+    protected $table = 'sub_categories'; 
+    public function galleries()
+    {
+        return $this->hasMany(Gallery::class, 'subCategory_id');
+    }
+
 }

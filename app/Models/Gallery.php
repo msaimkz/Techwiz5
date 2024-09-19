@@ -11,5 +11,12 @@ class Gallery extends Model
     public function images()
     {
         return $this->hasMany(GalleryImage::class, 'gallery_id');
-    }   
+    }  
+    
+    protected $table = 'galleries'; 
+
+    public function subcategory()
+    {
+        return $this->belongsTo(SubCategory::class, 'subCategory_id');
+    }
 }

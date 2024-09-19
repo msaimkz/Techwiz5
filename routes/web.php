@@ -58,7 +58,7 @@ Route::get('/Admin/Edit-Gallery/{id}',[GalleryController::class,'edit'])->name('
 Route::delete('/Admin/Delete-Gallery-Image/',[GalleryController::class,'DeleteImage'])->name('Admin.gallery.delete.image');
 Route::post('/Admin/Update-Gallery-Image/',[GalleryController::class,'ImageUpdate'])->name('Admin.gallery.update.image');
 Route::post('/Admin/Update-Gallery/{id}',[GalleryController::class,'update'])->name('Admin.gallery.update');
-Route::delete('/Admin/Delete-Gallery,/{id}',[SubCategoryController::class,'destroy'])->name('Admin.gallery.delete');
+Route::delete('/Admin/Delete-Gallery,/{id}',[GalleryController::class,'destroy'])->name('Admin.gallery.delete');
 
 
 

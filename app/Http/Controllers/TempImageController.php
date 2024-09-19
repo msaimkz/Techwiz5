@@ -15,10 +15,14 @@ class TempImageController extends Controller
 
          if(!empty($image)){
             $ext = $image->getClientOriginalExtension();
-            $ImgNew = time().'.'.$ext;
+           
 
 
             $Temp = new TempImage();
+            $Temp->image = 'null';
+            $Temp->save();
+
+            $ImgNew = $Temp->id.'-'.time().'.'.$ext;
             $Temp->image = $ImgNew;
             $Temp->save();
 

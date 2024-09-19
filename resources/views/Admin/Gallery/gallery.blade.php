@@ -62,7 +62,7 @@
                                         @endif
 
                                     </td>
-                                    <td>{{$gallery->subCategory_id}}</td>
+                                    <td>{{$gallery->subcategory->name}}</td>
                                     <td>
                                         @if($gallery->status == 1)
                                         <svg class="text-success-500 h-6 w-6 text-success" width="30px"
