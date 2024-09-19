@@ -54,6 +54,13 @@ class AdminController extends Controller
     return view('Admin.Profile.profile',compact('user'));
 }
 
+public function order(Request $request){
+
+    
+    
+    return view('Admin.Order.order');
+}
+
 }
 
 

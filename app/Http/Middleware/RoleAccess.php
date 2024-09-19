@@ -13,8 +13,12 @@ class RoleAccess
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next)
     {
+        if (!$request->user() || !$request->user()->role == "admin") {
+            return redirect('/')->with('error', 'You do not have access to this resource.');
+        }
+
         return $next($request);
     }
 }
