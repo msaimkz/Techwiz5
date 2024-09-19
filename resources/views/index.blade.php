@@ -18,9 +18,9 @@
                                            <h1 class="banner__item-title rr-fw-bold color-white">
                                                Creating Spaces Through <span>Innovative Design.</span>
                                            </h1>
-                                           <p class="des color-white mb-45 mb-md-30">Welcome to Artima, crafting timeless interiors that tell your story. Discover a world where design meets emotion.</p>
+                                           <p class="des color-white mb-45 mb-md-30">Welcome to DecorVista, crafting timeless interiors that tell your story. Discover a world where design meets emotion.</p>
    
-                                           <a href="about-us.html" class="rr-btn">
+                                           <a href="{{url('/about-us')}}" class="rr-btn">
                                                <span class="btn-wrap">
                                                    <span class="text-one">About Us</span>
                                                    <span class="text-two">About Us</span>
@@ -56,9 +56,9 @@
                                            <h1 class="banner__item-title rr-fw-bold color-white">
                                                Creating Spaces Through <span>Innovative Design.</span>
                                            </h1>
-                                           <p class="des color-white mb-45 mb-md-30">Welcome to Artima, crafting timeless interiors that tell your story. Discover a world where design meets emotion.</p>
+                                           <p class="des color-white mb-45 mb-md-30">Welcome to DecorVista, crafting timeless interiors that tell your story. Discover a world where design meets emotion.</p>
    
-                                           <a href="about-us.html" class="rr-btn">
+                                           <a href="{{url('/about-us')}}" class="rr-btn">
                                                <span class="btn-wrap">
                                                    <span class="text-one">About Us</span>
                                                    <span class="text-two">About Us</span>
@@ -94,9 +94,9 @@
                                            <h1 class="banner__item-title rr-fw-bold color-white">
                                                Creating Spaces Through <span>Innovative Design.</span>
                                            </h1>
-                                           <p class="des color-white mb-45 mb-md-30">Welcome to Artima, crafting timeless interiors that tell your story. Discover a world where design meets emotion.</p>
+                                           <p class="des color-white mb-45 mb-md-30">Welcome to DecorVista, crafting timeless interiors that tell your story. Discover a world where design meets emotion.</p>
    
-                                           <a href="about-us.html" class="rr-btn">
+                                           <a href="{{url('/about-us')}}" class="rr-btn">
                                                <span class="btn-wrap">
                                                    <span class="text-one">About Us</span>
                                                    <span class="text-two">About Us</span>
@@ -140,7 +140,7 @@
                </div>
 
                <div class="banner__bottom-title">
-                   <h6><a href="blog-details.html">Creating Spaces Through<span> Innovative Design.</span> </a></h6>
+                   <h6><a href="#">Creating Spaces Through<span> Innovative Design.</span> </a></h6>
                </div>
 
                <div class="swiper-container gallery-thumbs">
@@ -152,14 +152,14 @@
                </div>
            </div>
 
-           <div class="banner__socail-media">
+           {{-- <div class="banner__socail-media">
                <ul>
                    <li><a href="https://www.facebook.com/">Facebook</a></li>
                    <li><a href="https://www.instagram.com/">Instagram</a></li>
                    <li><a href="https://x.com/tweeter">Tweeter</a></li>
                    <li><a href="https://dribbble.com/">DRIBBBLE </a></li>
                </ul>
-           </div>
+           </div> --}}
        </div>
 
    </section>
@@ -190,7 +190,7 @@
                <div class="col-lg-6">
                    <div class="about-us__content">
                        <div class="section__title-wrapper mb-45 mb-xs-40">
-                           <span class="section__subtitle justify-content-center">Welcome To Artima</span>
+                           <span class="section__subtitle justify-content-center">Welcome To DecorVista</span>
                            <h2 class="section__title mb-25 title-animation">Interior Design with Different Approach</h2>
                            <p class="mb-0">Et purus duis sollicitudin dignissim habitant. Egestas nulla quis venenatis cras sed eu massa eu faucibus Urna fusce Et purus duis sollicitudin dig- nissim habitant.</p>
                        </div>
@@ -223,7 +223,7 @@
                            </div>
                        </div>
    
-                       <a href="about-us.html" class="rr-btn">
+                       <a href="{{url('/about-us')}}" class="rr-btn">
                            <span class="btn-wrap">
                                <span class="text-one">Learn More 
                                    <svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -267,9 +267,9 @@
                            <img src="{{asset('Asset/decorVista/assets/imgs/what-we-do/what-we-do-1.svg')}}" alt="image not found">
                        </div>
                        <div class="text">
-                           <h6 class="what-we-do__item-title title-animation"><a href="service-details.html">Home Interior Design</a></h6>
+                           <h6 class="what-we-do__item-title title-animation"><a href="#">Home Interior Design</a></h6>
                            <p class="what-we-do__item-desc">Sagitis himos pulvinar morb socis laoreet posuere enim non auctor etiam pretium libero</p>
-                           <a href="service-details.html" class="what-we-do__item-arrow">
+                           <a href="#" class="what-we-do__item-arrow">
                                Read More
                               <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                <path d="M1 6H11" stroke="#767676" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -286,9 +286,9 @@
                            <img src="{{asset('Asset/decorVista/assets/imgs/what-we-do/what-we-do-2.svg')}}" alt="image not found">
                        </div>
                        <div class="text">
-                           <h6 class="what-we-do__item-title title-animation"><a href="service-details.html">Home Exterior Design</a></h6>
+                           <h6 class="what-we-do__item-title title-animation"><a href="#">Home Exterior Design</a></h6>
                            <p class="what-we-do__item-desc">Sagitis himos pulvinar morb socis laoreet posuere enim non auctor etiam pretium libero</p>
-                           <a href="service-details.html" class="what-we-do__item-arrow">
+                           <a href="#" class="what-we-do__item-arrow">
                                Read More
                               <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                <path d="M1 6H11" stroke="#767676" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -305,9 +305,9 @@
                            <img src="{{asset('Asset/decorVista/assets/imgs/what-we-do/what-we-do-3.svg')}}" alt="image not found">
                        </div>
                        <div class="text">
-                           <h6 class="what-we-do__item-title title-animation"><a href="service-details.html">2D/3D Design Layout</a></h6>
+                           <h6 class="what-we-do__item-title title-animation"><a href="#">2D/3D Design Layout</a></h6>
                            <p class="what-we-do__item-desc">Sagitis himos pulvinar morb socis laoreet posuere enim non auctor etiam pretium libero</p>
-                           <a href="service-details.html" class="what-we-do__item-arrow">
+                           <a href="#" class="what-we-do__item-arrow">
                                Read More
                               <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                <path d="M1 6H11" stroke="#767676" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -324,9 +324,9 @@
                            <img src="{{asset('Asset/decorVista/assets/imgs/what-we-do/what-we-do-4.svg')}}" alt="image not found">
                        </div>
                        <div class="text">
-                           <h6 class="what-we-do__item-title title-animation"><a href="service-details.html">Furniture's Design</a></h6>
+                           <h6 class="what-we-do__item-title title-animation"><a href="#">Furniture's Design</a></h6>
                            <p class="what-we-do__item-desc">Sagitis himos pulvinar morb socis laoreet posuere enim non auctor etiam pretium libero</p>
-                           <a href="service-details.html" class="what-we-do__item-arrow">
+                           <a href="#" class="what-we-do__item-arrow">
                                Read More
                               <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                <path d="M1 6H11" stroke="#767676" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -343,9 +343,9 @@
                            <img src="{{asset('Asset/decorVista/assets/imgs/what-we-do/what-we-do-5.svg')}}" alt="image not found">
                        </div>
                        <div class="text">
-                           <h6 class="what-we-do__item-title title-animation"><a href="service-details.html">Modern Home Interior</a></h6>
+                           <h6 class="what-we-do__item-title title-animation"><a href="#">Modern Home Interior</a></h6>
                            <p class="what-we-do__item-desc">Sagitis himos pulvinar morb socis laoreet posuere enim non auctor etiam pretium libero</p>
-                           <a href="service-details.html" class="what-we-do__item-arrow">
+                           <a href="#" class="what-we-do__item-arrow">
                                Read More
                               <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                <path d="M1 6H11" stroke="#767676" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -362,9 +362,9 @@
                            <img src="{{asset('Asset/decorVista/assets/imgs/what-we-do/what-we-do-6.svg')}}" alt="image not found">
                        </div>
                        <div class="text">
-                           <h6 class="what-we-do__item-title title-animation"><a href="service-details.html">Custom Design Plan</a></h6>
+                           <h6 class="what-we-do__item-title title-animation"><a href="#">Custom Design Plan</a></h6>
                            <p class="what-we-do__item-desc">Sagitis himos pulvinar morb socis laoreet posuere enim non auctor etiam pretium libero</p>
-                           <a href="service-details.html" class="what-we-do__item-arrow">
+                           <a href="#" class="what-we-do__item-arrow">
                                Read More
                               <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                <path d="M1 6H11" stroke="#767676" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -489,7 +489,7 @@
                 <div class="latest-project__item">
                     <div class="latest-project__media">
                         <img class="wow clip-a-z" src="{{asset('Asset/decorVista/assets/imgs/latest-project/latest-project-1.jpg')}}" alt="image not found">
-                        <a class="icon" href="protfolio-details.html">
+                        <a class="icon" href="#">
                             <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M4.48633 23.4867L22.4072 5.56579" stroke="#906E50" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                 <path d="M14.3848 4.61475H23.3501V13.58" stroke="#906E50" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -497,8 +497,8 @@
                         </a>
                     </div>
                     <div class="latest-project__text">
-                        <h5 class="title-animation"><a href="protfolio-details.html">D-Orex Home Interior</a></h5>
-                        <p class="mb-0">Artima is one of the most popular for</p>
+                        <h5 class="title-animation"><a href="#">D-Orex Home Interior</a></h5>
+                        <p class="mb-0">DecorVista is one of the most popular for</p>
                     </div>
                 </div>
             </div>
@@ -506,7 +506,7 @@
                 <div class="latest-project__item">
                     <div class="latest-project__media">
                         <img class="wow clip-a-z" src="{{asset('Asset/decorVista/assets/imgs/latest-project/latest-project-2.jpg')}}" alt="image not found">
-                        <a class="icon" href="protfolio-details.html">
+                        <a class="icon" href="#">
                             <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M4.48633 23.4867L22.4072 5.56579" stroke="#906E50" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                 <path d="M14.3848 4.61475H23.3501V13.58" stroke="#906E50" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -514,8 +514,8 @@
                         </a>
                     </div>
                     <div class="latest-project__text">
-                        <h5 class="title-animation"><a href="protfolio-details.html">Luxe Living Home Decor</a></h5>
-                        <p class="mb-0">Artima is one of the most popular for</p>
+                        <h5 class="title-animation"><a href="#">Luxe Living Home Decor</a></h5>
+                        <p class="mb-0">DecorVista is one of the most popular for</p>
                     </div>
                 </div>
             </div>
@@ -523,7 +523,7 @@
                 <div class="latest-project__item">
                     <div class="latest-project__media">
                         <img style="padding-top: 140px;" class="wow clip-a-z" src="{{asset('Asset/decorVista/assets/imgs/latest-project/latest-project-3.jpg')}}" alt="image not found">
-                        <a class="icon" href="protfolio-details.html">
+                        <a class="icon" href="#">
                             <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M4.48633 23.4867L22.4072 5.56579" stroke="#906E50" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                 <path d="M14.3848 4.61475H23.3501V13.58" stroke="#906E50" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -531,8 +531,8 @@
                         </a>
                     </div>
                     <div class="latest-project__text">
-                        <h5 class="title-animation"><a href="protfolio-details.html">Home Corner Interior</a></h5>
-                        <p class="mb-0">Artima is one of the most popular for</p>
+                        <h5 class="title-animation"><a href="#">Home Corner Interior</a></h5>
+                        <p class="mb-0">DecorVista is one of the most popular for</p>
                     </div>
                 </div>
             </div>
@@ -540,7 +540,7 @@
                 <div class="latest-project__item">
                     <div class="latest-project__media">
                         <img style="padding-top: 140px;" class="wow clip-a-z" src="{{asset('Asset/decorVista/assets/imgs/latest-project/latest-project-4.jpg')}}" alt="image not found">
-                        <a class="icon" href="protfolio-details.html">
+                        <a class="icon" href="#">
                             <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M4.48633 23.4867L22.4072 5.56579" stroke="#906E50" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                 <path d="M14.3848 4.61475H23.3501V13.58" stroke="#906E50" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -548,8 +548,8 @@
                         </a>
                     </div>
                     <div class="latest-project__text">
-                        <h5 class="title-animation"><a href="protfolio-details.html">Orion Home Studio Interior</a></h5>
-                        <p class="mb-0">Artima is one of the most popular for</p>
+                        <h5 class="title-animation"><a href="#">Orion Home Studio Interior</a></h5>
+                        <p class="mb-0">DecorVista is one of the most popular for</p>
                     </div>
                 </div>
             </div>
@@ -621,7 +621,7 @@
            <div class="row">
                <div class="section__title-wrapper text-center mb-55 mb-xs-40">
                    <span class="section__subtitle justify-content-center">Why Choose Us</span>
-                   <h2 class="section__title title-animation">Why Choose Artima</h2>
+                   <h2 class="section__title title-animation">Why Choose DecorVista</h2>
                </div>
            </div>
            <div class="row align-items-center">
@@ -723,7 +723,7 @@
                    </div>
 
                    <div class="working-process__text text-center">
-                       <h6 class="title-animation"><a href="protfolio.html">Visit Project</a></h6>
+                       <h6 class="title-animation"><a href="#">Visit Project</a></h6>
                        <p class="mb-0">Lorem ipsum dolor sit amecon sectetur
                            adipisicing elit sed do.</p>
                    </div>
@@ -738,7 +738,7 @@
                    </div>
 
                    <div class="working-process__text text-center">
-                       <h6 class="title-animation"><a href="protfolio.html">Planning Design</a></h6>
+                       <h6 class="title-animation"><a href="#">Planning Design</a></h6>
                        <p class="mb-0">Lorem ipsum dolor sit amecon sectetur
                            adipisicing elit sed do.</p>
                    </div>
@@ -753,7 +753,7 @@
                    </div>
 
                    <div class="working-process__text text-center">
-                       <h6 class="title-animation"><a href="protfolio.html">Project Sketch</a></h6>
+                       <h6 class="title-animation"><a href="#">Project Sketch</a></h6>
                        <p class="mb-0">Lorem ipsum dolor sit amecon sectetur
                            adipisicing elit sed do.</p>
                    </div>
@@ -768,7 +768,7 @@
                    </div>
 
                    <div class="working-process__text text-center">
-                       <h6 class="title-animation"><a href="protfolio.html">Start Working</a></h6>
+                       <h6 class="title-animation"><a href="#">Start Working</a></h6>
                        <p class="mb-0">Lorem ipsum dolor sit amecon sectetur
                            adipisicing elit sed do.</p>
                    </div>
@@ -794,7 +794,7 @@
                            <img src="{{asset('Asset/decorVista/assets/imgs/our-team/team-1.jpg')}}" alt="image not found">
                        </div>
                        <div class="our-team__item__text">
-                           <h6><a href="tema-details.html">Daniel Smith</a></h6>
+                           <h6><a href="#">Daniel Smith</a></h6>
                            <span>Chef Executive </span>
                        </div>
 
@@ -832,7 +832,7 @@
                            <img src="{{asset('Asset/decorVista/assets/imgs/our-team/team-2.jpg')}}" alt="image not found">
                        </div>
                        <div class="our-team__item__text">
-                           <h6><a href="tema-details.html">William Lucas</a></h6>
+                           <h6><a href="#">William Lucas</a></h6>
                            <span>Senior Architect </span>
                        </div>
 
@@ -870,7 +870,7 @@
                            <img src="{{asset('Asset/decorVista/assets/imgs/our-team/team-3.jpg')}}" alt="image not found">
                        </div>
                        <div class="our-team__item__text">
-                           <h6><a href="tema-details.html">Daniel Jack</a></h6>
+                           <h6><a href="#">Daniel Jack</a></h6>
                            <span>Designer</span>
                        </div>
 
@@ -1163,46 +1163,46 @@
            <div class="row mb-minus-30">
                <div class="col-lg-4">
                    <div class="blog__item">
-                       <a class="blog__item-media d-lg-block wow clip-a-z" href="blog-details.html">
+                       <a class="blog__item-media d-lg-block wow clip-a-z" href="#">
                            <img src="{{asset('Asset/decorVista/assets/imgs/blog/blog-1.jpg')}}" alt="image not found">
                        </a>
 
                        <div class="blog__item__content">
                            <ul class="blog__item-meta d-flex flex-wrap mb-10">
                                <li>March 18, 2024 - </li>
-                               <li><a href="blog-details.html">0 Comments</a></li>
+                               <li><a href="#">0 Comments</a></li>
                            </ul>
-                           <h6><a href="blog-details.html">How to Choose the Right Colors for Your Bedroom</a></h6>
+                           <h6><a href="#">How to Choose the Right Colors for Your Bedroom</a></h6>
                        </div>
                    </div>
                </div>
                <div class="col-lg-4">
                    <div class="blog__item">
-                       <a class="blog__item-media d-lg-block wow clip-a-z" href="blog-details.html">
+                       <a class="blog__item-media d-lg-block wow clip-a-z" href="#">
                            <img src="{{asset('Asset/decorVista/assets/imgs/blog/blog-2.jpg')}}" alt="image not found">
                        </a>
 
                        <div class="blog__item__content">
                            <ul class="blog__item-meta d-flex flex-wrap mb-10">
                                <li>March 18, 2024 - </li>
-                               <li><a href="blog-details.html">0 Comments</a></li>
+                               <li><a href="#">0 Comments</a></li>
                            </ul>
-                           <h6><a href="blog-details.html">The Power of Accent Lighting in Interior Design</a></h6>
+                           <h6><a href="#">The Power of Accent Lighting in Interior Design</a></h6>
                        </div>
                    </div>
                </div>
                <div class="col-lg-4">
                    <div class="blog__item">
-                       <a class="blog__item-media d-lg-block wow clip-a-z" href="blog-details.html">
+                       <a class="blog__item-media d-lg-block wow clip-a-z" href="#">
                            <img src="{{asset('Asset/decorVista/assets/imgs/blog/blog-3.jpg')}}" alt="image not found">
                        </a>
 
                        <div class="blog__item__content">
                            <ul class="blog__item-meta d-flex flex-wrap mb-10">
                                <li>March 18, 2024 - </li>
-                               <li><a href="blog-details.html">0 Comments</a></li>
+                               <li><a href="#">0 Comments</a></li>
                            </ul>
-                           <h6><a href="blog-details.html">The Power of Accent Lighting in Interior Design</a></h6>
+                           <h6><a href="#">The Power of Accent Lighting in Interior Design</a></h6>
                        </div>
                    </div>
                </div>
@@ -1221,46 +1221,46 @@
         <div class="row mb-minus-30">
             <div class="col-lg-4">
                 <div class="blog__item">
-                    <a class="blog__item-media d-lg-block wow clip-a-z" href="blog-details.html">
+                    <a class="blog__item-media d-lg-block wow clip-a-z" href="#">
                         <img src="{{asset('Asset/decorVista/assets/imgs/blog/blog-1.jpg')}}" alt="image not found">
                     </a>
 
                     <div class="blog__item__content">
                         <ul class="blog__item-meta d-flex flex-wrap mb-10">
                             <li>March 18, 2024 - </li>
-                            <li><a href="blog-details.html">0 Comments</a></li>
+                            <li><a href="#">0 Comments</a></li>
                         </ul>
-                        <h6><a href="blog-details.html">How to Choose the Right Colors for Your Bedroom</a></h6>
+                        <h6><a href="#" class="bt1">How to Choose the Right Colors for Your Bedroom</a></h6>
                     </div>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="blog__item">
-                    <a class="blog__item-media d-lg-block wow clip-a-z" href="blog-details.html">
+                    <a class="blog__item-media d-lg-block wow clip-a-z" href="#">
                         <img src="{{asset('Asset/decorVista/assets/imgs/blog/blog-2.jpg')}}" alt="image not found">
                     </a>
 
                     <div class="blog__item__content">
                         <ul class="blog__item-meta d-flex flex-wrap mb-10">
                             <li>March 18, 2024 - </li>
-                            <li><a href="blog-details.html">0 Comments</a></li>
+                            <li><a href="#">0 Comments</a></li>
                         </ul>
-                        <h6><a href="blog-details.html">The Power of Accent Lighting in Interior Design</a></h6>
+                        <h6><a href="#">The Power of Accent Lighting in Interior Design</a></h6>
                     </div>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="blog__item">
-                    <a class="blog__item-media d-lg-block wow clip-a-z" href="blog-details.html">
+                    <a class="blog__item-media d-lg-block wow clip-a-z" href="#">
                         <img src="{{asset('Asset/decorVista/assets/imgs/blog/blog-3.jpg')}}" alt="image not found">
                     </a>
 
                     <div class="blog__item__content">
                         <ul class="blog__item-meta d-flex flex-wrap mb-10">
                             <li>March 18, 2024 - </li>
-                            <li><a href="blog-details.html">0 Comments</a></li>
+                            <li><a href="#">0 Comments</a></li>
                         </ul>
-                        <h6><a href="blog-details.html">The Power of Accent Lighting in Interior Design</a></h6>
+                        <h6><a href="#" >The Power of Accent Lighting in Interior Design</a></h6>
                     </div>
                 </div>
             </div>
@@ -1269,5 +1269,40 @@
 </section>
    <!-- blog area start -->
 </main>
+<div style="margin-top: 140px " class="footer__top">
+    <div class="container">
+        <div class="footer__top-shape">
+            <img src="{{asset('Asset/decorVista/assets/imgs/footer-1/footer-cta-shape.png')}}" alt="image not found">
+        </div>
+        <div class="row align-items-center">
+            <div class="col-lg-6 text-lg-start text-center rr-mb-40-md">
+                <div class="footer-cta__content-text">
+                    <h2 class="footer-cta__content-title color-white">Subscribe to Our Newsletter</h2>
+                </div>
+            </div>
+            <div class="col-lg-6 text-lg-end text-center">
+                <div class="footer__widget-subscribe ">
+                    <input type="email" placeholder="Enter your email address">
+                    <button type="submit" class="rr-btn">
+                        <span class="btn-wrap">
+                            <span class="text-one">Contact Us
+                                <svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 6.5H11" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M6 1.5L11 6.5L6 11.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </span>
+                            <span class="text-two">Contact Us
+                                <svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 6.5H11" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M6 1.5L11 6.5L6 11.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </span>
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 @endsection

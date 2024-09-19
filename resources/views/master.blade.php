@@ -133,9 +133,9 @@
 
 <!-- Header area start -->
 <header>
-    <div id="header-sticky" class="header__area header-1">
+    <div style="margin-top: -34px" id="header-sticky" class="header__area header-1">
         <div class="container">
-            <div class="mega__menu-wrapper p-relative">
+            <div style="margin-top: 37px;" class="mega__menu-wrapper p-relative">
                 <div class="header__main">
                     <div class="header__logo">
                         <a href="{{url('/')}}">
@@ -150,15 +150,20 @@
                         <div class="main-menu">
                             <nav id="mobile-menu">
                                 <ul>
-                                    <li class=" has-mega-menu active">
+                                    <li class=" has-mega-menu">
                                         <a href="{{url('/')}}">Home</a>
                                     </li>
-                                    <li><a href="#">About us</a></li>
+                                    <li><a href="{{url('/about-us')}}">About us</a></li>
                                    
                                     <li class="has-dropdown">
-                                        <a href="services.html">Category</a>
+                                        <a href="#">Category</a>
                                         <ul class="submenu">
-                                            <li><a href="services.html">Service</a></li>
+                                            <li><a href="{{url('/living-room')}}">Living Rooms</a></li>
+                                            <li><a href="{{url('/bedrooms')}}">Bedrooms</a></li>
+                                            <li><a href="{{url('/Kitchens')}}">Kitchens</a></li>
+                                            <li><a href="{{url('/bathrooms')}}">Bathrooms</a></li>
+                                            <li><a href="{{url('/offices')}}">Offices</a></li>
+                                            <li><a href="{{url('/outdoor-spaces')}}">Outdoor Spaces</a></li>
                                         </ul>
                                     </li>
                                     <li class="has-dropdown ">
@@ -167,9 +172,10 @@
                                             <li><a href="our-team.html">Team</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="contact-us.html">Gallery</a></li>
-                                    <li><a href="contact-us.html">Design</a></li>
-                                    <li><a href="contact-us.html">Contact</a></li>
+                                    <li><a href="{{url('/gallery')}}">Gallery</a></li>
+                                    <li><a href="{{url('/design')}}">Design</a></li>
+                                    <li><a href="{{url('/blog')}}">blog</a></li>
+                                    <li><a href="{{url('/contact-us')}}">Contact</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -198,8 +204,8 @@
 @yield('content')
 
 <footer>
-    <section style="margin-top: 140px" class="footer__area-common theme-bg-heading-primary overflow-hidden">
-        <div class="footer__top">
+    <section  class="footer__area-common theme-bg-heading-primary overflow-hidden">
+        {{-- <div class="footer__top">
             <div class="container">
                 <div class="footer__top-shape">
                     <img src="{{asset('Asset/decorVista/assets/imgs/footer-1/footer-cta-shape.png')}}" alt="image not found">
@@ -233,7 +239,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <div  class="footer__main-wrapper footer__bottom-border">
             <div class="container">
                 <div class="row mb-minus-50">
