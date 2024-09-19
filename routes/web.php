@@ -8,28 +8,18 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\TempImageController;
+use App\Http\Controllers\BrandController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/home',[UserController::class,'check']);
 
 Route::get('/welcome', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
 
 //Admin Profils
 
@@ -83,14 +73,17 @@ Route::post('/Admin/Update-Gallery/{id}',[GalleryController::class,'update'])->n
 Route::delete('/Admin/Delete-Gallery,/{id}',[GalleryController::class,'destroy'])->name('Admin.gallery.delete');
 
 
+Route::get('/Admin/Brand',[BrandController::class,'index'])->name('Admin.brand');
+Route::get('/Admin/Create-Brand',[BrandController::class,'create'])->name('Admin.brand.create');
+Route::post('/Admin/Store-Brand',[BrandController::class,'store'])->name('Admin.brand.store');
+Route::get('/Admin/Edit-Brand,/{id}',[BrandController::class,'edit'])->name('Admin.brand.edit');
+Route::post('/Admin/Update-Brand,/{id}',[BrandController::class,'update'])->name('Admin.brand.update');
+Route::delete('/Admin/Delete-Brand,/{id}',[BrandController::class,'destroy'])->name('Admin-brand-delete');
+
 
 // Temp Images Route
 
 Route::post('/Admin/Temp-Images', [TempImageController::class, 'create'])->name('Temp-image');
-
-
-
-
 
 // Slug Route
 
@@ -108,4 +101,12 @@ Route::get('Admin/getSlug', function(Request $request){
  
 })->name('GetSlug');
 
-require __DIR__.'/auth.php';
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
