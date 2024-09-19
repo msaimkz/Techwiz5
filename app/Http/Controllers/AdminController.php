@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\TempImage;
+use App\Models\Blog;
+use App\Models\User;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\File;
 class AdminController extends Controller
@@ -37,13 +39,27 @@ class AdminController extends Controller
         TempImage::where('id', $tempImage->id)->delete();
     }
 
-    return view('Admin.dashboard');
+    $blogs = Blog::where('status',1)->latest()->limit(5)->get();
+
+    $customers = User::where('role','user')->count();
+
+
+    return view('Admin.dashboard',compact('blogs','customers'));
  }
 
- public function profile(){
+ public function profile(Request $request){
 
-    return view('Admin.Profile.profile');
- }
+    $user =  $request->user();
+    
+    return view('Admin.Profile.profile',compact('user'));
+}
+
+public function order(Request $request){
+
+    
+    
+    return view('Admin.Order.order');
+}
 
 }
 

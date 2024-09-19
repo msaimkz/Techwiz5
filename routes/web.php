@@ -9,6 +9,7 @@ use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\TempImageController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\StyleController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -23,11 +24,13 @@ Route::get('/welcome', function () {
 
 //Admin Profils
 
+
+Route::group(['middleware' => ['role-access']], function () {
+
 Route::get('/Admin/My-Profile',[AdminController::class,'profile'])->name('Admin.profile');
 
-
-
 Route::get('/Admin/Dashboard',[AdminController::class,'dashboard'])->name('Admin.dashboard');
+Route::get('/Admin/Order',[AdminController::class,'order'])->name('Admin.order');
 
 // Category Routes
 
@@ -37,6 +40,16 @@ Route::post('/Admin/Store-Category',[CategoryController::class,'store'])->name('
 Route::get('/Admin/Edit-Category,/{id}',[CategoryController::class,'edit'])->name('Admin.category.edit');
 Route::post('/Admin/Update-Category,/{id}',[CategoryController::class,'update'])->name('Admin.category.update');
 Route::delete('/Admin/Delete-Category,/{id}',[CategoryController::class,'destroy'])->name('Admin-category-delete');
+
+
+//Style Routes
+Route::get('/Admin/Style',[StyleController::class,'index'])->name('Admin.style');
+Route::get('/Admin/Create-Style',[StyleController::class,'create'])->name('Admin.style.create');
+Route::post('/Admin/Store-Style',[StyleController::class,'store'])->name('Admin.style.store');
+Route::get('/Admin/Edit-Style,/{id}',[StyleController::class,'edit'])->name('Admin.style.edit');
+Route::post('/Admin/Update-Style,/{id}',[StyleController::class,'update'])->name('Admin.style.update');
+Route::delete('/Admin/Style-Category,/{id}',[StyleController::class,'destroy'])->name('Admin-style-delete');
+
 
 // blog routes
 Route::get('/Admin/Blog',[BlogController::class,'index'])->name('Admin.Blog');
@@ -55,6 +68,7 @@ Route::get('/Admin/Edit-Sub-Category/{id}',[SubCategoryController::class,'edit']
 Route::post('/Admin/Update-Sub-Category/{id}',[SubCategoryController::class,'update'])->name('Admin.sub-category.update');
 Route::delete('/Admin/Delete-Sub-Category,/{id}',[SubCategoryController::class,'destroy'])->name('Admin.sub-category.delete');
  
+// Users Routes
 Route::get('/admin/users', [UserController::class, 'index'])->name('admin.users.index');
 Route::get('/admin/users/create', [UserController::class, 'create'])->name('Admin.users.create');
 Route::post('/admin/users', [UserController::class, 'store'])->name('admin.users.store');
@@ -71,6 +85,7 @@ Route::delete('/Admin/Delete-Gallery-Image/',[GalleryController::class,'DeleteIm
 Route::post('/Admin/Update-Gallery-Image/',[GalleryController::class,'ImageUpdate'])->name('Admin.gallery.update.image');
 Route::post('/Admin/Update-Gallery/{id}',[GalleryController::class,'update'])->name('Admin.gallery.update');
 Route::delete('/Admin/Delete-Gallery,/{id}',[GalleryController::class,'destroy'])->name('Admin.gallery.delete');
+Route::get('/Admin/View-Gallery,/{id}',[GalleryController::class,'show'])->name('Admin.gallery.view');
 
 
 Route::get('/Admin/Brand',[BrandController::class,'index'])->name('Admin.brand');
@@ -84,6 +99,11 @@ Route::delete('/Admin/Delete-Brand,/{id}',[BrandController::class,'destroy'])->n
 // Temp Images Route
 
 Route::post('/Admin/Temp-Images', [TempImageController::class, 'create'])->name('Temp-image');
+Route::get('/Admin/Temp-Imag', [AdminController::class, 'delete'])->name('Temp');
+
+
+});
+
 
 // Slug Route
 

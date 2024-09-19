@@ -22,9 +22,9 @@
                     <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
                         <img src="{{asset('Asset/Admin/img/profile-img.jpg')}}" alt="Profile" class="rounded-circle">
-                        <h2>Kevin Anderson</h2>
+                        <h2>{{ Auth::user()->name }}</h2>
                         <h3>Admin</h3>
-                      
+
                     </div>
                 </div>
 
@@ -61,44 +61,51 @@
                         <div class="tab-content pt-2">
 
                             <div class="tab-pane fade show active profile-overview" id="profile-overview">
-                                
+
 
                                 <h5 class="card-title">Profile Details</h5>
 
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label ">Full Name</div>
-                                    <div class="col-lg-9 col-md-8">Kevin Anderson</div>
+                                    <div class="col-lg-9 col-md-8">{{ Auth::user()->name }}</div>
                                 </div>
 
-                              
+
 
 
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">Phone</div>
-                                    <div class="col-lg-9 col-md-8">(436) 486-3538 x29071</div>
+                                    <div class="col-lg-9 col-md-8">{{ Auth::user()->contact }}</div>
                                 </div>
 
                                 <div class="row">
                                     <div class="col-lg-3 col-md-4 label">Email</div>
-                                    <div class="col-lg-9 col-md-8">k.anderson@example.com</div>
+                                    <div class="col-lg-9 col-md-8">{{ Auth::user()->email }}</div>
                                 </div>
 
                             </div>
 
-                            <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
-
+                            <section class="tab-pane fade profile-edit pt-3" id="profile-edit">
                                 <!-- Profile Edit Form -->
-                                <form>
+                                <form method="post" action="{{ route('profile.update') }}">
+                                    @csrf
+                                    @method('patch')
+
                                     <div class="row mb-3">
                                         <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile
                                             Image</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <img src="assets/img/profile-img.jpg" alt="Profile">
+                                            <img src="{{ asset('Asset/Admin/img/profile-img.jpg') }}" alt="Profile"
+                                                class="img-fluid">
                                             <div class="pt-2">
                                                 <a href="#" class="btn btn-primary btn-sm"
-                                                    title="Upload new profile image"><i class="bi bi-upload"></i></a>
+                                                    title="Upload new profile image">
+                                                    <i class="bi bi-upload"></i>
+                                                </a>
                                                 <a href="#" class="btn btn-danger btn-sm"
-                                                    title="Remove my profile image"><i class="bi bi-trash"></i></a>
+                                                    title="Remove my profile image">
+                                                    <i class="bi bi-trash"></i>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
@@ -106,22 +113,18 @@
                                     <div class="row mb-3">
                                         <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <input name="fullName" type="text" class="form-control" id="fullName"
-                                                value="Kevin Anderson">
+                                            <input name="name" type="text" class="form-control" id="fullName"
+                                                value="{{ old('name', Auth::user()->name) }}" required autofocus>
+                                            <x-input-error class="mt-2" :messages="$errors->get('name')" />
                                         </div>
                                     </div>
-
-                                   
-
-                                    
-
-                    
 
                                     <div class="row mb-3">
                                         <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Phone</label>
                                         <div class="col-md-8 col-lg-9">
                                             <input name="phone" type="text" class="form-control" id="Phone"
-                                                value="(436) 486-3538 x29071">
+                                                value="{{ old('phone', Auth::user()->contact) }}">
+                                            <x-input-error class="mt-2" :messages="$errors->get('phone')" />
                                         </div>
                                     </div>
 
@@ -129,18 +132,41 @@
                                         <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
                                         <div class="col-md-8 col-lg-9">
                                             <input name="email" type="email" class="form-control" id="Email"
-                                                value="k.anderson@example.com">
+                                                value="{{ old('email', Auth::user()->email) }}" required>
+                                            <x-input-error class="mt-2" :messages="$errors->get('email')" />
+
+                                            @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail &&
+                                            !$user->hasVerifiedEmail())
+                                            <div class="mt-2">
+                                                <p class="text-sm text-gray-800">
+                                                    {{ __('Your email address is unverified.') }}
+                                                    <button form="send-verification"
+                                                        class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                                        {{ __('Click here to re-send the verification email.') }}
+                                                    </button>
+                                                </p>
+                                                @if (session('status') === 'verification-link-sent')
+                                                <p class="mt-2 font-medium text-sm text-green-600">
+                                                    {{ __('A new verification link has been sent to your email address.') }}
+                                                </p>
+                                                @endif
+                                            </div>
+                                            @endif
                                         </div>
                                     </div>
 
-
-
                                     <div class="text-center">
                                         <button type="submit" class="btn btn-primary">Save Changes</button>
+                                        @if (session('status') === 'profile-updated')
+                                        <p class="mt-2 font-medium text-sm text-green-600">
+                                            {{ __('Saved.') }}
+                                        </p>
+                                        @endif
                                     </div>
-                                </form><!-- End Profile Edit Form -->
+                                </form>
+                                <!-- End Profile Edit Form -->
+                            </section>
 
-                            </div>
 
                             <div class="tab-pane fade pt-3" id="profile-settings">
 

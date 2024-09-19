@@ -85,7 +85,7 @@
                                         <i class="bi bi-people"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>1244</h6>
+                                        <h6>{{ $customers }}</h6>
 
 
                                     </div>
@@ -177,36 +177,24 @@
                         <h5 class="card-title">Blogs &amp; Updates</h5>
 
                         <div class="news">
-                            <div class="post-item clearfix">
-                                <img src="{{ asset('Asset/Admin/img/news-1.jpg') }}" alt="">
-                                <h4><a href="#">Nihil blanditiis at in nihil autem</a></h4>
-                                <p>Sit recusandae non aspernatur laboriosam. Quia enim eligendi sed ut harum...</p>
-                            </div>
 
-                            <div class="post-item clearfix">
-                                <img src="{{ asset('Asset/Admin/img/news-2.jpg') }}" alt="">
-                                <h4><a href="#">Quidem autem et impedit</a></h4>
-                                <p>Illo nemo neque maiores vitae officiis cum eum turos elan dries werona nande...</p>
-                            </div>
 
-                            <div class="post-item clearfix">
-                                <img src="{{ asset('Asset/Admin/img/news-3.jpg') }}" alt="">
-                                <h4><a href="#">Id quia et et ut maxime similique occaecati ut</a></h4>
-                                <p>Fugiat voluptas vero eaque accusantium eos. Consequuntur sed ipsam et totam...</p>
-                            </div>
+                            @if (!empty($blogs))
 
+                            @foreach ($blogs as $blog)
                             <div class="post-item clearfix">
-                                <img src="{{ asset('Asset/Admin/img/news-4.jpg') }}" alt="">
-                                <h4><a href="#">Laborum corporis quo dara net para</a></h4>
-                                <p>Qui enim quia optio. Eligendi aut asperiores enim repellendusvel rerum cuder...</p>
-                            </div>
+                                @if (!empty($blog->image))
+                                <img src="{{ asset('uploads/Blog/small/'.$blog->image) }}" alt="">
+                                @else
+                                <img src="{{ asset('Asset/Admin/img/default.png') }}" alt="">
 
-                            <div class="post-item clearfix">
-                                <img src="{{ asset('Asset/Admin/img/news-5.jpg') }}" alt="">
-                                <h4><a href="#">Et dolores corrupti quae illo quod dolor</a></h4>
-                                <p>Odit ut eveniet modi reiciendis. Atque cupiditate libero beatae dignissimos eius...
-                                </p>
+                                @endif
+                                <h4><a href="{{ route('Admin.Blog') }}">{{ $blog->title }}</a></h4>
+                                <p>{{ $blog->short_description }}</p>
                             </div>
+                            @endforeach
+
+                            @endif
 
                         </div><!-- End sidebar recent posts-->
 

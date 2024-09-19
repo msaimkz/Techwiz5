@@ -197,7 +197,6 @@
 
 @yield('content')
 
-
 <footer>
     <section style="margin-top: 140px" class="footer__area-common theme-bg-heading-primary overflow-hidden">
         <div class="footer__top">
