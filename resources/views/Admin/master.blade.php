@@ -142,6 +142,12 @@
                     <span>Sub Category</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ route('Admin.brand') }}">
+                <i class="fa-solid fa-layer-group"></i>
+                    <span>Brands</span>
+                </a>
+            </li>
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('Admin.style') }}">

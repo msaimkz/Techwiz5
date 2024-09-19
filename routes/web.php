@@ -1,5 +1,4 @@
 <?php
-
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
@@ -23,6 +22,27 @@ Route::get('/About-Us',[FrontController::class,'about'])->name('Front.about');
 Route::get('/Contact-Us',[FrontController::class,'contact'])->name('Front.contact');
 Route::get('/Blogs',[FrontController::class,'blog'])->name('Front.blog');
 Route::get('/Blog-Detail/{id}',[FrontController::class,'blogDetail'])->name('Front.blog.detail');
+Route::get('/Design',[FrontController::class,'design'])->name('Front.design');
+Route::get('/Category',[FrontController::class,'category'])->name('Front.category');
+
+
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+
+Route::get('/',[FrontController::class,'index'])->name('Front.index');
+Route::get('/Gallery',[FrontController::class,'gallery'])->name('Front.gallery');
+Route::get('/About-Us',[FrontController::class,'about'])->name('Front.about');
+Route::get('/Contact-Us',[FrontController::class,'contact'])->name('Front.contact');
+Route::get('/Blogs',[FrontController::class,'blog'])->name('Front.blog');
 Route::get('/Design',[FrontController::class,'design'])->name('Front.design');
 Route::get('/Category',[FrontController::class,'category'])->name('Front.category');
 
@@ -60,6 +80,14 @@ Route::post('/Admin/Store-Category',[CategoryController::class,'store'])->name('
 Route::get('/Admin/Edit-Category,/{id}',[CategoryController::class,'edit'])->name('Admin.category.edit');
 Route::post('/Admin/Update-Category,/{id}',[CategoryController::class,'update'])->name('Admin.category.update');
 Route::delete('/Admin/Delete-Category,/{id}',[CategoryController::class,'destroy'])->name('Admin-category-delete');
+// Brand Routes
+
+Route::get('/Admin/Brand',[BrandController::class,'index'])->name('Admin.brand');
+Route::get('/Admin/Create-Brand',[BrandController::class,'create'])->name('Admin.brand.create');
+Route::post('/Admin/Store-Brand',[BrandController::class,'store'])->name('Admin.brand.store');
+Route::get('/Admin/Edit-Brand,/{id}',[BrandController::class,'edit'])->name('Admin.brand.edit');
+Route::post('/Admin/Update-Brand,/{id}',[BrandController::class,'update'])->name('Admin.brand.update');
+Route::delete('/Admin/Delete-Brand,/{id}',[BrandController::class,'destroy'])->name('Admin-brand-delete');
 
 
 //Style Routes
@@ -116,9 +144,6 @@ Route::get('/Admin/Temp-Imag', [AdminController::class, 'delete'])->name('Temp')
 
 
 });
-
-
-// Slug Route
 
 Route::get('Admin/getSlug', function(Request $request){
 
