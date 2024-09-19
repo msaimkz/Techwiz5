@@ -42,7 +42,8 @@
                 </div>
                 <div class="col-md-6">
                     <label for="description" class="form-label">Short Description</label>
-                    <textarea name="short_description" id="short_description" cols="30" rows="5" class="form-control"></textarea>
+                    <textarea name="short_description" id="short_description" cols="30" rows="5"
+                        class="form-control"></textarea>
                     <span></span>
                 </div>
                 <div class="col-md-6">
@@ -64,7 +65,7 @@
                     </div>
                 </div>
 
-              
+
                 <div class="text-start">
                     <button type="submit" class="btn btn-primary">Create</button>
                     <a href="{{ route('Admin.Blog') }}" class="btn btn-secondary">Back</a>
@@ -172,25 +173,29 @@ $('#slug').val(respose['slug']);
 
 Dropzone.autoDiscover = false;
 const dropzone = $("#image").dropzone({
-    init: function() {
-        this.on('addedfile', function(file) {
-            if (this.files.length > 1) {
-                this.removeFile(this.files[0]);
-            }
-        });
-    },
-    url: "{{ route('Temp-image') }}",
-    maxFiles: 4, // Maximum files to allow
-    paramName: 'image',
-    addRemoveLinks: true,
-    acceptedFiles: "image/jpeg,image/png,image/gif,image/webp",
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    },
-    success: function(file, response) {
-        $("#image_id").val(response.Image_id)
-    },
-   
+init: function() {
+this.on('addedfile', function(file) {
+$('button[type=submit]').prop('disabled', true)
+
+if (this.files.length > 1) {
+this.removeFile(this.files[0]);
+}
+});
+},
+url: "{{ route('Temp-image') }}",
+maxFiles: 4, // Maximum files to allow
+paramName: 'image',
+addRemoveLinks: true,
+acceptedFiles: "image/jpeg,image/png,image/gif,image/webp",
+headers: {
+'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+},
+success: function(file, response) {
+$('button[type=submit]').prop('disabled', false)
+
+$("#image_id").val(response.Image_id)
+},
+
 });
 
 

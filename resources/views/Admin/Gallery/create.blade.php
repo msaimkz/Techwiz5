@@ -136,7 +136,7 @@ Dropzone.autoDiscover = false;
 const dropzone = $("#image").dropzone({
     init: function() {
         this.on('addedfile', function(file) {
-            // Check if the number of files exceeds 4
+            $('button[type=submit]').prop('disabled', true)
             if (this.files.length > 4) {
                 this.removeFile(file); // Remove the newly added file
                 alert('You can only upload a maximum of 4 images.');
@@ -152,6 +152,7 @@ const dropzone = $("#image").dropzone({
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     },
     success: function(file, response) {
+$('button[type=submit]').prop('disabled', false)
         console.log(file);
         var html = `<div class="col-md-3" id="row-image-${response.Image_id}">
             <div class="card">

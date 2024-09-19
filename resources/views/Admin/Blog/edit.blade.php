@@ -6,7 +6,7 @@
 
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">Create Blog</h5>
+            <h5 class="card-title">Edit Blog</h5>
 
             <!-- Floating Labels Form -->
             <form class="row g-3" id="BlogForm" name="BlogForm" action="" method="post">
@@ -73,8 +73,7 @@
                     <div class="col-md-3">
                         <div class="card">
                             <input type="hidden" name="img_array" value="{{$blog->id}}">
-                            <img src="{{asset('uploads/Blog/small/'.$blog->image)}}" class="card-img-top"
-                                alt="...">
+                            <img src="{{asset('uploads/Blog/small/'.$blog->image)}}" class="card-img-top" alt="...">
                         </div>
                     </div>
                     @endif
@@ -97,6 +96,8 @@ $(document).ready(function() {
 
 
 $('#BlogForm').submit(function(event) {
+$('button[type=submit]').prop('disabled', true)
+
 event.preventDefault();
 var element = $(this)
 
@@ -106,6 +107,7 @@ type:'post',
 data: element.serializeArray(),
 dataType:'json',
 success:function(response){
+$('button[type=submit]').prop('disabled', false)
 
 if(response.status == true){
 window.location.href = "{{ route('Admin.Blog') }}"
@@ -168,24 +170,28 @@ $('#slug').val(respose['slug']);
 
 Dropzone.autoDiscover = false;
 const dropzone = $("#image").dropzone({
-    init: function() {
-        this.on('addedfile', function(file) {
-            if (this.files.length > 1) {
-                this.removeFile(this.files[0]);
-            }
-        });
-    },
-    url: "{{ route('Temp-image') }}",
-    maxFiles: 4, // Maximum files to allow
-    paramName: 'image',
-    addRemoveLinks: true,
-    acceptedFiles: "image/jpeg,image/png,image/gif,image/webp",
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    },
-    success: function(file, response) {
-        $("#image_id").val(response.Image_id)
-    },
-   
+init: function() {
+this.on('addedfile', function(file) {
+$('button[type=submit]').prop('disabled', true)
+
+if (this.files.length > 1) {
+this.removeFile(this.files[0]);
+}
+});
+},
+url: "{{ route('Temp-image') }}",
+maxFiles: 4, // Maximum files to allow
+paramName: 'image',
+addRemoveLinks: true,
+acceptedFiles: "image/jpeg,image/png,image/gif,image/webp",
+headers: {
+'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+},
+success: function(file, response) {
+$('button[type=submit]').prop('disabled', false)
+
+$("#image_id").val(response.Image_id)
+},
+
 });
 @endsection
