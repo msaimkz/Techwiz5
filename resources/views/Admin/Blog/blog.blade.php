@@ -36,7 +36,6 @@
                                     </th>
                                     <th><b>Blog Title</b></th>
                                     <th>Slug</th>
-                                    <th>Description</th>
                                     <th>Image</th>
                                     <th>status</th>
 
@@ -51,8 +50,19 @@
                                     <td>{{$blog->id}}</td>
                                     <td>{{$blog->title}}</td>
                                     <td>{{$blog->slug}}</td>
-                                    <td>{{$blog->description}}</td>
-                                    <td>{{$blog->thumbnail}}</td>
+                                    <td>
+                                        @if(!empty($blog->image))
+
+                                        <img src="{{ asset('uploads/Blog/small/' . $blog->image) }}" class="rounded"
+                                            width="50px" alt="">
+
+                                        @else
+
+                                        <img src="{{ asset('Asset/Admin/img/default.png') }}" class="rounded"
+                                            width="50px" alt="">
+                                        @endif
+
+                                    </td>
                                     <td>
                                         @if($blog->status == 1)
                                         <svg class="text-success-500 h-6 w-6 text-success" width="30px"

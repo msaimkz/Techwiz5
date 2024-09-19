@@ -65,6 +65,7 @@ Route::get('/Admin/Edit-Sub-Category/{id}',[SubCategoryController::class,'edit']
 Route::post('/Admin/Update-Sub-Category/{id}',[SubCategoryController::class,'update'])->name('Admin.sub-category.update');
 Route::delete('/Admin/Delete-Sub-Category,/{id}',[SubCategoryController::class,'destroy'])->name('Admin.sub-category.delete');
  
+// Users Routes
 Route::get('/admin/users', [UserController::class, 'index'])->name('admin.users.index');
 Route::get('/admin/users/create', [UserController::class, 'create'])->name('Admin.users.create');
 Route::post('/admin/users', [UserController::class, 'store'])->name('admin.users.store');

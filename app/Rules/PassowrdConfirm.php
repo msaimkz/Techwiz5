@@ -14,6 +14,13 @@ class PassowrdConfirm implements ValidationRule
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        
+      
+        if (request()->password != "") {
+            $password = request()->password;
+           
+            if ($password !== $value) {
+                $fail('The password confirmation does not match.');
+            }
+        }
     }
 }

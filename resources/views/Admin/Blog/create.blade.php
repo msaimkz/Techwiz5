@@ -12,7 +12,7 @@
             <form class="row g-3" id="BlogForm" name="BlogForm" action="" method="post">
                 @csrf
 
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="form-floating">
                         <input type="text" class="form-control" id="title" name="title" placeholder="Blog Title">
                         <span></span>
@@ -21,38 +21,50 @@
                 </div>
 
 
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="form-floating">
                         <input type="text" class="form-control" id="slug" name="slug" readonly placeholder="Slug">
                         <span></span>
                         <label for="slug">Slug</label>
                     </div>
                 </div>
-                
-                <div class="col-md-6">
-                    <div class="form-floating">
-                        <input type="text" class="form-control" id="description" name="description" placeholder="Blog discription">
-                        <span></span>
-                        <label for="name">Discription</label>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-floating">
-                        <input type="file" class="form-control" id="thumbnail" name="thumbnail" placeholder="Blog thumbnail">
-                        <span></span>
-                        <label for="name">thumbnail</label>
-                    </div>
-                </div>
 
-                <div class="col-md-6">
+
+
+
+                <div class="col-md-4">
                     <label for="status" class="form-label">Status</label>
-                    <select id="status" name="status" class="form-select">
+                    <select id="status" name="status" class="form-control">
                         <option value="1">Active</option>
                         <option value="0">Block</option>
                     </select>
                     <span></span>
                 </div>
+                <div class="col-md-6">
+                    <label for="description" class="form-label">Short Description</label>
+                    <textarea name="short_description" id="short_description" cols="30" rows="5" class="form-control"></textarea>
+                    <span></span>
+                </div>
+                <div class="col-md-6">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea name="description" id="description" cols="30" rows="5" class="form-control"></textarea>
+                    <span></span>
+                </div>
+                <div class="col-md-8">
+                    <input type="hidden" id="image_id" name="image_id">
+                    <div class="card mb-3">
+                        <div class="card-body pt-4">
+                            <h2 class="h4 mb-3">Media</h2>
+                            <div id="image" class="dropzone dz-clickable p-4">
+                                <div class="dz-message needsclick">
+                                    <br>Drop files here or click to upload.<br><br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
+              
                 <div class="text-start">
                     <button type="submit" class="btn btn-primary">Create</button>
                     <a href="{{ route('Admin.Blog') }}" class="btn btn-secondary">Back</a>
@@ -82,16 +94,18 @@ type:'post',
 data: element.serializeArray(),
 dataType:'json',
 success:function(response){
-    $('button[type=submit]').prop('disabled', false)
+$('button[type=submit]').prop('disabled', false)
 
 if(response.status == true){
-    window.location.href = "{{ route('Admin.Blog') }}"
+window.location.href = "{{ route('Admin.Blog') }}"
 
 $('#title').removeClass('is-invalid').siblings('span').removeClass('invalid-feedback')
 .html('')
 $('#slug').removeClass('is-invalid').siblings('span').removeClass('invalid-feedback')
 .html('')
 $('#description').removeClass('is-invalid').siblings('span').removeClass('invalid-feedback')
+.html('')
+$('#short_description').removeClass('is-invalid').siblings('span').removeClass('invalid-feedback')
 .html('')
 
 }
@@ -113,12 +127,21 @@ $('#slug').removeClass('is-invalid').siblings('span').removeClass(
 }
 
 if (error['description']) {
-    $('#description').addClass('is-invalid').siblings('span').addClass('invalid-feedback')
-    .html(error['description'])
-    } else {
-    $('#description').removeClass('is-invalid').siblings('span').removeClass(
-    'invalid-feedback').html('')
-    }
+$('#description').addClass('is-invalid').siblings('span').addClass('invalid-feedback')
+.html(error['description'])
+} else {
+$('#description').removeClass('is-invalid').siblings('span').removeClass(
+'invalid-feedback').html('')
+}
+
+
+if (error['short_description']) {
+$('#short_description').addClass('is-invalid').siblings('span').addClass('invalid-feedback')
+.html(error['short_description'])
+} else {
+$('#short_description').removeClass('is-invalid').siblings('span').removeClass(
+'invalid-feedback').html('')
+}
 }
 
 },
@@ -142,4 +165,33 @@ $('#slug').val(respose['slug']);
 }
 })
 })
+
+
+
+
+
+Dropzone.autoDiscover = false;
+const dropzone = $("#image").dropzone({
+    init: function() {
+        this.on('addedfile', function(file) {
+            if (this.files.length > 1) {
+                this.removeFile(this.files[0]);
+            }
+        });
+    },
+    url: "{{ route('Temp-image') }}",
+    maxFiles: 4, // Maximum files to allow
+    paramName: 'image',
+    addRemoveLinks: true,
+    acceptedFiles: "image/jpeg,image/png,image/gif,image/webp",
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    },
+    success: function(file, response) {
+        $("#image_id").val(response.Image_id)
+    },
+   
+});
+
+
 @endsection

@@ -85,7 +85,7 @@ success:function(response){
     $('button[type=submit]').prop('disabled', false)
 
 if(response.status == true){
-    window.location.href = "{{ route('Admin.category') }}"
+    window.location.href = "{{ route('admin.users.index') }}"
 
 $('#name').removeClass('is-invalid').siblings('span').removeClass('invalid-feedback')
 .html('')
