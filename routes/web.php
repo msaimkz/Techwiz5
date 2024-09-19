@@ -6,6 +6,8 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SubCategoryController;
+use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\TempImageController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -66,6 +68,21 @@ Route::get('/admin/users/{user}/edit', [UserController::class, 'edit'])->name('A
 Route::put('/admin/users/{user}', [UserController::class, 'update'])->name('admin.users.update');
 Route::delete('/admin/users/{user}', [UserController::class, 'destroy'])->name('admin.users.destroy');
 
+// Gallery Routes
+Route::get('/Admin/Gallery',[GalleryController::class,'index'])->name('Admin.gallery');
+Route::get('/Admin/Create-Gallery',[GalleryController::class,'create'])->name('Admin.gallery.create');
+Route::post('/Admin/Store-Gallery',[GalleryController::class,'store'])->name('Admin.gallery.store');
+Route::get('/Admin/Edit-Gallery/{id}',[GalleryController::class,'edit'])->name('Admin.gallery.edit');
+Route::delete('/Admin/Delete-Gallery-Image/',[GalleryController::class,'DeleteImage'])->name('Admin.gallery.delete.image');
+Route::post('/Admin/Update-Gallery-Image/',[GalleryController::class,'ImageUpdate'])->name('Admin.gallery.update.image');
+Route::post('/Admin/Update-Gallery/{id}',[GalleryController::class,'update'])->name('Admin.gallery.update');
+Route::delete('/Admin/Delete-Gallery,/{id}',[GalleryController::class,'destroy'])->name('Admin.gallery.delete');
+
+
+
+// Temp Images Route
+
+Route::post('/Admin/Temp-Images', [TempImageController::class, 'create'])->name('Temp-image');
 
 
 
