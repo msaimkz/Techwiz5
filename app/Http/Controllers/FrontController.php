@@ -16,7 +16,9 @@ class FrontController extends Controller
 
     public function gallery(){
 
-        return view('gallery');
+        $galleries = Gallery::where('status',1)->with(['images','subcategory'])->get();
+
+        return view('gallery',compact('galleries'));
     }
 
     public function contact(){

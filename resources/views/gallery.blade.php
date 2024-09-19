@@ -16,7 +16,7 @@
                         <div class="breadcrumb__menu">
                             <nav>
                                 <ul>
-                                    <li><span><a href="{{url('/')}}">Home</a></span></li>
+                                    <li><span><a href="{{route('Front.index')}}">Home</a></span></li>
                                     <li class="active"><span>Gallery</span></li>
                                 </ul>
                             </nav>
