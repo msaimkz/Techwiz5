@@ -148,7 +148,7 @@
             </li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="users-profile.html">
+                <a class="nav-link collapsed" href="{{ url('/admin/users') }}">
                     <i class="bi bi-person"></i>
                     <span>Users</span>
                 </a>
