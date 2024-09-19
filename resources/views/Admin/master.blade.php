@@ -137,6 +137,13 @@
                 </a>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ route('Admin.style') }}">
+                <i class="fa-solid fa-shapes"></i>
+                    <span>Style</span>
+                </a>
+            </li>
+
 
 
             <li class="nav-item">

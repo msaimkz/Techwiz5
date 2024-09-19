@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\TempImageController;
+use App\Http\Controllers\StyleController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -47,6 +48,16 @@ Route::post('/Admin/Store-Category',[CategoryController::class,'store'])->name('
 Route::get('/Admin/Edit-Category,/{id}',[CategoryController::class,'edit'])->name('Admin.category.edit');
 Route::post('/Admin/Update-Category,/{id}',[CategoryController::class,'update'])->name('Admin.category.update');
 Route::delete('/Admin/Delete-Category,/{id}',[CategoryController::class,'destroy'])->name('Admin-category-delete');
+
+
+//Style Routes
+Route::get('/Admin/Style',[StyleController::class,'index'])->name('Admin.style');
+Route::get('/Admin/Create-Style',[StyleController::class,'create'])->name('Admin.style.create');
+Route::post('/Admin/Store-Style',[StyleController::class,'store'])->name('Admin.style.store');
+Route::get('/Admin/Edit-Style,/{id}',[StyleController::class,'edit'])->name('Admin.style.edit');
+Route::post('/Admin/Update-Style,/{id}',[StyleController::class,'update'])->name('Admin.style.update');
+Route::delete('/Admin/Style-Category,/{id}',[StyleController::class,'destroy'])->name('Admin-style-delete');
+
 
 // blog routes
 Route::get('/Admin/Blog',[BlogController::class,'index'])->name('Admin.Blog');

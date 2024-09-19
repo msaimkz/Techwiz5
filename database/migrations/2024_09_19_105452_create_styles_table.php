@@ -11,21 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('sub_categories', function (Blueprint $table) {
+        Schema::create('styles', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('slug');
-            $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
             $table->integer('status')->default(1);
             $table->timestamps();
         });
     }
-    
+
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('sub_categories');
+        Schema::dropIfExists('styles');
     }
 };
