@@ -44,7 +44,7 @@
             @if (!empty($gallery->images))
             @foreach ($gallery->images as $img )
             <div class="col-md-3">
-                <div class="card">
+                <div class="card pt-3">
                     <div class="card-body">
 
 
