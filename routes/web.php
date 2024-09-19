@@ -8,6 +8,7 @@ use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\TempImageController;
 use App\Http\Controllers\StyleController;
+use App\Http\Controllers\BrandController;
 use App\Http\Controllers\FrontController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
