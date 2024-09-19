@@ -3,6 +3,9 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Rules\Alpha;
+use Illuminate\Support\Facades\Validator;
+
 
 class UserController extends Controller
 {
@@ -19,20 +22,35 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8|confirmed',
-        ]);
+       
+        $validator = Validator::make($request->all(),[
+            'name' => [ 'required','min:3', new Alpha],
+            'email' => 'required',
+            'contact' => 'required|numeric|digits:11',
+            'password' => 'required|min:8|confirm',
+            'password_confirmation' => 'required|min:8'
+    
+           ]);
 
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'contact' => $request->contact,
-            'password' => bcrypt($request->password),
-        ]);
+           if($validator->passes()){
+            User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'contact' => $request->contact,
+                'password' => bcrypt($request->password),
+            ]);
+           }
+           else{
+            return response()->json([
+                'status' => false,
+                'errors' => $validator->errors(),
+            ]);
 
-        return redirect()->route('admin.users.index')->with('success', 'User created successfully.');
+           }
+
+       
+
+       
     }
 
     public function edit(User $user)
