@@ -9,62 +9,24 @@ use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\TempImageController;
 use App\Http\Controllers\StyleController;
+use App\Http\Controllers\FrontController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 
-Route::get('/', function () {
-    return view('index');
-});
 
-Route::get('/about-us', function () {
-    return view('about');
-});
 
-Route::get('/contact-us', function () {
-    return view('contact');
-});
+Route::get('/',[FrontController::class,'index'])->name('Front.index');
+Route::get('/Gallery',[FrontController::class,'gallery'])->name('Front.gallery');
+Route::get('/About-Us',[FrontController::class,'about'])->name('Front.about');
+Route::get('/Contact-Us',[FrontController::class,'contact'])->name('Front.contact');
+Route::get('/Blogs',[FrontController::class,'blog'])->name('Front.blog');
+Route::get('/Blog-Detail/{id}',[FrontController::class,'blogDetail'])->name('Front.blog.detail');
+Route::get('/Design',[FrontController::class,'design'])->name('Front.design');
+Route::get('/Category',[FrontController::class,'category'])->name('Front.category');
 
-Route::get('/design', function () {
-    return view('design');
-});
 
-Route::get('/gallery', function () {
-    return view('gallery');
-});
-
-Route::get('/living-room', function () {
-    return view('category.livingroom');
-});
-
-Route::get('/bedrooms', function () {
-    return view('category.bedrooms');
-});
-
-Route::get('/bathrooms', function () {
-    return view('category.bathrooms');
-});
-
-Route::get('/Kitchens', function () {
-    return view('category.kitchens');
-});
-
-Route::get('/offices', function () {
-    return view('category.offices');
-});
-
-Route::get('/outdoor-spaces', function () {
-    return view('category.outdoorspaces');
-});
-
-Route::get('/detail-page', function () {
-    return view('detail');
-});
-
-Route::get('/blog', function () {
-    return view('blog');
-});
 
 Route::get('/welcome', function () {
     return view('welcome');

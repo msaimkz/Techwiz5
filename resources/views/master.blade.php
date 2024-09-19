@@ -151,19 +151,15 @@
                             <nav id="mobile-menu">
                                 <ul>
                                     <li class=" has-mega-menu">
-                                        <a href="{{url('/')}}">Home</a>
+                                        <a href="{{route('Front.index')}}">Home</a>
                                     </li>
-                                    <li><a href="{{url('/about-us')}}">About us</a></li>
+                                    <li><a href="{{route('Front.about')}}">About us</a></li>
                                    
                                     <li class="has-dropdown">
                                         <a href="#">Category</a>
                                         <ul class="submenu">
-                                            <li><a href="{{url('/living-room')}}">Living Rooms</a></li>
-                                            <li><a href="{{url('/bedrooms')}}">Bedrooms</a></li>
-                                            <li><a href="{{url('/Kitchens')}}">Kitchens</a></li>
-                                            <li><a href="{{url('/bathrooms')}}">Bathrooms</a></li>
-                                            <li><a href="{{url('/offices')}}">Offices</a></li>
-                                            <li><a href="{{url('/outdoor-spaces')}}">Outdoor Spaces</a></li>
+                                            <li><a href="{{route('Front.category')}}">Living Rooms</a></li>
+                                           
                                         </ul>
                                     </li>
                                     <li class="has-dropdown ">
@@ -172,10 +168,10 @@
                                             <li><a href="our-team.html">Team</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="{{url('/gallery')}}">Gallery</a></li>
+                                    <li><a href="{{route('Front.gallery')}}">Gallery</a></li>
                                     <li><a href="{{url('/design')}}">Design</a></li>
-                                    <li><a href="{{url('/blog')}}">blog</a></li>
-                                    <li><a href="{{url('/contact-us')}}">Contact</a></li>
+                                    <li><a href="{{route('Front.blog')}}">blog</a></li>
+                                    <li><a href="{{route('Front.contact')}}">Contact</a></li>
                                 </ul>
                             </nav>
                         </div>

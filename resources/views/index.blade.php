@@ -382,93 +382,7 @@
    <!--what-we-do  area end -->
 
    <!--latest-project  area start -->
-   {{-- <section class="latest-project section-space__bottom">
-       <div class="container">
-           <div class="row mb-55 mb-xs-40 align-items-end">
-               <div class="col-lg-6">
-                   <div class="section__title-wrapper">
-                       <span class="section__subtitle justify-content-center">latest projects</span>
-                       <h2 class="section__title title-animation">Our Projects & Designs</h2>
-                   </div>
-               </div>
-               <div class="col-lg-6">
-                   <p class=" des mb-0">Sed id lacus volutpat, imperdiet quam a, fermentum mi. Etiam urna sapien, tempor in accumsan eu, consequat sed neque Etiam euismod volutpat lacus fringilla henr.</p>
-               </div>
-           </div>
-
-           <div class="row gx-100 mb-minus-60">
-
-               <div class="col-lg-6">
-                   <div class="latest-project__item">
-                       <div class="latest-project__media">
-                           <img class="wow clip-a-z" src="{{asset('Asset/decorVista/assets/imgs/latest-project/latest-project-1.jpg')}}" alt="image not found">
-                           <a class="icon" href="protfolio-details.html">
-                               <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                   <path d="M4.48633 23.4867L22.4072 5.56579" stroke="#906E50" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                   <path d="M14.3848 4.61475H23.3501V13.58" stroke="#906E50" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                               </svg>                                                                                          
-                           </a>
-                       </div>
-                       <div class="latest-project__text">
-                           <h5 class="title-animation"><a href="protfolio-details.html">D-Orex Home Interior</a></h5>
-                           <p class="mb-0">Artima is one of the most popular for</p>
-                       </div>
-                   </div>
-               </div>
-               <div class="col-lg-6">
-                   <div class="latest-project__item">
-                       <div class="latest-project__media">
-                           <img class="wow clip-a-z" src="{{asset('Asset/decorVista/assets/imgs/latest-project/latest-project-2.jpg')}}" alt="image not found">
-                           <a class="icon" href="protfolio-details.html">
-                               <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                   <path d="M4.48633 23.4867L22.4072 5.56579" stroke="#906E50" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                   <path d="M14.3848 4.61475H23.3501V13.58" stroke="#906E50" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                               </svg>                                                                                          
-                           </a>
-                       </div>
-                       <div class="latest-project__text">
-                           <h5 class="title-animation"><a href="protfolio-details.html">Luxe Living Home Decor</a></h5>
-                           <p class="mb-0">Artima is one of the most popular for</p>
-                       </div>
-                   </div>
-               </div>
-               <div class="col-lg-6">
-                   <div class="latest-project__item">
-                       <div class="latest-project__media">
-                           <img class="wow clip-a-z" src="{{asset('Asset/decorVista/assets/imgs/latest-project/latest-project-3.jpg')}}" alt="image not found">
-                           <a class="icon" href="protfolio-details.html">
-                               <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                   <path d="M4.48633 23.4867L22.4072 5.56579" stroke="#906E50" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                   <path d="M14.3848 4.61475H23.3501V13.58" stroke="#906E50" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                               </svg>                                                                                          
-                           </a>
-                       </div>
-                       <div class="latest-project__text">
-                           <h5 class="title-animation"><a href="protfolio-details.html">Home Corner Interior</a></h5>
-                           <p class="mb-0">Artima is one of the most popular for</p>
-                       </div>
-                   </div>
-               </div>
-               <div class="col-lg-6">
-                   <div class="latest-project__item">
-                       <div class="latest-project__media">
-                           <img class="wow clip-a-z" src="{{asset('Asset/decorVista/assets/imgs/latest-project/latest-project-4.jpg')}}" alt="image not found">
-                           <a class="icon" href="protfolio-details.html">
-                               <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                   <path d="M4.48633 23.4867L22.4072 5.56579" stroke="#906E50" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                   <path d="M14.3848 4.61475H23.3501V13.58" stroke="#906E50" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                               </svg>                                                                                          
-                           </a>
-                       </div>
-                       <div class="latest-project__text">
-                           <h5 class="title-animation"><a href="protfolio-details.html">Orion Home Studio Interior</a></h5>
-                           <p class="mb-0">Artima is one of the most popular for</p>
-                       </div>
-                   </div>
-               </div>
-           </div>
-       </div>
-   </section> --}}
+   
    <section class="latest-project section-space__bottom">
     <div class="container">
         <div class="row mb-55 mb-xs-40 align-items-end">
@@ -1151,7 +1065,7 @@
    <!-- brand area end -->
 
    <!-- blog area start -->
-   {{-- <section class="blog section-space">
+   <section class="blog section-space">
        <div class="container">
            <div class="row">
                <div class="section__title-wrapper text-center mb-55 mb-xs-40">
@@ -1161,112 +1075,39 @@
            </div>
 
            <div class="row mb-minus-30">
-               <div class="col-lg-4">
+            @if (!empty($blogs))
+
+            @foreach ($blogs as $blog )
+            <div class="col-lg-4">
                    <div class="blog__item">
                        <a class="blog__item-media d-lg-block wow clip-a-z" href="#">
-                           <img src="{{asset('Asset/decorVista/assets/imgs/blog/blog-1.jpg')}}" alt="image not found">
+                        @if (!empty($blog->image))
+                        <img src="{{ asset('uploads/Blog/large/' . $blog->image) }}" alt="image not found">
+                        @else
+                        <img src="{{ asset('Asset/Admin/img/default.png') }}" alt="image not found">
+
+                            
+                        @endif
                        </a>
 
                        <div class="blog__item__content">
                            <ul class="blog__item-meta d-flex flex-wrap mb-10">
-                               <li>March 18, 2024 - </li>
-                               <li><a href="#">0 Comments</a></li>
+                               <li>{{ \Carbon\Carbon::parse($blog->created_at)->format('M,d, Y') }} </li>
+                               
                            </ul>
-                           <h6><a href="#">How to Choose the Right Colors for Your Bedroom</a></h6>
+                           <h6><a href="#">{{ $blog->title }}</a></h6>
                        </div>
                    </div>
                </div>
-               <div class="col-lg-4">
-                   <div class="blog__item">
-                       <a class="blog__item-media d-lg-block wow clip-a-z" href="#">
-                           <img src="{{asset('Asset/decorVista/assets/imgs/blog/blog-2.jpg')}}" alt="image not found">
-                       </a>
-
-                       <div class="blog__item__content">
-                           <ul class="blog__item-meta d-flex flex-wrap mb-10">
-                               <li>March 18, 2024 - </li>
-                               <li><a href="#">0 Comments</a></li>
-                           </ul>
-                           <h6><a href="#">The Power of Accent Lighting in Interior Design</a></h6>
-                       </div>
-                   </div>
-               </div>
-               <div class="col-lg-4">
-                   <div class="blog__item">
-                       <a class="blog__item-media d-lg-block wow clip-a-z" href="#">
-                           <img src="{{asset('Asset/decorVista/assets/imgs/blog/blog-3.jpg')}}" alt="image not found">
-                       </a>
-
-                       <div class="blog__item__content">
-                           <ul class="blog__item-meta d-flex flex-wrap mb-10">
-                               <li>March 18, 2024 - </li>
-                               <li><a href="#">0 Comments</a></li>
-                           </ul>
-                           <h6><a href="#">The Power of Accent Lighting in Interior Design</a></h6>
-                       </div>
-                   </div>
-               </div>
+            @endforeach
+                
+            @endif
+              
+               
            </div>
        </div>
-   </section> --}}
-   <section class="blog section-space">
-    <div class="container">
-        <div class="row">
-            <div class="section__title-wrapper text-center mb-55 mb-xs-40">
-                <span class="section__subtitle justify-content-center">News & Articles</span>
-                <h2 class="section__title title-animation">Our Latest Blog Posts</h2>
-            </div>
-        </div>
-
-        <div class="row mb-minus-30">
-            <div class="col-lg-4">
-                <div class="blog__item">
-                    <a class="blog__item-media d-lg-block wow clip-a-z" href="#">
-                        <img src="{{asset('Asset/decorVista/assets/imgs/blog/blog-1.jpg')}}" alt="image not found">
-                    </a>
-
-                    <div class="blog__item__content">
-                        <ul class="blog__item-meta d-flex flex-wrap mb-10">
-                            <li>March 18, 2024 - </li>
-                            <li><a href="#">0 Comments</a></li>
-                        </ul>
-                        <h6><a href="#" class="bt1">How to Choose the Right Colors for Your Bedroom</a></h6>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="blog__item">
-                    <a class="blog__item-media d-lg-block wow clip-a-z" href="#">
-                        <img src="{{asset('Asset/decorVista/assets/imgs/blog/blog-2.jpg')}}" alt="image not found">
-                    </a>
-
-                    <div class="blog__item__content">
-                        <ul class="blog__item-meta d-flex flex-wrap mb-10">
-                            <li>March 18, 2024 - </li>
-                            <li><a href="#">0 Comments</a></li>
-                        </ul>
-                        <h6><a href="#">The Power of Accent Lighting in Interior Design</a></h6>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4">
-                <div class="blog__item">
-                    <a class="blog__item-media d-lg-block wow clip-a-z" href="#">
-                        <img src="{{asset('Asset/decorVista/assets/imgs/blog/blog-3.jpg')}}" alt="image not found">
-                    </a>
-
-                    <div class="blog__item__content">
-                        <ul class="blog__item-meta d-flex flex-wrap mb-10">
-                            <li>March 18, 2024 - </li>
-                            <li><a href="#">0 Comments</a></li>
-                        </ul>
-                        <h6><a href="#" >The Power of Accent Lighting in Interior Design</a></h6>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+   </section> 
+   
    <!-- blog area start -->
 </main>
 <div style="margin-top: 140px " class="footer__top">
