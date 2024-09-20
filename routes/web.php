@@ -46,6 +46,19 @@ Route::middleware('auth')->group(function () {
 
 
 
+Route::get('/blog-details', function () {
+    return view('blog-details');
+});
+
+Route::get('/cart-page', function () {
+    return view('cart');
+});
+
+
+Route::get('/my-orders', function () {
+    return view('orders');
+});
+
 Route::get('/welcome', function () {
     return view('welcome');
 });
