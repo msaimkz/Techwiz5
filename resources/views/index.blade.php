@@ -472,6 +472,7 @@
 </section>
    <!--latest-project  area end -->
 
+
    <!-- experience start -->
    <section style="margin-top: 150px;" class="experience" data-background="assets/imgs/experience/experience-bg.jpg"> 
        <div class="container">
@@ -529,6 +530,66 @@
    </section>
    <!-- experience end -->
 
+   {{-- products --}}
+   <div class="1">
+    <div class="container">
+        <div style="margin-block: 45px" class="row mb-minus-30">
+            <div class="section__title-wrapper text-center mb-55 mb-xs-40">
+                <span style="margin-top: 20px;" class="section__subtitle justify-content-center">Our Products</span>
+                <h2 class="section__title title-animation">Our Latest Products</h2>
+            </div>
+            <div class=" col-md-6 col-lg-4 col-xl-3">
+                <div  class="our-featured-service__item">
+                    <div class="our-featured-service__media wow clip-a-z">
+                        <img src="{{asset('Asset/decorVista/assets/imgs/our-featured-service/service-1.png')}}" alt="image not found">
+                    </div>
+                    <div class="our-featured-service__content">
+                        <div class="our-featured-service__text">
+                            <h6 class="title-animation"><a href="service-details.html">Architecture</a></h6>
+                        </div>
+                    </div>
+                </div>
+            </div>                    
+            <div class=" col-md-6 col-lg-4 col-xl-3">
+                <div class="our-featured-service__item">
+                    <div class="our-featured-service__media wow clip-a-z">
+                        <img src="{{asset('Asset/decorVista/assets/imgs/our-featured-service/service-2.png')}}" alt="image not found">
+                    </div>
+                    <div class="our-featured-service__content">
+                        <div class="our-featured-service__text">
+                            <h6 class="title-animation"><a href="service-details.html">Interior Work</a></h6>
+                        </div>
+                    </div>
+                </div>
+            </div>                    
+            <div class=" col-md-6 col-lg-4 col-xl-3">
+                <div class="our-featured-service__item">
+                    <div class="our-featured-service__media wow clip-a-z">
+                        <img src="{{asset('Asset/decorVista/assets/imgs/our-featured-service/service-3.png')}}" alt="image not found">
+                    </div>
+                    <div class="our-featured-service__content">
+                        <div class="our-featured-service__text">  
+                            <h6 class="title-animation"><a href="service-details.html">2D/3D Design</a></h6>
+                        </div>
+                    </div>
+                </div>
+            </div>                    
+            <div class=" col-md-6 col-lg-4 col-xl-3">
+                <div class="our-featured-service__item">
+                    <div class="our-featured-service__media wow clip-a-z">
+                        <img src="{{asset('Asset/decorVista/assets/imgs/our-featured-service/service-4.png')}}" alt="image not found">
+                    </div>
+                    <div class="our-featured-service__content">
+                        <div class="our-featured-service__text">    
+                            <h6 class="title-animation"><a href="service-details.html">Decoration art</a></h6>
+                        </div>
+                    </div>
+                </div>
+            </div>                    
+        </div>
+    </div>
+</div>
+   {{-- products --}}
    <!-- why-choose-us start -->
    <section class="why-choose-us section-space__top">
        <div class="container">
