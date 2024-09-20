@@ -74,6 +74,10 @@ Route::get('/my-orders', function () {
     return view('orders');
 });
 
+Route::get('/wishlist', function () {
+    return view('wishlist');
+});
+
 Route::get('/welcome', function () {
     return view('welcome');
 });
