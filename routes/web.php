@@ -9,6 +9,7 @@ use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\TempImageController;
 use App\Http\Controllers\StyleController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\FrontController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -126,6 +127,15 @@ Route::post('/Admin/Update-Gallery/{id}',[GalleryController::class,'update'])->n
 Route::delete('/Admin/Delete-Gallery,/{id}',[GalleryController::class,'destroy'])->name('Admin.gallery.delete');
 Route::get('/Admin/View-Gallery,/{id}',[GalleryController::class,'show'])->name('Admin.gallery.view');
 
+//product route
+
+Route::get('/Admin/Product',[ProductController::class,'index'])->name('Admin.product');
+Route::get('/Admin/Create-Product',[ProductController::class,'create'])->name('Admin.product.create');
+Route::post('/Admin/Store-Product',[ProductController::class,'store'])->name('Admin.product.store');
+Route::get('/Admin/Edit-Product/{id}',[ProductController::class,'edit'])->name('Admin.product.edit');
+Route::post('/Admin/Update-Product/{id}',[ProductController::class,'update'])->name('Admin.product.update');
+Route::delete('/Admin/Delete-Product,/{id}',[ProductController::class,'destroy'])->name('Admin-product-delete');
+Route::get('/get-subcategories', [ProductController::class, 'getSubcategories'])->name('getSubcategories');
 
 
 // Temp Images Route
