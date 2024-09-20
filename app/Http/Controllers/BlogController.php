@@ -79,7 +79,7 @@ class BlogController extends Controller
 
                     //small
                     $dpath = public_path().'/uploads/Blog/small/'.$ImageName;
-                    $image->cover(300,300);
+                    $image->cover(430,430);
                     $image->save($dpath);
         }
 
@@ -175,7 +175,7 @@ class BlogController extends Controller
         
                             //small
                             $dpath = public_path().'/uploads/Blog/small/'.$ImageName;
-                            $image->cover(300,300);
+                            $image->cover(430,430);
                             $image->save($dpath);
                 }
     

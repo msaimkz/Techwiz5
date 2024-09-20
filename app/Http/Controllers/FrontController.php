@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Blog;
+use App\Models\Gallery;
+use App\Models\Category;
+use App\Models\SubCategory;
 
 class FrontController extends Controller
 {
@@ -16,7 +19,9 @@ class FrontController extends Controller
 
     public function gallery(){
 
-        return view('gallery');
+        $galleries = Gallery::where('status',1)->with(['images','subcategory'])->get();
+
+        return view('gallery',compact('galleries'));
     }
 
     public function contact(){
@@ -26,7 +31,25 @@ class FrontController extends Controller
 
     public function about(){
 
-        return view('about');
+
+        $galleries = collect(); // Initialize as a collection
+        
+    
+        
+        $subcategories = SubCategory::where('status', 1)->limit(4)->get();
+        
+        foreach ($subcategories as $subcategory) {
+            $galleries = $galleries->merge(
+                Gallery::where(['status' => 1, 'subCategory_id' => $subcategory->id])
+                    ->with(['images', 'subcategory'])
+                    ->get()
+            );
+        }
+
+     
+        
+
+        return view('about',compact('galleries'));
     }
 
     public function blog(){
@@ -35,9 +58,11 @@ class FrontController extends Controller
         return view('blog',compact('blogs'));
     }
 
-    public function blogDetail(){
+    public function blogDetail(Request $request, $id){
 
-        return view('detail');
+        $blog = Blog::find($id);
+
+        return view('blog-detail',compact('blog'));
     }
 
     public function design(){
@@ -45,10 +70,37 @@ class FrontController extends Controller
         return view('design');
     }
 
-    public function category(){
+    public function error(){
 
-        return view('category.livingroom');
+        return view('error');
     }
+
+    public function category( $slug) {
+        $category = Category::where('slug', $slug)->first();
+        $galleries = collect(); // Initialize as a collection
+        
+        if (empty($category)) {
+            return redirect()->route('Front.error');
+        }
+        
+        $subcategories = SubCategory::where('status', 1)->where('category_id', $category->id)->get();
+        
+        foreach ($subcategories as $subcategory) {
+            $galleries = $galleries->merge(
+                Gallery::where(['status' => 1, 'subCategory_id' => $subcategory->id])
+                    ->with(['images', 'subcategory'])
+                    ->get()
+            );
+        }
+        
+       
+        
+        return view('category.detail', compact('category', 'galleries'));
+        
+    }
+
+    
+    
 
     
 }

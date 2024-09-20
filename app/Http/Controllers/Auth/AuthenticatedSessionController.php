@@ -32,6 +32,8 @@ class AuthenticatedSessionController extends Controller
         {
             return redirect()->route('Admin.dashboard');
         }
+
+        return redirect()->route('Front.index');
     }
 
     /**

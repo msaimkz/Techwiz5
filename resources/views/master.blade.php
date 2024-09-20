@@ -132,10 +132,13 @@
 
 
 <!-- Header area start -->
+ @php
+     $categories = Category();
+ @endphp
 <header>
-    <div id="header-sticky" class="header__area header-1">
+    <div style="margin-top: -34px" id="header-sticky" class="header__area header-1">
         <div class="container">
-            <div class="mega__menu-wrapper p-relative">
+            <div style="margin-top: 37px;" class="mega__menu-wrapper p-relative">
                 <div class="header__main">
                     <div class="header__logo">
                         <a href="{{url('/')}}">
@@ -150,26 +153,29 @@
                         <div class="main-menu">
                             <nav id="mobile-menu">
                                 <ul>
-                                    <li class=" has-mega-menu active">
-                                        <a href="{{url('/')}}">Home</a>
+                                    <li class=" has-mega-menu">
+                                        <a href="{{route('Front.index')}}">Home</a>
                                     </li>
-                                    <li><a href="#">About us</a></li>
+                                    <li><a href="{{route('Front.about')}}">About us</a></li>
                                    
                                     <li class="has-dropdown">
-                                        <a href="services.html">Category</a>
+                                        <a href="#">Category</a>
                                         <ul class="submenu">
-                                            <li><a href="services.html">Service</a></li>
+                                            @if (!empty($categories))
+                                             @foreach ($categories as  $category)
+                                             <li><a href="{{route('Front.category',$category->slug)}}">{{ $category->name }}</a></li>
+                                             @endforeach
+                                                
+                                            @endif
+                                           
+                                           
                                         </ul>
                                     </li>
-                                    <li class="has-dropdown ">
-                                        <a href="javascript:void(0)">Sub Category</a>
-                                        <ul class="submenu">
-                                            <li><a href="our-team.html">Team</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="contact-us.html">Gallery</a></li>
-                                    <li><a href="contact-us.html">Design</a></li>
-                                    <li><a href="contact-us.html">Contact</a></li>
+                                   
+                                    <li><a href="{{route('Front.gallery')}}">Gallery</a></li>
+                                    <li><a href="{{url('/design')}}">Design</a></li>
+                                    <li><a href="{{route('Front.blog')}}">blog</a></li>
+                                    <li><a href="{{route('Front.contact')}}">Contact</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -198,8 +204,8 @@
 @yield('content')
 
 <footer>
-    <section style="margin-top: 140px" class="footer__area-common theme-bg-heading-primary overflow-hidden">
-        <div class="footer__top">
+    <section  class="footer__area-common theme-bg-heading-primary overflow-hidden">
+        {{-- <div class="footer__top">
             <div class="container">
                 <div class="footer__top-shape">
                     <img src="{{asset('Asset/decorVista/assets/imgs/footer-1/footer-cta-shape.png')}}" alt="image not found">
@@ -233,7 +239,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <div  class="footer__main-wrapper footer__bottom-border">
             <div class="container">
                 <div class="row mb-minus-50">

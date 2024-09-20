@@ -13,7 +13,7 @@ class Gallery extends Model
         return $this->hasMany(GalleryImage::class, 'gallery_id');
     }  
     
-    protected $table = 'galleries'; 
+    protected $table = 'galleries'; // Specify your table name if different
 
     public function subcategory()
     {
