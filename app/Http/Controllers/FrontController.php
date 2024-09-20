@@ -29,6 +29,13 @@ class FrontController extends Controller
         return view('contact');
     }
 
+
+    public function cart(){
+
+        return view('cart');
+    }
+
+
     public function about(){
 
 
@@ -62,7 +69,7 @@ class FrontController extends Controller
 
         $blog = Blog::find($id);
 
-        return view('blog-detail',compact('blog'));
+        return view('blog-details',compact('blog'));
     }
 
     public function design(){

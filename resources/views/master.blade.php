@@ -176,6 +176,7 @@
                                     <li><a href="{{url('/design')}}">Design</a></li>
                                     <li><a href="{{route('Front.blog')}}">blog</a></li>
                                     <li><a href="{{route('Front.contact')}}">Contact</a></li>
+                                    <li><a href="{{route('Front.cart')}}">Cart</a></li>
                                 </ul>
                             </nav>
                         </div>

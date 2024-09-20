@@ -26,7 +26,9 @@ Route::get('/Blogs',[FrontController::class,'blog'])->name('Front.blog');
 Route::get('/Blog-Detail/{id}',[FrontController::class,'blogDetail'])->name('Front.blog.detail');
 Route::get('/Design',[FrontController::class,'design'])->name('Front.design');
 Route::get('/404',[FrontController::class,'error'])->name('Front.error');
+Route::get('/Cart',[FrontController::class,'cart'])->name('Front.cart');
 Route::get('/Category/{slug}', [FrontController::class, 'category'])->name('Front.category');
+Route::get('/Product-Detail/{id}', [FrontController::class, 'ProductDetail'])->name('Front.product.detail');
 
 
 
@@ -50,9 +52,6 @@ Route::get('/blog-details', function () {
     return view('blog-details');
 });
 
-Route::get('/cart-page', function () {
-    return view('cart');
-});
 
 
 Route::get('/my-orders', function () {
