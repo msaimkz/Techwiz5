@@ -49,8 +49,8 @@
                                 <tr>
                                     <td>{{$product->id}}</td>
                                     <td>{{$product->name}}</td>
-                                    <td>{{$product->brand}}</td>
-                                    <td>{{$product->style}}</td>
+                                    <td>{{$product->brand_name}}</td>
+                                    <td>{{$product->style_name}}</td>
                                     <td>${{$product->price}}/-</td>
                                     <td>
                                         @if($product->status == 1)

@@ -139,6 +139,8 @@ Route::get('/Admin/Product',[ProductController::class,'index'])->name('Admin.pro
 Route::get('/Admin/Create-Product',[ProductController::class,'create'])->name('Admin.product.create');
 Route::post('/Admin/Store-Product',[ProductController::class,'store'])->name('Admin.product.store');
 Route::get('/Admin/Edit-Product/{id}',[ProductController::class,'edit'])->name('Admin.product.edit');
+Route::delete('/Admin/Delete-Product-Image/',[ProductController::class,'DeleteImage'])->name('Admin.product.delete.image');
+Route::post('/Admin/Update-Product-Image/',[ProductController::class,'ImageUpdate'])->name('Admin.product.update.image');
 Route::post('/Admin/Update-Product/{id}',[ProductController::class,'update'])->name('Admin.product.update');
 Route::delete('/Admin/Delete-Product,/{id}',[ProductController::class,'destroy'])->name('Admin-product-delete');
 Route::get('/get-subcategories', [ProductController::class, 'getSubcategories'])->name('getSubcategories');
