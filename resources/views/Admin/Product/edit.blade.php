@@ -109,7 +109,7 @@
                         <label for="depth">Depth (in inches)</label>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="form-floating">
                         <input type="text" class="form-control" id="material" name="material" placeholder="Material"
                             value="{{ $product->material }}">
@@ -118,7 +118,7 @@
                         <label for="name">Material</label>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="form-floating">
                         <input type="numeric" class="form-control" id="price" name="price" placeholder="Price"
                             value="{{ $product->price }}">
@@ -127,12 +127,28 @@
                     </div>
                 </div>
 
+                <div class="col-md-4">
+                    <div class="form-floating">
+                        <input type="numeric" class="form-control" id="qty" name="qty" placeholder="Quantity"
+                            value="{{ $product->qty }}">
+                        <span></span>
+                        <label for="name">Quantity</label>
+                    </div>
+                </div>
+              
+
                 <div class="col-md-6">
                     <label for="status" class="form-label">Status</label>
                     <select id="status" name="status" class="form-select">
                         <option value="1" {{ ($product->status == 1) ? 'selected' : '' }}>Active</option>
                         <option value="0" {{ ($product->status == 0) ? 'selected' : '' }}>Block</option>
                     </select>
+                    <span></span>
+                </div>
+                <div class="col-md-8">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea name="description" id="description" cols="30" rows="5" class="form-control">{{ $product->description }}
+                    </textarea>
                     <span></span>
                 </div>
                 <div class="col-md-8">
@@ -223,6 +239,10 @@ $('#material').removeClass('is-invalid').siblings('span').removeClass('invalid-f
 .html('')
 $('#price').removeClass('is-invalid').siblings('span').removeClass('invalid-feedback')
 .html('')
+$('#qty').removeClass('is-invalid').siblings('span').removeClass('invalid-feedback')
+.html('')
+$('#description').removeClass('is-invalid').siblings('span').removeClass('invalid-feedback')
+.html('')
 
 }
 else{
@@ -281,6 +301,20 @@ $('#width').addClass('is-invalid').siblings('span').addClass('invalid-feedback')
 .html(error['width'])
 } else {
 $('#width').removeClass('is-invalid').siblings('span').removeClass(
+'invalid-feedback').html('')
+}
+if (error['qty']) {
+$('#qty').addClass('is-invalid').siblings('span').addClass('invalid-feedback')
+.html(error['qty'])
+} else {
+$('#qty').removeClass('is-invalid').siblings('span').removeClass(
+'invalid-feedback').html('')
+}
+if (error['description']) {
+$('#description').addClass('is-invalid').siblings('span').addClass('invalid-feedback')
+.html(error['description'])
+} else {
+$('#description').removeClass('is-invalid').siblings('span').removeClass(
 'invalid-feedback').html('')
 }
 if (error['depth']) {

@@ -538,54 +538,32 @@
                 <span style="margin-top: 20px;" class="section__subtitle justify-content-center">Our Products</span>
                 <h2 class="section__title title-animation">Our Latest Products</h2>
             </div>
+            @if (!empty($products))
+            @foreach ($products as $product)
+                @php
+                    $img = productImages($product->id);
+                @endphp
+          
             <div class=" col-md-6 col-lg-4 col-xl-3">
                 <div  class="our-featured-service__item">
                     <div class="our-featured-service__media wow clip-a-z">
-                        <img src="{{asset('Asset/decorVista/assets/imgs/our-featured-service/service-1.png')}}" alt="image not found">
+                        @if (!empty($img))
+                       
+                        <img src="{{asset('uploads/product/large/'.$img->image)}}" alt="image not found">
+                        @endif
+                      
                     </div>
                     <div class="our-featured-service__content">
                         <div class="our-featured-service__text">
-                            <h6 class="title-animation"><a href="service-details.html">Architecture</a></h6>
+                            <h6 class="title-animation"><a href="{{ route('Front.product.detail',$product->id) }}">{{$product->name}}</a></h6>
                         </div>
                     </div>
                 </div>
-            </div>                    
-            <div class=" col-md-6 col-lg-4 col-xl-3">
-                <div class="our-featured-service__item">
-                    <div class="our-featured-service__media wow clip-a-z">
-                        <img src="{{asset('Asset/decorVista/assets/imgs/our-featured-service/service-2.png')}}" alt="image not found">
-                    </div>
-                    <div class="our-featured-service__content">
-                        <div class="our-featured-service__text">
-                            <h6 class="title-animation"><a href="service-details.html">Interior Work</a></h6>
-                        </div>
-                    </div>
-                </div>
-            </div>                    
-            <div class=" col-md-6 col-lg-4 col-xl-3">
-                <div class="our-featured-service__item">
-                    <div class="our-featured-service__media wow clip-a-z">
-                        <img src="{{asset('Asset/decorVista/assets/imgs/our-featured-service/service-3.png')}}" alt="image not found">
-                    </div>
-                    <div class="our-featured-service__content">
-                        <div class="our-featured-service__text">  
-                            <h6 class="title-animation"><a href="service-details.html">2D/3D Design</a></h6>
-                        </div>
-                    </div>
-                </div>
-            </div>                    
-            <div class=" col-md-6 col-lg-4 col-xl-3">
-                <div class="our-featured-service__item">
-                    <div class="our-featured-service__media wow clip-a-z">
-                        <img src="{{asset('Asset/decorVista/assets/imgs/our-featured-service/service-4.png')}}" alt="image not found">
-                    </div>
-                    <div class="our-featured-service__content">
-                        <div class="our-featured-service__text">    
-                            <h6 class="title-animation"><a href="service-details.html">Decoration art</a></h6>
-                        </div>
-                    </div>
-                </div>
-            </div>                    
+            </div>
+            @endforeach
+            @endif
+                                
+                              
         </div>
     </div>
 </div>

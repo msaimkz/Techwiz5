@@ -102,7 +102,7 @@
                         <label for="depth">Depth (in inches)</label>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="form-floating">
                         <input type="text" class="form-control" id="material" name="material" placeholder="Material">
                         <span></span>
@@ -110,14 +110,21 @@
                         <label for="name">Material</label>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="form-floating">
                         <input type="numeric" class="form-control" id="price" name="price" placeholder="Price">
                         <span></span>
                         <label for="name">Price</label>
                     </div>
                 </div>
-
+                <div class="col-md-4">
+                    <div class="form-floating">
+                        <input type="numeric" class="form-control" id="qty" name="qty" placeholder="Quantity"
+                            value="">
+                        <span></span>
+                        <label for="name">Quantity</label>
+                    </div>
+                </div>
                 <div class="col-md-6">
                     <label for="status" class="form-label">Status</label>
                     <select id="status" name="status" class="form-select">
@@ -126,7 +133,13 @@
                     </select>
                     <span></span>
                 </div>
-
+               
+                <div class="col-md-8">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea name="description" id="description" cols="30" rows="5" class="form-control">
+                    </textarea>
+                    <span></span>
+                </div>
                 <div class="col-md-8">
                     <div class="card mb-3">
                         <div class="card-body pt-4">
@@ -178,7 +191,7 @@ dataType:'json',
 success:function(response){
 $('button[type=submit]').prop('disabled', false)
 if(response.ImageLimit == false){
-    alert(response.error)
+alert(response.error)
 }
 
 if(response.status == true){
@@ -207,6 +220,10 @@ $('#material').removeClass('is-invalid').siblings('span').removeClass('invalid-f
 .html('')
 $('#price').removeClass('is-invalid').siblings('span').removeClass('invalid-feedback')
 .html('')
+$('#qty').removeClass('is-invalid').siblings('span').removeClass('invalid-feedback')
+.html('')
+$('#description').removeClass('is-invalid').siblings('span').removeClass('invalid-feedback')
+.html('')
 
 }
 else{
@@ -230,6 +247,20 @@ $('#category_id').addClass('is-invalid').siblings('span').addClass('invalid-feed
 .html(error['category_id'])
 } else {
 $('#category_id').removeClass('is-invalid').siblings('span').removeClass(
+'invalid-feedback').html('')
+}
+if (error['qty']) {
+$('#qty').addClass('is-invalid').siblings('span').addClass('invalid-feedback')
+.html(error['qty'])
+} else {
+$('#qty').removeClass('is-invalid').siblings('span').removeClass(
+'invalid-feedback').html('')
+}
+if (error['description']) {
+$('#description').addClass('is-invalid').siblings('span').addClass('invalid-feedback')
+.html(error['description'])
+} else {
+$('#description').removeClass('is-invalid').siblings('span').removeClass(
 'invalid-feedback').html('')
 }
 if (error['subcategory_id']) {
@@ -342,42 +373,42 @@ alert('Error fetching subcategories');
 
 Dropzone.autoDiscover = false;
 const dropzone = $("#image").dropzone({
-    init: function() {
-        this.on('addedfile', function(file) {
-            $('button[type=submit]').prop('disabled', true)
-            if (this.files.length > 4) {
-                this.removeFile(file); // Remove the newly added file
-                alert('You can only upload a maximum of 4 images.');
-            }
-        });
-    },
-    url: "{{ route('Temp-image') }}",
-    maxFiles: 4, // Maximum files to allow
-    paramName: 'image',
-    addRemoveLinks: true,
-    acceptedFiles: "image/jpeg,image/png,image/gif,image/webp",
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    },
-    success: function(file, response) {
+init: function() {
+this.on('addedfile', function(file) {
+$('button[type=submit]').prop('disabled', true)
+if (this.files.length > 4) {
+this.removeFile(file); // Remove the newly added file
+alert('You can only upload a maximum of 4 images.');
+}
+});
+},
+url: "{{ route('Temp-image') }}",
+maxFiles: 4, // Maximum files to allow
+paramName: 'image',
+addRemoveLinks: true,
+acceptedFiles: "image/jpeg,image/png,image/gif,image/webp",
+headers: {
+'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+},
+success: function(file, response) {
 $('button[type=submit]').prop('disabled', false)
-        console.log(file);
-        var html = `<div class="col-md-3" id="row-image-${response.Image_id}">
-            <div class="card">
-                <input type="hidden" name="img_array[]" value="${response.Image_id}">
-                <img src="${response.Image_path}" class="card-img-top" alt="..." width="100px">
-                <div class="card-body p-4">
-                    <a href="javascript:void(0)" onclick="deleteTempImg(${response.Image_id})" class="btn btn-danger">Delete</a>
-                </div>
-            </div>
-        </div>`;
+console.log(file);
+var html = `<div class="col-md-3" id="row-image-${response.Image_id}">
+    <div class="card">
+        <input type="hidden" name="img_array[]" value="${response.Image_id}">
+        <img src="${response.Image_path}" class="card-img-top" alt="..." width="100px">
+        <div class="card-body p-4">
+            <a href="javascript:void(0)" onclick="deleteTempImg(${response.Image_id})" class="btn btn-danger">Delete</a>
+        </div>
+    </div>
+</div>`;
 
-        $('#tempimage').append(html);
-    },
-    complete: function(file) {
-        // Remove the file from Dropzone after upload
-        this.removeFile(file);
-    }
+$('#tempimage').append(html);
+},
+complete: function(file) {
+// Remove the file from Dropzone after upload
+this.removeFile(file);
+}
 });
 
 

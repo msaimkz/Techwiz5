@@ -5,6 +5,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SubCategoryController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\TempImageController;
 use App\Http\Controllers\StyleController;
@@ -31,36 +32,21 @@ Route::get('/Category/{slug}', [FrontController::class, 'category'])->name('Fron
 Route::get('/Product-Detail/{id}', [FrontController::class, 'ProductDetail'])->name('Front.product.detail');
 
 
-
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+// Cart Routes
+Route::post('/Add-To-Cart',[CartController::class,"AddtoCart"])->name("AddtoCart");
+Route::post('/Update-Cart',[CartController::class,"UpdateCart"])->name("Update.Cart");
+Route::post('/Delete-Cart',[CartController::class,"DeleteCart"])->name("Delete.Cart");
 
 
 
 
 
 
-Route::get('/blog-details', function () {
-    return view('blog-details');
-});
 
 
 
-Route::get('/my-orders', function () {
-    return view('orders');
-});
 
-Route::get('/wishlist', function () {
-    return view('wishlist');
-});
+
 
 Route::get('/welcome', function () {
     return view('welcome');

@@ -3,20 +3,23 @@
 
 <main>
     <!-- Breadcrumb area start  -->
-    <div style="margin-top: -29px" class="breadcrumb__area header__background-color breadcrumb__header-up breadcrumb-space overly overflow-hidden">
-        <div class="breadcrumb__background" data-background="{{asset('Asset/decorVista/assets/imgs/breadcrumb/page-header-1.png')}}"></div>
+    <div style="margin-top: -29px"
+        class="breadcrumb__area header__background-color breadcrumb__header-up breadcrumb-space overly overflow-hidden">
+        <div class="breadcrumb__background"
+            data-background="{{asset('Asset/decorVista/assets/imgs/breadcrumb/page-header-1.png')}}"></div>
         <div class="container">
             <div class="breadcrumb__bg-left"></div>
             <div class="breadcrumb__bg-right"></div>
             <div class="row align-items-center justify-content-between">
                 <div class="col-12">
-                    <div style="margin-top: 100px;"  class="breadcrumb__content text-center">
-                        <h2 class="breadcrumb__title mb-15 mb-sm-10 mb-xs-5 color-white title-animation">Detail Page</h2>
+                    <div style="margin-top: 100px;" class="breadcrumb__content text-center">
+                        <h2 class="breadcrumb__title mb-15 mb-sm-10 mb-xs-5 color-white title-animation">Detail Page
+                        </h2>
 
                         <div class="breadcrumb__menu">
                             <nav>
                                 <ul>
-                                    <li><span><a href="index.html">Home</a></span></li>
+                                    <li><span><a href="{{ route('Front.index') }}">Home</a></span></li>
                                     <li class="active"><span>Detail Page</span></li>
                                 </ul>
                             </nav>
@@ -28,319 +31,209 @@
     </div>
     <!-- Breadcrumb area start  -->
 
-    {{-- <section class="blog-details section-space">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-8">
-                    <div class="blog-details__content">
-                        <div class="blog-details__content">
-                            <div class="details">
-                                <img src="{{asset('Asset/decorVista/assets/imgs/blog-details/blog-details.jpg')}}" alt="image not found">
-                            </div>
-                            
-                     
-    
-
-                        <div class="comment-widget mt-50 mt-xs-60">
-                            <h6 class="comment-widget__title">02 Comments</h6>
-
-                            <div class="comment-item d-flex align-items-start mb-30">
-                                <div class="comment-item__img">
-                                    <img src="{{asset('Asset/decorVista/assets/imgs/blog-details/author-1.png')}}" alt="image not found">
-                                </div>
-                                <div class="comment-item__content">
-                                    <span class="name">Russell Sprout</span>
-                                    <span class="date">march 26,2024 at 10:47 pm</span>
-                                    <p>Phasellus ac eleifend nunc. Aenean efficitur, augue a tristique mollis, nulla leo dictum nunc, viverra magna sapien ut dolor.</p>
-                                    <button class="rr-btn btn-gary">
-                                        <span class="btn-wrap">
-                                            <span class="text-one">Reply</span>
-                                            <span class="text-two">Reply</span>
-                                        </span>
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div class="comment-item d-flex align-items-start comment-item__reply mb-30">
-                                <div class="comment-item__img">
-                                    <img src="{{asset('Asset/decorVista/assets/imgs/blog-details/author-2.png')}}" alt="image not found">
-                                </div>
-                                <div class="comment-item__content">
-                                    <span class="name">Fletch Skinner</span>
-                                    <span class="date mb-10">march 26,2024 at 10:47 pm</span>
-                                    <p class="mb-20">Phasellus ac eleifend nunc. Aenean efficitur, augue a tristique mollis, nulla leo dictum nunc, viverra magna sapien ut dolor.</p>
-                                    <button class="rr-btn">
-                                        <span class="btn-wrap">
-                                            <span class="text-one">Reply</span>
-                                            <span class="text-two">Reply</span>
-                                        </span>
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div class="comment-item d-flex align-items-start mb-30">
-                                <div class="comment-item__img">
-                                    <img src="{{asset('Asset/decorVista/assets/imgs/blog-details/author-1.png')}}" alt="image not found">
-                                </div>
-                                <div class="comment-item__content">
-                                    <span class="name">Samuel Serif</span>
-                                    <span class="date">march 26,2024 at 10:47 pm</span>
-                                    <p>Phasellus ac eleifend nunc. Aenean efficitur, augue a tristique mollis, nulla leo dictum nunc, viverra magna sapien ut dolor.</p>
-                                    <button class="rr-btn btn-gary">
-                                        <span class="btn-wrap">
-                                            <span class="text-one">Reply</span>
-                                            <span class="text-two">Reply</span>
-                                        </span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        
-    
-                        <div class="live-comment-widget mt-80 mt-xs-60">
-                            <h3 class="mb-10">Leave a Comment</h3>
-                            <p>Your email address will not be published. Required fields are marked *</p>
-    
-                            <div class="live-comment-widget__form">
-                                <div class="row g-20">
-                                    <div class="col-xl-6">
-                                        <div class="live-comment-widget__form-input">
-                                            <label>Name *</label>
-                                            <input name="name" id="name" type="text" >
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-6">
-                                        <div class="live-comment-widget__form-input">
-                                            <label >Email *</label>
-                                            <input name="email" id="email" type="email">
-                                        </div>
-                                    </div>
-    
-                                    <div class="col-12">
-                                        <div class="live-comment-widget__form-input">
-                                            <label>Website</label>
-                                            <input name="text" id="text" type="text">
-                                        </div>
-                                    </div>
-    
-                                    <div class="col-12">
-                                        <div class="live-comment-widget__form-input">
-                                            <div class="validation__wrapper-up position-relative">
-                                                <label>Comment</label>
-                                                <textarea name="textarea" id="textarea" ></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-    
-                                    <div class="col-12 d-flex justify-content-between mb-40">
-                                        <div class="live-comment-widget__agree">
-                                            <input type="checkbox" class="form-check-input" id="agree">
-                                            <label for="agree">Save my name, email, and website in this browser for the next time I comment.</label>
-                                        </div>
-                                    </div>
-    
-                                    <div class="col-12">
-                                        <button type="submit" class="rr-btn">
-                                            <span class="btn-wrap">
-                                                <span class="text-one">Post Comment
-                                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M1 6H11" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                                    <path d="M6 1L11 6L6 11" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                                    </svg>
-                                                </span>
-                                                <span class="text-two">Post Comment 
-                                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M1 6H11" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                                    <path d="M6 1L11 6L6 11" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                                    </svg>
-                                                </span>
-                                            </span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                </div>
-                </div>
-    
-            
-            </div>
-        </div>
-    </section> --}}
 
 
 
     <section class="blog-details section-space">
         <div style="display: flex; align-items: center; padding: 0px 48px; " class="blog-details__content">
             <div class="blog-details__content">
-                <img src="{{asset('Asset/decorVista/assets/imgs/blog-details/blog-details.jpg')}}" style="height: 600px;" alt="image not found">
+                @php
+                $img = productImages($product->id);
+                @endphp
+
+                @if (!empty($img))
+                <img src="{{asset('uploads/product/large/'.$img->image)}}" style="height: 600px;" alt="image not found">
+                @endif
             </div>
 
             <div style="padding-left: 44px" class="section__title-wrapper mb-45 mb-xs-40">
-                <h2 class="section__title mb-25 title-animation">Interior Design</h2>
+                <h2 class="section__title mb-25 title-animation">{{$product->name }}</h2>
                 <h3 style="color: #906e50;">$120</h3>
-                <p style="padding-top: 40px" class="mb-0">Et purus duis sollicitudin dignissim habitant. Egestas nulla quis venenatis cras sed eu massa eu faucibus Urna fusce Et purus duis sollicitudin dig- nissim habitant.</p>
-                <button style="margin-top: 40px" type="submit" class="rr-btn">
+                <p style="padding-top: 40px" class="mb-0">{{ $product->description}}</p>
+                < <button type="button" onclick="AddtoCart('{{$product->id}}')" style="margin-top: 40px" type="submit"
+                    class="rr-btn">
                     <span class="btn-wrap">
                         <span class="text-one">Add to Cart
-                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M1 6H11" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M6 1L11 6L6 11" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 6H11" stroke="white" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M6 1L11 6L6 11" stroke="white" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
                             </svg>
                         </span>
-                        <span class="text-two">Add to cart 
-                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M1 6H11" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M6 1L11 6L6 11" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </span>
-                    </span>
-                </button>
-                <button style="margin-top: 40px" type="submit" class="rr-btn">
-                    <span class="btn-wrap">
-                        <span class="text-one">Add to Wishlist
-                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M1 6H11" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M6 1L11 6L6 11" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                        </span>
-                        <span class="text-two">Add to Wishlist
-                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M1 6H11" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M6 1L11 6L6 11" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <span class="text-two">Add to cart
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 6H11" stroke="white" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M6 1L11 6L6 11" stroke="white" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
                             </svg>
                         </span>
                     </span>
-                </button>
+                    </button>
+                    <button style="margin-top: 40px" type="submit" class="rr-btn">
+                        <span class="btn-wrap">
+                            <span class="text-one">Add to Wishlist
+                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 6H11" stroke="white" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M6 1L11 6L6 11" stroke="white" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </span>
+                            <span class="text-two">Add to Wishlist
+                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 6H11" stroke="white" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                    <path d="M6 1L11 6L6 11" stroke="white" stroke-width="1.5" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </span>
+                        </span>
+                    </button>
             </div>
-            </div>
+        </div>
         <div class="container">
             <div class="row">
                 <div class="col-xl-8">
-                    
-                        <div class="comment-widget mt-50 mt-xs-60">
-                            <h6 class="comment-widget__title">02 Comments</h6>
 
-                            <div class="comment-item d-flex align-items-start mb-30">
-                                <div class="comment-item__img">
-                                    <img src="assets/imgs/blog-details/author-1.png" alt="image not found">
-                                </div>
-                                <div class="comment-item__content">
-                                    <span class="name">Russell Sprout</span>
-                                    <span class="date">march 26,2024 at 10:47 pm</span>
-                                    <p>Phasellus ac eleifend nunc. Aenean efficitur, augue a tristique mollis, nulla leo dictum nunc, viverra magna sapien ut dolor.</p>
-                                    <button class="rr-btn btn-gary">
-                                        <span class="btn-wrap">
-                                            <span class="text-one">Reply</span>
-                                            <span class="text-two">Reply</span>
-                                        </span>
-                                    </button>
-                                </div>
+                    <div class="comment-widget mt-50 mt-xs-60">
+                        <h6 class="comment-widget__title">02 Comments</h6>
+
+                        <div class="comment-item d-flex align-items-start mb-30">
+                            <div class="comment-item__img">
+                                <img src="assets/imgs/blog-details/author-1.png" alt="image not found">
                             </div>
-
-                            <div class="comment-item d-flex align-items-start comment-item__reply mb-30">
-                                <div class="comment-item__img">
-                                    <img src="assets/imgs/blog-details/author-2.png" alt="image not found">
-                                </div>
-                                <div class="comment-item__content">
-                                    <span class="name">Fletch Skinner</span>
-                                    <span class="date mb-10">march 26,2024 at 10:47 pm</span>
-                                    <p class="mb-20">Phasellus ac eleifend nunc. Aenean efficitur, augue a tristique mollis, nulla leo dictum nunc, viverra magna sapien ut dolor.</p>
-                                    <button class="rr-btn">
-                                        <span class="btn-wrap">
-                                            <span class="text-one">Reply</span>
-                                            <span class="text-two">Reply</span>
-                                        </span>
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div class="comment-item d-flex align-items-start mb-30">
-                                <div class="comment-item__img">
-                                    <img src="assets/imgs/blog-details/author-1.png" alt="image not found">
-                                </div>
-                                <div class="comment-item__content">
-                                    <span class="name">Samuel Serif</span>
-                                    <span class="date">march 26,2024 at 10:47 pm</span>
-                                    <p>Phasellus ac eleifend nunc. Aenean efficitur, augue a tristique mollis, nulla leo dictum nunc, viverra magna sapien ut dolor.</p>
-                                    <button class="rr-btn btn-gary">
-                                        <span class="btn-wrap">
-                                            <span class="text-one">Reply</span>
-                                            <span class="text-two">Reply</span>
-                                        </span>
-                                    </button>
-                                </div>
+                            <div class="comment-item__content">
+                                <span class="name">Russell Sprout</span>
+                                <span class="date">march 26,2024 at 10:47 pm</span>
+                                <p>Phasellus ac eleifend nunc. Aenean efficitur, augue a tristique mollis, nulla leo
+                                    dictum nunc, viverra magna sapien ut dolor.</p>
+                                <button class="rr-btn btn-gary">
+                                    <span class="btn-wrap">
+                                        <span class="text-one">Reply</span>
+                                        <span class="text-two">Reply</span>
+                                    </span>
+                                </button>
                             </div>
                         </div>
-                        
-    
-                        <div class="live-comment-widget mt-80 mt-xs-60">
-                            <h3 class="mb-10">Leave a Comment</h3>
-                            <p>Your email address will not be published. Required fields are marked *</p>
-    
-                            <div class="live-comment-widget__form">
-                                <div class="row g-20">
-                                    <div class="col-xl-6">
-                                        <div class="live-comment-widget__form-input">
-                                            <label>Name *</label>
-                                            <input name="name" id="name" type="text" >
+
+                        <div class="comment-item d-flex align-items-start comment-item__reply mb-30">
+                            <div class="comment-item__img">
+                                <img src="assets/imgs/blog-details/author-2.png" alt="image not found">
+                            </div>
+                            <div class="comment-item__content">
+                                <span class="name">Fletch Skinner</span>
+                                <span class="date mb-10">march 26,2024 at 10:47 pm</span>
+                                <p class="mb-20">Phasellus ac eleifend nunc. Aenean efficitur, augue a tristique mollis,
+                                    nulla leo dictum nunc, viverra magna sapien ut dolor.</p>
+                                <button class="rr-btn">
+                                    <span class="btn-wrap">
+                                        <span class="text-one">Reply</span>
+                                        <span class="text-two">Reply</span>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="comment-item d-flex align-items-start mb-30">
+                            <div class="comment-item__img">
+                                <img src="assets/imgs/blog-details/author-1.png" alt="image not found">
+                            </div>
+                            <div class="comment-item__content">
+                                <span class="name">Samuel Serif</span>
+                                <span class="date">march 26,2024 at 10:47 pm</span>
+                                <p>Phasellus ac eleifend nunc. Aenean efficitur, augue a tristique mollis, nulla leo
+                                    dictum nunc, viverra magna sapien ut dolor.</p>
+                                <button class="rr-btn btn-gary">
+                                    <span class="btn-wrap">
+                                        <span class="text-one">Reply</span>
+                                        <span class="text-two">Reply</span>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="live-comment-widget mt-80 mt-xs-60">
+                        <h3 class="mb-10">Leave a Comment</h3>
+                        <p>Your email address will not be published. Required fields are marked *</p>
+
+                        <div class="live-comment-widget__form">
+                            <div class="row g-20">
+                                <div class="col-xl-6">
+                                    <div class="live-comment-widget__form-input">
+                                        <label>Name *</label>
+                                        <input name="name" id="name" type="text">
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="live-comment-widget__form-input">
+                                        <label>Email *</label>
+                                        <input name="email" id="email" type="email">
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="live-comment-widget__form-input">
+                                        <label>Website</label>
+                                        <input name="text" id="text" type="text">
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="live-comment-widget__form-input">
+                                        <div class="validation__wrapper-up position-relative">
+                                            <label>Comment</label>
+                                            <textarea name="textarea" id="textarea"></textarea>
                                         </div>
                                     </div>
-                                    <div class="col-xl-6">
-                                        <div class="live-comment-widget__form-input">
-                                            <label >Email *</label>
-                                            <input name="email" id="email" type="email">
-                                        </div>
+                                </div>
+
+                                <div class="col-12 d-flex justify-content-between mb-40">
+                                    <div class="live-comment-widget__agree">
+                                        <input type="checkbox" class="form-check-input" id="agree">
+                                        <label for="agree">Save my name, email, and website in this browser for the next
+                                            time I comment.</label>
                                     </div>
-    
-                                    <div class="col-12">
-                                        <div class="live-comment-widget__form-input">
-                                            <label>Website</label>
-                                            <input name="text" id="text" type="text">
-                                        </div>
-                                    </div>
-    
-                                    <div class="col-12">
-                                        <div class="live-comment-widget__form-input">
-                                            <div class="validation__wrapper-up position-relative">
-                                                <label>Comment</label>
-                                                <textarea name="textarea" id="textarea" ></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-    
-                                    <div class="col-12 d-flex justify-content-between mb-40">
-                                        <div class="live-comment-widget__agree">
-                                            <input type="checkbox" class="form-check-input" id="agree">
-                                            <label for="agree">Save my name, email, and website in this browser for the next time I comment.</label>
-                                        </div>
-                                    </div>
-    
-                                    <div class="col-12">
-                                        <button type="submit" class="rr-btn">
-                                            <span class="btn-wrap">
-                                                <span class="text-one">Post Comment
-                                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M1 6H11" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                                    <path d="M6 1L11 6L6 11" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                                    </svg>
-                                                </span>
-                                                <span class="text-two">Post Comment 
-                                                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                    <path d="M1 6H11" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                                    <path d="M6 1L11 6L6 11" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                                    </svg>
-                                                </span>
+                                </div>
+
+                                <div class="col-12">
+                                    <button type="submit" class="rr-btn">
+                                        <span class="btn-wrap">
+                                            <span class="text-one">Post Comment
+                                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M1 6H11" stroke="white" stroke-width="1.5"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M6 1L11 6L6 11" stroke="white" stroke-width="1.5"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
                                             </span>
-                                        </button>
-                                    </div>
+                                            <span class="text-two">Post Comment
+                                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M1 6H11" stroke="white" stroke-width="1.5"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M6 1L11 6L6 11" stroke="white" stroke-width="1.5"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+                                            </span>
+                                        </span>
+                                    </button>
                                 </div>
                             </div>
                         </div>
+                    </div>
                 </div>
-                </div>
-    
-                {{-- <div class="col-xl-4">
+            </div>
+
+            {{-- <div class="col-xl-4">
                     <div class="sidebar sidebar-rr-sticky">
                         <div class="sidebar__widget">
                             <h4 class="sidebar__widget-title">Search here</h4>
@@ -443,9 +336,35 @@
                         </div>
                     </div>
                 </div> --}}
-            </div>
+        </div>
         </div>
     </section>
 </main>
+
+@endsection
+
+@section('js')
+<script>
+function AddtoCart(id) {
+
+    $.ajax({
+        url: '{{route("AddtoCart")}}',
+        type: 'post',
+        data: {
+            id: id,
+
+        },
+        dataType: 'json',
+        success: function(response) {
+            if (response.status == true) {
+                window.location.href = "{{route('Front.cart')}}"
+            } else {
+                alert(response.msg)
+            }
+        },
+    });
+}
+</script>
+
 
 @endsection

@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="{{asset('Asset/decorVista/assets/css/plugins/odometer-theme-default.css')}}">
     <link rel="stylesheet" href="{{asset('Asset/decorVista/assets/css/plugins/carouselTicker.css')}}">
     <link rel="stylesheet" href="{{asset('Asset/decorVista/assets/css/main.css')}}">
+
+    <meta name="csrf-token" content="{{csrf_token()}}">
 </head>
 
 <body class="body-1">
@@ -435,6 +437,15 @@
 <script src="{{asset('Asset/decorVista/assets/js/plugins/TextPlugin.min.js')}}"></script>
 <script src="{{asset('Asset/decorVista/assets/js/main.js')}}"></script>
 <script src="{{asset('Asset/decorVista/assets/js/plugins/magiccursor.js')}}"></script>
+<script type="text/javascript">
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    </script>
+
+@yield('js')
 </body>
 
 

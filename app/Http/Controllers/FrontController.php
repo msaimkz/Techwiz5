@@ -7,14 +7,17 @@ use App\Models\Blog;
 use App\Models\Gallery;
 use App\Models\Category;
 use App\Models\SubCategory;
+use App\Models\Product;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 class FrontController extends Controller
 {
     public function index(){
 
-        $blogs = Blog::where('status',1)->latest()->limit(5)->get();
+        $blogs = Blog::where('status',1)->latest()->limit(4)->get();
+        $products = Product::where('status',1)->latest()->limit(4)->get();
 
-        return view('index',compact('blogs'));
+        return view('index',compact('blogs','products'));
     }
 
     public function gallery(){
@@ -31,8 +34,10 @@ class FrontController extends Controller
 
 
     public function cart(){
+        $cartItems = Cart::content();
+      
 
-        return view('cart');
+        return view('cart',compact('cartItems'));
     }
 
 
@@ -70,6 +75,13 @@ class FrontController extends Controller
         $blog = Blog::find($id);
 
         return view('blog-details',compact('blog'));
+    }
+
+    public function ProductDetail(Request $request, $id){
+
+        $product = Product::find($id);
+
+        return view('detail',compact('product'));
     }
 
     public function design(){

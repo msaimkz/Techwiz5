@@ -72,12 +72,14 @@ class ProductController extends Controller
     }
         $validator = Validator::make($request->all(),[
             'name' =>[ 'required','min:3', new Alpha],
+            'description' =>'required|min:3',
             'slug' => 'required|unique:products',
             'category_id' => 'required|numeric',
             'subcategory_id' => 'required|numeric',
             'brand_id' => 'required|numeric',
             'style_id' => 'required|numeric',
             'heigth' => ['required','numeric', new GreaterZero],
+            'qty' => ['required','numeric', new GreaterZero],
             'width' => ['required','numeric', new GreaterZero],
             'depth' => ['required','numeric', new GreaterZero],
             'material' => 'required|min:3',
@@ -93,6 +95,8 @@ class ProductController extends Controller
             $product->slug = $request->slug;
             $product->category = $request->category_id;
             $product->sub_category = $request->subcategory_id;
+            $product->description = $request->description;
+            $product->qty = $request->qty;
             $product->brand = $request->brand_id;
             $product->style = $request->style_id;
             $product->hieght = $request->heigth;
@@ -280,12 +284,14 @@ class ProductController extends Controller
 
         $validator = Validator::make($request->all(),[
             'name' =>[ 'required','min:3', new Alpha],
+            'description' =>'required|min:3',
             'slug' => 'required|unique:products,slug,'.$product->id.',id',
             'category_id' => 'required|numeric',
             'subcategory_id' => 'required|numeric',
             'brand_id' => 'required|numeric',
             'style_id' => 'required|numeric',
             'heigth' => ['required','numeric', new GreaterZero],
+            'qty' => ['required','numeric', new GreaterZero],
             'width' => ['required','numeric', new GreaterZero],
             'depth' => ['required','numeric', new GreaterZero],
             'material' => 'required|min:3',
@@ -300,6 +306,8 @@ class ProductController extends Controller
             $product->slug = $request->slug;
             $product->category = $request->category_id;
             $product->sub_category = $request->subcategory_id;
+            $product->description = $request->description;
+            $product->qty = $request->qty;
             $product->brand = $request->brand_id;
             $product->style = $request->style_id;
             $product->hieght = $request->heigth;
