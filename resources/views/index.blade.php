@@ -20,7 +20,7 @@
                                            </h1>
                                            <p class="des color-white mb-45 mb-md-30">Welcome to DecorVista, crafting timeless interiors that tell your story. Discover a world where design meets emotion.</p>
    
-                                           <a href="{{url('/about-us')}}" class="rr-btn">
+                                           <a href="{{route('Front.about')}}" class="rr-btn">
                                                <span class="btn-wrap">
                                                    <span class="text-one">About Us</span>
                                                    <span class="text-two">About Us</span>

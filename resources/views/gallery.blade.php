@@ -48,7 +48,7 @@
                     @php
                     $img = $gallery->images->first()
                     @endphp
-                    <div class="col-lg-4 col-sm-6 grid-item commercial corporate">
+                    <div class="col-lg-4 col-sm-6 grid-item corporate interior">
                         <div class="protfolio__item">
                             <div class="protfolio__item-media ">
                                 @if (!empty($img->image))
@@ -57,10 +57,13 @@
                                 @endif
                                 
                             </div>
-                            @if ()
+                            @if (!empty($gallery->images))
+                            @foreach ($gallery->images as $Galleryimage )
+                                <a href="{{ asset('uploads/gallery/small/' . $Galleryimage->image) }}"
+                            @endforeach
                                 
                             @endif
-                            <a href="{{asset('Asset/decorVista/assets/imgs/protfolio/protfolio-6.jpg')}}"
+                            
                                 class="protfolio__item-icon popup-image">
                                 <svg width="54" height="54" viewBox="0 0 54 54" fill="none"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -72,8 +75,8 @@
                             </a>
                             <div class="protfolio__item-text">
 
-                                <span class="price">Architecture – Luxury Living</span>
-                                <h6><a href="#">Chapter House Interiors</a></h6>
+                               
+                                <h6>{{ $gallery->subcategory->name }}</h6>
 
                             </div>
                         </div>
@@ -82,10 +85,7 @@
 
                     @endif
 
-
-
-
-
+                   
                 </div>
     </section>
 

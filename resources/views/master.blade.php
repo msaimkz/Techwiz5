@@ -132,6 +132,9 @@
 
 
 <!-- Header area start -->
+ @php
+     $categories = Category();
+ @endphp
 <header>
     <div style="margin-top: -34px" id="header-sticky" class="header__area header-1">
         <div class="container">
@@ -158,16 +161,17 @@
                                     <li class="has-dropdown">
                                         <a href="#">Category</a>
                                         <ul class="submenu">
-                                            <li><a href="{{route('Front.category')}}">Living Rooms</a></li>
+                                            @if (!empty($categories))
+                                             @foreach ($categories as  $category)
+                                             <li><a href="{{route('Front.category',$category->slug)}}">{{ $category->name }}</a></li>
+                                             @endforeach
+                                                
+                                            @endif
+                                           
                                            
                                         </ul>
                                     </li>
-                                    <li class="has-dropdown ">
-                                        <a href="javascript:void(0)">Sub Category</a>
-                                        <ul class="submenu">
-                                            <li><a href="our-team.html">Team</a></li>
-                                        </ul>
-                                    </li>
+                                   
                                     <li><a href="{{route('Front.gallery')}}">Gallery</a></li>
                                     <li><a href="{{url('/design')}}">Design</a></li>
                                     <li><a href="{{route('Front.blog')}}">blog</a></li>

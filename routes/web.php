@@ -24,7 +24,9 @@ Route::get('/Contact-Us',[FrontController::class,'contact'])->name('Front.contac
 Route::get('/Blogs',[FrontController::class,'blog'])->name('Front.blog');
 Route::get('/Blog-Detail/{id}',[FrontController::class,'blogDetail'])->name('Front.blog.detail');
 Route::get('/Design',[FrontController::class,'design'])->name('Front.design');
-Route::get('/Category',[FrontController::class,'category'])->name('Front.category');
+Route::get('/404',[FrontController::class,'error'])->name('Front.error');
+Route::get('/Category/{slug}', [FrontController::class, 'category'])->name('Front.category');
+
 
 
 
@@ -39,13 +41,7 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::get('/',[FrontController::class,'index'])->name('Front.index');
-Route::get('/Gallery',[FrontController::class,'gallery'])->name('Front.gallery');
-Route::get('/About-Us',[FrontController::class,'about'])->name('Front.about');
-Route::get('/Contact-Us',[FrontController::class,'contact'])->name('Front.contact');
-Route::get('/Blogs',[FrontController::class,'blog'])->name('Front.blog');
-Route::get('/Design',[FrontController::class,'design'])->name('Front.design');
-Route::get('/Category',[FrontController::class,'category'])->name('Front.category');
+
 
 
 
