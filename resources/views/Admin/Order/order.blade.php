@@ -40,7 +40,7 @@
                                     <td>$64</td>
                                     <td><span class="badge bg-success">Approved</span></td>
                                     <td>
-                                        <a href="#" class="btn btn-info">
+                                        <a href="{{ route('Admin.order.report') }}" class="btn btn-info">
                                             <i class="fa-solid fa-eye"></i>
                                         </a>
                                     </td>

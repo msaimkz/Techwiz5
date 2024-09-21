@@ -61,6 +61,13 @@ public function order(Request $request){
     return view('Admin.Order.order');
 }
 
+public function orderDetail(Request $request){
+
+    
+    
+    return view('Admin.Order.report');
+}
+
 }
 
 

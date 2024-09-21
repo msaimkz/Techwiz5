@@ -66,12 +66,13 @@ Route::middleware('auth')->group(function () {
 //Admin Profils
 
 
-Route::group(['middleware' => ['role-access']], function () {
+Route::group(['middleware' => ['auth','role-access']], function () {
 
 Route::get('/Admin/My-Profile',[AdminController::class,'profile'])->name('Admin.profile');
 
 Route::get('/Admin/Dashboard',[AdminController::class,'dashboard'])->name('Admin.dashboard');
 Route::get('/Admin/Order',[AdminController::class,'order'])->name('Admin.order');
+Route::get('/Admin/Order-Report',[AdminController::class,'orderDetail'])->name('Admin.order.report');
 
 // Category Routes
 
