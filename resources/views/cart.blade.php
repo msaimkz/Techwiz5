@@ -134,10 +134,10 @@
                             <div class="nav-nigth ">Total</div>
                             <div class="nav-nigth subtotal">${{Cart::subtotal()}}</div>
                         </div>
-                        <div class="pt-5 proceed-button">
+                        <div class="pt-5">
                             <button
                                 style="background: #685544;color: white;padding: 10px 17px;font-size: 19px;font-weight: 500;margin-left: 140px;"><a
-                                    href="#" onMouseOver="this.style.color='white'" class="gear-button">Proceed to
+                                    href="{{ route('Front.chekout') }}" onMouseOver="this.style.color='white'" class="gear-button">Proceed to
                                     Checkout</a></button>
                         </div>
                     </div>

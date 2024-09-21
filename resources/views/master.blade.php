@@ -12,7 +12,7 @@
     <!-- Place favicon.ico in the root directory -->
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('Asset/decorVista/assets/imgs/favicon.svg')}}">
     <!-- CSS here -->
-
+   
     <link rel="stylesheet" href="{{asset('Asset/decorVista/assets/css/vendor/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('Asset/decorVista/assets/css/vendor/animate.min.css')}}">
     <link rel="stylesheet" href="{{asset('Asset/decorVista/assets/css/plugins/swiper.min.css')}}">
@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="{{asset('Asset/decorVista/assets/css/plugins/odometer-theme-default.css')}}">
     <link rel="stylesheet" href="{{asset('Asset/decorVista/assets/css/plugins/carouselTicker.css')}}">
     <link rel="stylesheet" href="{{asset('Asset/decorVista/assets/css/main.css')}}">
+    
+
 
     <meta name="csrf-token" content="{{csrf_token()}}">
 </head>
@@ -194,7 +196,16 @@
 
                                                 <li>
                                                     <a href="{{route('Front.wishlist')}}">Wishlist</a>
+
                                                 </li>
+
+                                                <form method="post" action="{{ route('logout') }}">
+                                                    <li>
+                                                        <a href="{{route('logout')}}" onclick="event.preventDefault();
+                                                            this.closest('form').submit();">Sign Out</a>
+
+                                                    </li>
+                                                </form>
 
 
 

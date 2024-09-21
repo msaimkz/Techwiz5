@@ -51,6 +51,26 @@ class FrontController extends Controller
         return view('cart',compact('cartItems'));
     }
 
+    public function checkout(){
+        if (Cart::count() == 0) {
+            return redirect()->route('Cart');
+        }
+
+        if (Auth::check() == false) {
+           
+
+            return redirect()->route('login');
+        }
+
+       
+
+        // $countries = Country::orderBy('name', 'ASC')->get();
+
+        // $Customers = CustomerDetail::where('user_id', Auth::user()->id)->first();
+          $Customers = "";
+        return view('checkout',compact('Customers'));
+    }
+
 
     public function about(){
 

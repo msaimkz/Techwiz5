@@ -32,14 +32,7 @@
 
     <section class="protfolio section-space__top">
         <div class="container">
-            {{-- <div class="protfolio__tab masonary-menu">
-                <button data-filter="*" class="active">All </button>
-                <button data-filter=".architecture">architecture</button>
-                <button data-filter=".commercial">Commercial</button>
-                <button data-filter=".corporate">Corporate</button>
-                <button data-filter=".interior">Interior</button>
-                <button data-filter=".residential">Residential</button>
-            </div> --}}
+           
 
             <div class="protfolio__item-wrapper">
                 <div class="row grid mb-minus-30">
@@ -89,32 +82,7 @@
                 </div>
     </section>
 
-    <!-- brand area start -->
-    <section class="brand section-space has--transparent">
-        <div class="container">
-            <div class="slider-brand">
-                <div class="container">
-                    <div class="rr-scroller" data-speed="slow">
-                        <ul class="text-anim rr-scroller__inner">
-                            <li><a href="#"><img src="{{asset('Asset/decorVista/assets/imgs/brand-2/brand-1.png')}}"
-                                        alt="image not found"></a></li>
-                            <li><a href="#"><img src="{{asset('Asset/decorVista/assets/imgs/brand-2/brand-2.png')}}"
-                                        alt="image not found"></a></li>
-                            <li><a href="#"><img src="{{asset('Asset/decorVista/assets/imgs/brand-2/brand-4.png')}}"
-                                        alt="image not found"></a></li>
-                            <li><a href="#"><img src="{{asset('Asset/decorVista/assets/imgs/brand-2/brand-1.png')}}"
-                                        alt="image not found"></a></li>
-                            <li><a href="#"><img src="{{asset('Asset/decorVista/assets/imgs/brand-2/brand-2.png')}}"
-                                        alt="image not found"></a></li>
-                            <li><a href="#"><img src="{{asset('Asset/decorVista/assets/imgs/brand-2/brand-4.png')}}"
-                                        alt="image not found"></a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- brand area end -->
+  
 </main>
 
 @endsection
