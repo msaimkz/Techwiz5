@@ -133,14 +133,7 @@
 
     <section style="    margin-top: 0px; margin-bottom: 100px" class="protfolio section-space__top">
         <div class="container">
-            {{-- <div class="protfolio__tab masonary-menu">
-                <button data-filter="*" class="active">All </button>
-                <button data-filter=".architecture">architecture</button>
-                <button data-filter=".commercial">Commercial</button>
-                <button data-filter=".corporate">Corporate</button>
-                <button data-filter=".interior">Interior</button>
-                <button data-filter=".residential">Residential</button>
-            </div> --}}
+            ggy7[]
             <div class="row">
                 <div class="section__title-wrapper text-center mb-55 mb-xs-40">
                     <span class="section__subtitle justify-content-center">Projects</span>
