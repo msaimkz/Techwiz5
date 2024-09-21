@@ -11,13 +11,13 @@
             <div class="row align-items-center justify-content-between">
                 <div class="col-12">
                     <div style="margin-top: 100px;"  class="breadcrumb__content text-center">
-                        <h2 class="breadcrumb__title mb-15 mb-sm-10 mb-xs-5 color-white title-animation">Wishlist</h2>
+                        <h2 class="breadcrumb__title mb-15 mb-sm-10 mb-xs-5 color-white title-animation">My Design</h2>
 
                         <div class="breadcrumb__menu">
                             <nav>
                                 <ul>
                                     <li><span><a href="index.html">Home</a></span></li>
-                                    <li  class="active"><span>Wishlist</span></li>
+                                    <li  class="active"><span>My Design</span></li>
                                 </ul>
                             </nav>
                         </div>
@@ -35,7 +35,7 @@
                 <div class=" p-5">
                     <div style="margin: 0px 105px" class="card">
                         <div class="card-header wishlist">
-                            <h2 style="font-weight: 700;font-size: 37px;color: #5e5246;font-weight: 500;" class="h5 mb-0 pt-2 pb-2 nav-nigth">My Wishlist</h2>
+                            <h2 style="font-weight: 700;font-size: 37px;color: #5e5246;font-weight: 500;" class="h5 mb-0 pt-2 pb-2 nav-nigth">My Design</h2>
                         </div>
                         <div class="card-body p-4">
                             <div class="d-sm-flex justify-content-between mt-lg-4 mb-4 pb-3 pb-sm-2 border-bottom">

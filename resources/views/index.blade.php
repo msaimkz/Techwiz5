@@ -736,8 +736,8 @@
        <div class="container">
            <div class="row">
                <div class="section__title-wrapper text-center mb-55 mb-xs-40">
-                   <span class="section__subtitle justify-content-center ">Our Team</span>
-                   <h2 class="section__title title-animation">Meet Our Highly Professional Team</h2>
+                   <span class="section__subtitle justify-content-center ">Our Designers</span>
+                   <h2 class="section__title title-animation">Meet Our Highly Professional Designers</h2>
                </div>
            </div>
            <div class="row mb-minus-30">
@@ -747,8 +747,8 @@
                            <img src="{{asset('Asset/decorVista/assets/imgs/our-team/team-1.jpg')}}" alt="image not found">
                        </div>
                        <div class="our-team__item__text">
-                           <h6><a href="#">Daniel Smith</a></h6>
-                           <span>Chef Executive </span>
+                           <h6><a href="{{url('/designer-detail-1')}}">Daniel Smith</a></h6>
+                           <span>Designers</span>
                        </div>
 
                        <div class="our-team__item__socail">
@@ -785,8 +785,8 @@
                            <img src="{{asset('Asset/decorVista/assets/imgs/our-team/team-2.jpg')}}" alt="image not found">
                        </div>
                        <div class="our-team__item__text">
-                           <h6><a href="#">William Lucas</a></h6>
-                           <span>Senior Architect </span>
+                           <h6><a href="{{url('/designer-detail-2')}}">William Lucas</a></h6>
+                           <span>Designers</span>
                        </div>
 
                        <div class="our-team__item__socail">
@@ -823,7 +823,7 @@
                            <img src="{{asset('Asset/decorVista/assets/imgs/our-team/team-3.jpg')}}" alt="image not found">
                        </div>
                        <div class="our-team__item__text">
-                           <h6><a href="#">Daniel Jack</a></h6>
+                           <h6><a href="{{url('/designer-detail-3')}}">Daniel Jack</a></h6>
                            <span>Designer</span>
                        </div>
 

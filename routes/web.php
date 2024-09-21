@@ -49,6 +49,22 @@ Route::post('/Delete-Cart',[CartController::class,"DeleteCart"])->name("Delete.C
 
 
 
+Route::get('/my-design', function () {
+    return view('my-design');
+});
+
+Route::get('/designer-detail-1', function () {
+    return view('designers.designer-detail-1');
+});
+
+Route::get('/designer-detail-2', function () {
+    return view('designers.designer-detail-2');
+});
+
+Route::get('/designer-detail-3', function () {
+    return view('designers.designer-detail-3');
+});
+
 Route::get('/welcome', function () {
     return view('welcome');
 });
