@@ -141,9 +141,9 @@
 
 
     <!-- Header area start -->
-    @php
+    {{-- @php
     $categories = Category();
-    @endphp
+    @endphp --}}
     <header>
         <div style="margin-top: -34px" id="header-sticky" class="header__area header-1">
             <div class="container">
