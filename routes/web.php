@@ -55,13 +55,8 @@ Route::delete('/Remove-Wishlist/{id}', [WishlistController::class, 'destroy'])->
 
 Route::middleware('auth')->group(function () {
 Route::get('/My-Wishlist',[FrontController::class,'wishlist'])->name('Front.wishlist');
-Route::get('/Checkout',[FrontController::class,'checkout'])->name('Front.chekout');
+Route::get('/My-Orders',[FrontController::class,'order'])->name('Front.order');
 
-// Route to display the product details, including the comments section
-Route::get('/product/{id}', 'ProductController@show')->name('product.show');
-
-// Route to store a comment
-Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
 
 });
 
@@ -118,7 +113,7 @@ Route::get('/Admin/My-Profile',[AdminController::class,'profile'])->name('Admin.
 
 Route::get('/Admin/Dashboard',[AdminController::class,'dashboard'])->name('Admin.dashboard');
 Route::get('/Admin/Order',[AdminController::class,'order'])->name('Admin.order');
-Route::get('/Admin/Order-Report',[AdminController::class,'orderDetail'])->name('Admin.order.report');
+Route::get('/Admin/Order-Report/{id}',[AdminController::class,'orderDetail'])->name('Admin.order.report');
 
 // Category Routes
 
@@ -198,11 +193,10 @@ Route::get('/get-subcategories', [ProductController::class, 'getSubcategories'])
 
 // Temp Images Route
 
-Route::post('/Admin/Temp-Images', [TempImageController::class, 'create'])->name('Temp-image');
-Route::get('/Admin/Temp-Imag', [AdminController::class, 'delete'])->name('Temp');
 
 
 });
+Route::post('/Admin/Temp-Images', [TempImageController::class, 'create'])->name('Temp-image');
 
 Route::get('Admin/getSlug', function(Request $request){
 

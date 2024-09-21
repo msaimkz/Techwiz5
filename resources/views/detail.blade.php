@@ -48,8 +48,9 @@
 
             <div style="padding-left: 44px" class="section__title-wrapper mb-45 mb-xs-40">
                 <h2 class="section__title mb-25 title-animation">{{$product->name }}</h2>
-                <h3 style="color: #906e50;">$120</h3>
+                <h3 style="color: #906e50;">${{ $product->price }}</h3>
                 <p style="padding-top: 40px" class="mb-0">{{ $product->description}}</p>
+                @if ($product->qty != 0)
                 <button type="button" onclick="AddtoCart('{{$product->id}}')" style="margin-top: 40px" type="submit"
                     class="rr-btn">
                     <span class="btn-wrap">
@@ -73,6 +74,33 @@
                         </span>
                     </span>
                 </button>
+
+                @else
+                <button type="button"  style="margin-top: 40px" type="submit"
+                    class="rr-btn">
+                    <span class="btn-wrap">
+                        <span class="text-one">Out of Stock
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 6H11" stroke="white" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M6 1L11 6L6 11" stroke="white" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </span>
+                        <span class="text-two">Out of Stock
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 6H11" stroke="white" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M6 1L11 6L6 11" stroke="white" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </span>
+                    </span>
+                </button>
+                @endif
+
                 <button type="button" style="margin-top: 40px" type="submit" class="rr-btn"
                     onclick="AddWishlist('{{$product->id}}')">
                     <span class="btn-wrap">
@@ -101,101 +129,140 @@
         <div class="container">
             <div class="row">
                 <div class="col-xl-8">
-                    <div class="comment-widget mt-50 mt-xs-60">
-                        <h6 class="comment-widget__title">{{ $comments->count() }} Comments</h6>
 
-                        @foreach ($comments as $comment)
-                        <div class="comment-item d-flex align-items-start mb-30" id="comment-{{ $comment->id }}">
+                    <div class="comment-widget mt-50 mt-xs-60">
+                        <h6 class="comment-widget__title">02 Comments</h6>
+
+                        <div class="comment-item d-flex align-items-start mb-30">
                             <div class="comment-item__img">
-                               
+                                <img src="assets/imgs/blog-details/author-1.png" alt="image not found">
                             </div>
                             <div class="comment-item__content">
-                                <span class="name">{{ $comment->name }}</span>
-                                <span class="date">{{ $comment->created_at->format('F j, Y, g:i a') }}</span>
-                                <p>{{ $comment->comment }}</p>
-                                
-
-                                <!-- Reply Form -->
-                                <div class="reply-form" id="reply-form-{{ $comment->id }}" style="display: none;">
-                                    <form class="replyCommentForm" data-comment-id="{{ $comment->id }}">
-                                        @csrf
-                                        <input type="hidden" name="product_id" value="{{ $product->id }}">
-                                        <input type="hidden" name="parent_id" value="{{ $comment->id }}">
-                                        <div class="live-comment-widget__form-input">
-                                            <label>Reply *</label>
-                                            <textarea name="reply_comment" required></textarea>
-                                            <button type="submit" class="rr-btn">Post Reply</button>
-                                        </div>
-                                    </form>
-                                </div>
+                                <span class="name">Russell Sprout</span>
+                                <span class="date">march 26,2024 at 10:47 pm</span>
+                                <p>Phasellus ac eleifend nunc. Aenean efficitur, augue a tristique mollis, nulla leo
+                                    dictum nunc, viverra magna sapien ut dolor.</p>
+                                <button class="rr-btn btn-gary">
+                                    <span class="btn-wrap">
+                                        <span class="text-one">Reply</span>
+                                        <span class="text-two">Reply</span>
+                                    </span>
+                                </button>
                             </div>
                         </div>
 
-                        <!-- Display Replies -->
-                        <div class="replies" id="replies-{{ $comment->id }}">
-                            @foreach ($comment->replies as $reply)
-                            <div class="comment-item d-flex align-items-start comment-item__reply mb-30">
-                                <div class="comment-item__img">
-                                    <img src="assets/imgs/blog-details/author-{{ $reply->user->id }}.png"
-                                        alt="image not found">
-                                </div>
-                                <div class="comment-item__content">
-                                    <span class="name">{{ $reply->name }}</span>
-                                    <span class="date mb-10">{{ $reply->created_at->format('F j, Y, g:i a') }}</span>
-                                    <p class="mb-20">{{ $reply->comment }}</p>
-                                </div>
+                        <div class="comment-item d-flex align-items-start comment-item__reply mb-30">
+                            <div class="comment-item__img">
+                                <img src="assets/imgs/blog-details/author-2.png" alt="image not found">
                             </div>
-                            @endforeach
+                            <div class="comment-item__content">
+                                <span class="name">Fletch Skinner</span>
+                                <span class="date mb-10">march 26,2024 at 10:47 pm</span>
+                                <p class="mb-20">Phasellus ac eleifend nunc. Aenean efficitur, augue a tristique mollis,
+                                    nulla leo dictum nunc, viverra magna sapien ut dolor.</p>
+                                <button class="rr-btn">
+                                    <span class="btn-wrap">
+                                        <span class="text-one">Reply</span>
+                                        <span class="text-two">Reply</span>
+                                    </span>
+                                </button>
+                            </div>
                         </div>
-                        @endforeach
+
+                        <div class="comment-item d-flex align-items-start mb-30">
+                            <div class="comment-item__img">
+                                <img src="assets/imgs/blog-details/author-1.png" alt="image not found">
+                            </div>
+                            <div class="comment-item__content">
+                                <span class="name">Samuel Serif</span>
+                                <span class="date">march 26,2024 at 10:47 pm</span>
+                                <p>Phasellus ac eleifend nunc. Aenean efficitur, augue a tristique mollis, nulla leo
+                                    dictum nunc, viverra magna sapien ut dolor.</p>
+                                <button class="rr-btn btn-gary">
+                                    <span class="btn-wrap">
+                                        <span class="text-one">Reply</span>
+                                        <span class="text-two">Reply</span>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
                     </div>
-                </div>
 
-                <div class="live-comment-widget mt-80 mt-xs-60">
-                    <h3 class="mb-10">Leave a Comment</h3>
-                    <p>Your email address will not be published. Required fields are marked *</p>
 
-                    @if (Auth::check())
-                    <form action="{{ route('comments.store') }}" method="POST">
-                        @csrf
-                        <input type="hidden" name="product_id" value="{{ $product->id }}">
+                    <div class="live-comment-widget mt-80 mt-xs-60">
+                        <h3 class="mb-10">Leave a Comment</h3>
+                        <p>Your email address will not be published. Required fields are marked *</p>
+
                         <div class="live-comment-widget__form">
                             <div class="row g-20">
                                 <div class="col-xl-6">
                                     <div class="live-comment-widget__form-input">
                                         <label>Name *</label>
-                                        <input name="name" id="name" type="text" required>
+                                        <input name="name" id="name" type="text">
                                     </div>
                                 </div>
                                 <div class="col-xl-6">
                                     <div class="live-comment-widget__form-input">
                                         <label>Email *</label>
-                                        <input name="email" id="email" type="email" required>
+                                        <input name="email" id="email" type="email">
                                     </div>
                                 </div>
+
+                                <div class="col-12">
+                                    <div class="live-comment-widget__form-input">
+                                        <label>Website</label>
+                                        <input name="text" id="text" type="text">
+                                    </div>
+                                </div>
+
                                 <div class="col-12">
                                     <div class="live-comment-widget__form-input">
                                         <div class="validation__wrapper-up position-relative">
-                                            <label>Comment *</label>
-                                            <textarea name="comment" id="textarea" required></textarea>
+                                            <label>Comment</label>
+                                            <textarea name="textarea" id="textarea"></textarea>
                                         </div>
                                     </div>
                                 </div>
+
+                                <div class="col-12 d-flex justify-content-between mb-40">
+                                    <div class="live-comment-widget__agree">
+                                        <input type="checkbox" class="form-check-input" id="agree">
+                                        <label for="agree">Save my name, email, and website in this browser for the next
+                                            time I comment.</label>
+                                    </div>
+                                </div>
+
                                 <div class="col-12">
-                                    <button type="submit" class="rr-btn">Post Comment</button>
+                                    <button type="submit" class="rr-btn">
+                                        <span class="btn-wrap">
+                                            <span class="text-one">Post Comment
+                                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M1 6H11" stroke="white" stroke-width="1.5"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M6 1L11 6L6 11" stroke="white" stroke-width="1.5"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+                                            </span>
+                                            <span class="text-two">Post Comment
+                                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M1 6H11" stroke="white" stroke-width="1.5"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                    <path d="M6 1L11 6L6 11" stroke="white" stroke-width="1.5"
+                                                        stroke-linecap="round" stroke-linejoin="round" />
+                                                </svg>
+                                            </span>
+                                        </span>
+                                    </button>
                                 </div>
                             </div>
                         </div>
-                    </form>
-                    @else
-                    <p>You must be <a href="{{ route('login') }}">logged in</a> to leave a comment.</p>
-                    @endif
+                    </div>
                 </div>
-
             </div>
-        </div>
 
-        {{-- <div class="col-xl-4">
+            {{-- <div class="col-xl-4">
                     <div class="sidebar sidebar-rr-sticky">
                         <div class="sidebar__widget">
                             <h4 class="sidebar__widget-title">Search here</h4>
@@ -344,52 +411,6 @@ function AddWishlist(id) {
         },
     });
 }
-
-
-
-$(document).ready(function() {
-    // Show reply form
-    $('.btn-reply').on('click', function() {
-        const commentId = $(this).data('comment-id');
-        $('#reply-form-' + commentId).toggle();
-    });
-
-    // Handle reply submission
-    $('.replyCommentForm').on('submit', function(event) {
-        event.preventDefault(); // Prevent default form submission
-        const form = $(this);
-        const commentId = form.data('comment-id');
-
-        $.ajax({
-            type: 'POST',
-            url: '{{ route("comments.store") }}', // Update this to your route
-            data: form.serialize(),
-            success: function(response) {
-                // Append the new reply to the replies section
-                $('#replies-' + commentId).prepend(`
-                    <div class="comment-item d-flex align-items-start comment-item__reply mb-30">
-                        <div class="comment-item__img">
-                            <img src="assets/imgs/blog-details/author-${response.user_id}.png" alt="image not found">
-                        </div>
-                        <div class="comment-item__content">
-                            <span class="name">${response.name}</span>
-                            <span class="date mb-10">${response.created_at}</span>
-                            <p class="mb-20">${response.comment}</p>
-                        </div>
-                    </div>
-                `);
-                // Clear the reply form
-                form[0].reset();
-                $('#reply-form-' + commentId).hide();
-            },
-            error: function(xhr) {
-                alert('Error: ' + xhr.responseText);
-            }
-        });
-    });
-});
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </script>
 
 

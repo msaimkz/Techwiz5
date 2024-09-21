@@ -9,7 +9,9 @@ use App\Models\Category;
 use App\Models\SubCategory;
 use App\Models\Product;
 use App\Models\Comment;
+use App\Models\CustomerDetail;
 use App\Models\Wishlist;
+use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
@@ -44,6 +46,16 @@ class FrontController extends Controller
         return view('wishlist',compact('wishlists'));
     }
 
+    public function order(){
+
+        $user = Auth::user();
+
+        $orders = Order::where('user_id', $user->id)->orderBy('created_at', 'DESC')->get();
+
+
+        return view('orders',compact('orders'));
+    }
+
 
     public function cart(){
         $cartItems = Cart::content();
@@ -54,7 +66,7 @@ class FrontController extends Controller
 
     public function checkout(){
         if (Cart::count() == 0) {
-            return redirect()->route('Cart');
+            return redirect()->route('Front.cart');
         }
 
         if (Auth::check() == false) {
@@ -64,11 +76,8 @@ class FrontController extends Controller
         }
 
        
-
-        // $countries = Country::orderBy('name', 'ASC')->get();
-
-        // $Customers = CustomerDetail::where('user_id', Auth::user()->id)->first();
-          $Customers = "";
+        $Customers = CustomerDetail::where('user_id', Auth::user()->id)->first();
+       
         return view('checkout',compact('Customers'));
     }
 

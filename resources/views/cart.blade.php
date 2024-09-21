@@ -137,7 +137,8 @@
                         <div class="pt-5">
                             <button
                                 style="background: #685544;color: white;padding: 10px 17px;font-size: 19px;font-weight: 500;margin-left: 140px;"><a
-                                    href="{{ route('Front.chekout') }}" onMouseOver="this.style.color='white'" class="gear-button">Proceed to
+                                    href="{{ route('Front.chekout') }}" onMouseOver="this.style.color='white'"
+                                    class="gear-button">Proceed to
                                     Checkout</a></button>
                         </div>
                     </div>
@@ -210,8 +211,8 @@ $('.qty-input').change(function() {
                 $(`#total-${item.rowId}`).html('$' + item.price * item.qty)
                 $(`.subtotal`).html('$' + response.subTotal)
             } else {
-                if(response.isZero == true)
-                alert(response.msg)
+                if (response.isZero == true)
+                    alert(response.msg)
                 var item = response.cartitem;
                 $(`#qty-${item.rowId}`).val(item.qty)
 
@@ -249,7 +250,17 @@ function UpdateCart(rowid, qty) {
                 $(`#total-${item.rowId}`).html('$' + item.price * item.qty)
                 $(`.subtotal`).html('$' + response.subTotal)
             } else {
-                alert(response.msg)
+                document.addEventListener('DOMContentLoaded', function() {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error!',
+                        text: response.msg,
+                        showCloseButton: true,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        confirmButtonText: 'OK',
+                    });
+                });
                 var item = response.cartitem;
                 $(`#qty-${item.rowId}`).val(item.qty)
 

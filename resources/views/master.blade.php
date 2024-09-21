@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="{{asset('Asset/decorVista/assets/css/plugins/odometer-theme-default.css')}}">
     <link rel="stylesheet" href="{{asset('Asset/decorVista/assets/css/plugins/carouselTicker.css')}}">
     <link rel="stylesheet" href="{{asset('Asset/decorVista/assets/css/main.css')}}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
 
 
@@ -196,6 +197,11 @@
 
                                                 <li>
                                                     <a href="{{route('Front.wishlist')}}">Wishlist</a>
+
+                                                </li>
+
+                                                <li>
+                                                    <a href="{{route('Front.order')}}">Order</a>
 
                                                 </li>
 
@@ -524,6 +530,7 @@
     <script src="{{asset('Asset/decorVista/assets/js/plugins/TextPlugin.min.js')}}"></script>
     <script src="{{asset('Asset/decorVista/assets/js/main.js')}}"></script>
     <script src="{{asset('Asset/decorVista/assets/js/plugins/magiccursor.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
     <script type="text/javascript">
     $.ajaxSetup({
         headers: {

@@ -35,7 +35,7 @@
                                         <i class="bi bi-cart"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>145</h6>
+                                        <h6>{{  $ThisDaySale }}</h6>
 
 
                                     </div>
@@ -60,7 +60,7 @@
                                         <i class="bi bi-currency-dollar"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>$3,264</h6>
+                                        <h6>${{ number_format($Reveneuthismonth,2) }}</h6>
 
 
                                     </div>
@@ -108,48 +108,38 @@
                                         <tr>
                                             <th scope="col">#</th>
                                             <th scope="col">Customer</th>
-                                            <th scope="col">Product</th>
+                                            <th scope="col">Purchase Date</th>
                                             <th scope="col">Price</th>
                                             <th scope="col">Status</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @if (!empty($orders))
+                                        @foreach ($orders as $order)
                                         <tr>
-                                            <th scope="row"><a href="#">#2457</a></th>
-                                            <td>Brandon Jacob</td>
-                                            <td><a href="#" class="text-primary">At praesentium minu</a></td>
-                                            <td>$64</td>
-                                            <td><span class="badge bg-success">Approved</span></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"><a href="#">#2147</a></th>
-                                            <td>Bridie Kessler</td>
-                                            <td><a href="#" class="text-primary">Blanditiis dolor omnis similique</a>
+                                            <th scope="row"><a href="#">#{{ $order->id }}</a></th>
+                                            <td>{{ $order->first_name }} {{$order->last_name }}</td>
+                                            <td><a href="#"
+                                                    class="text-primary">{{ \Carbon\Carbon::parse($order->created_at)->format('d M ,Y') }}</a>
                                             </td>
-                                            <td>$47</td>
-                                            <td><span class="badge bg-warning">Pending</span></td>
+                                            <td>${{ number_format($order->grand_total,2) }}</td>
+                                            <td>
+                                                @if($order->delivery_status == 'pending')
+                                                <span class="badge bg-danger">Pending</span>
+                                                @elseif($order->delivery_status == 'shipped')
+                                                <span class="badge bg-info">Shipped</span>
+                                                @elseif($order->delivery_status == 'delivered')
+                                                <span class="badge bg-success">Delivered</span>
+                                                @else
+                                                <span class="badge bg-danger">Cancelled</span>
+                                                @endif
+                                            </td>
+                                            
                                         </tr>
-                                        <tr>
-                                            <th scope="row"><a href="#">#2049</a></th>
-                                            <td>Ashleigh Langosh</td>
-                                            <td><a href="#" class="text-primary">At recusandae consectetur</a></td>
-                                            <td>$147</td>
-                                            <td><span class="badge bg-success">Approved</span></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"><a href="#">#2644</a></th>
-                                            <td>Angus Grady</td>
-                                            <td><a href="#" class="text-primar">Ut voluptatem id earum et</a></td>
-                                            <td>$67</td>
-                                            <td><span class="badge bg-danger">Rejected</span></td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"><a href="#">#2644</a></th>
-                                            <td>Raheem Lehner</td>
-                                            <td><a href="#" class="text-primary">Sunt similique distinctio</a></td>
-                                            <td>$165</td>
-                                            <td><span class="badge bg-success">Approved</span></td>
-                                        </tr>
+                                        @endforeach
+
+                                        @endif
+
                                     </tbody>
                                 </table>
 

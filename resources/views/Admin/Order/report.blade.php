@@ -22,7 +22,7 @@
                 <div class="container-fluid my-2">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1>Order: #12</h1>
+                            <h1>Order: #{{ $order->id}}</h1>
                         </div>
                         <div class="col-sm-6 text-right">
                             <a href="{{ route('Admin.order') }}" class="btn btn-primary">Back</a>
@@ -44,19 +44,19 @@
 
                                             <h1 class="h5 mb-3">Shipping Address</h1>
                                             <address>
-                                                <strong>Muhammad Saim</strong><br>
-                                                Shah Faisal Town <br>
-                                                sindh, 12345 Pakistan <br>
-                                                Phone: 12345678910<br>
-                                                Email: msaimkzms2008@gmail.com
+                                                <strong>{{$order->first_name}} {{$order->last_name}}</strong><br>
+                                                {{ $order->address }} <br>
+                                                {{ $order->state }}, {{ $order->zip }}  <br>
+                                                Phone: {{ $order->mobile }}<br>
+                                                Email: {{ $order->email }}
                                             </address>
                                             <h1 class="h5 ">Shipping Date</h1>
                                             <address>
-
-
-
+                                                @if(!empty($order->shipping_date))
+                                                {{ \Carbon\Carbon::parse($order->shipping_date)->format('d M, Y') }}
+                                                @else
                                                 n/a
-
+                                                @endif
                                                 <br>
                                             </address>
                                         </div>
@@ -64,15 +64,22 @@
 
 
 
+
                                         <div class="col-sm-4 invoice-col">
-                                            <b>Invoice #123</b><br>
+                                            <b>Invoice #{{$order->id}}</b><br>
                                             <br>
-                                            <b>Order ID:</b> 123<br>
-                                            <b>Total:</b> $200,00<br>
+                                            <b>Order ID:</b> {{$order->id}}<br>
+                                            <b>Total:</b> ${{number_format($order->grand_total,2)}}<br>
                                             <b>Status:</b>
-
+                                            @if($order->delivery_status == 'pending')
                                             <span class="text-danger">Pending</span>
-
+                                            @elseif($order->delivery_status == 'shipped')
+                                            <span class="text-info">Shipped</span>
+                                            @elseif($order->delivery_status == 'delivered')
+                                            <span class="text-success">Delivered</span>
+                                            @else
+                                            <span class="text-danger">Cancelled</span>
+                                            @endif
                                             <br>
                                         </div>
                                     </div>
@@ -90,23 +97,18 @@
                                         <tbody>
 
 
+                                            @foreach($items as $item)
                                             <tr>
-                                                <td>Lamp</td>
-                                                <td>$200</td>
-                                                <td>1</td>
-                                                <td>$200</td>
+                                                <td>{{ $item->name }}</td>
+                                                <td>${{ number_format($item->price,2) }}</td>
+                                                <td>{{ $item->qty }}</td>
+                                                <td>${{ number_format($item->total,2) }}</td>
                                             </tr>
 
-
-                                            <tr>
-                                                <th colspan="3" class="text-right">Subtotal:</th>
-                                                <td>$300</td>
-                                            </tr>
-
-
+                                            @endforeach
                                             <tr>
                                                 <th colspan="3" class="text-right">Grand Total:</th>
-                                                <td>$400</td>
+                                                <td>${{ number_format($order->grand_total,2)}}</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -115,19 +117,25 @@
                         </div>
                         <div class="col-md-3">
                             <form method="post" id="StatusForm" name="StatusForm">
-                                <div class="card  py-3">
+                                <div class="card py-5">
                                     <div class="card-body">
                                         <h2 class="h4 mb-3">Order Status</h2>
                                         <div class="mb-3">
                                             <select name="status" id="status" class="form-control">
-                                                <option value="pending">Pending
+                                                <option value="pending"
+                                                    {{ ($order->delivery_status == 'pending') ? 'selected' : ' ' }}>
+                                                    Pending
                                                 </option>
-                                                <option value="shipped">Shipped
+                                                <option value="shipped"
+                                                    {{ ($order->delivery_status == 'shipped') ? 'selected' : ' ' }}>
+                                                    Shipped
                                                 </option>
-                                                <option value="delivered">
+                                                <option value="delivered"
+                                                    {{ ($order->delivery_status == 'delivered') ? 'selected' : ' ' }}>
                                                     Delivered
                                                 </option>
-                                                <option value="cancelled">
+                                                <option value="cancelled"
+                                                    {{ ($order->delivery_status == 'cancelled') ? 'selected' : ' ' }}>
                                                     Cancelled
                                                 </option>
                                             </select>

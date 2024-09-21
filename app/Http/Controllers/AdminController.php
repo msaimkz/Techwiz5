@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\TempImage;
 use App\Models\Blog;
 use App\Models\User;
+use App\Models\Order;
+use App\Models\OrderItem;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\File;
 class AdminController extends Controller
@@ -37,14 +39,28 @@ class AdminController extends Controller
             File::delete($Thumbpath);
         }
         TempImage::where('id', $tempImage->id)->delete();
+       
     }
 
     $blogs = Blog::where('status',1)->latest()->limit(5)->get();
 
     $customers = User::where('role','user')->count();
+    $orders = Order::latest()->limit(5)->get();
+
+    $currentdate = Carbon::now()->format('Y-m-d');
+    $thismonthstartDate = Carbon::now()->startOfMonth()->format('Y-m-d');
+
+    $Reveneuthismonth = Order::where('delivery_status', '!=', "cancelled")
+    ->whereDate('created_at', '>=', $thismonthstartDate)
+    ->whereDate('created_at', '<=', $currentdate)
+    ->sum('grand_total');
+
+    $ThisDaySale = Order::where('delivery_status', '!=', "cancelled")
+    ->whereDate('created_at', $currentdate)
+    ->count();
 
 
-    return view('Admin.dashboard',compact('blogs','customers'));
+    return view('Admin.dashboard',compact('blogs','customers','orders','Reveneuthismonth','ThisDaySale'));
  }
 
  public function profile(Request $request){
@@ -56,16 +72,20 @@ class AdminController extends Controller
 
 public function order(Request $request){
 
+
+    $orders = Order::latest()->get();
+
     
     
-    return view('Admin.Order.order');
+    return view('Admin.Order.order',compact('orders'));
 }
 
-public function orderDetail(Request $request){
+public function orderDetail(Request $request,$id){
 
     
-    
-    return view('Admin.Order.report');
+    $order = Order::find($id);
+        $items = OrderItem::where('order_id', $id)->get();
+    return view('Admin.Order.report',compact('order','items'));
 }
 
 }
