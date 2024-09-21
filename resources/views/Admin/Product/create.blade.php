@@ -12,7 +12,7 @@
             <form class="row g-3" id="ProductForm" name="ProductForm" action="" method="post">
                 @csrf
 
-               
+
 
                 <div class="col-md-6">
                     <div class="form-floating">
@@ -34,14 +34,14 @@
                     <select id="category_id" name="category_id" class="form-select" onchange="fetchSubcategories()">
                         <option value="">Select a Category</option>
                         @if (!empty($categories))
-                            @foreach ($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->name }}</option>
-                            @endforeach
+                        @foreach ($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
                         @endif
                     </select>
                     <span></span>
                 </div>
-                
+
                 <div class="col-md-6">
                     <label for="subcategory_id" class="form-label">Sub Category</label>
                     <select id="subcategory_id" name="subcategory_id" class="form-select">
@@ -49,7 +49,7 @@
                     </select>
                     <span></span>
                 </div>
-                
+
                 <div class="col-md-6">
                     <label for="brand_id" class="form-label">Brand</label>
                     <select id="brand_id" name="brand_id" class="form-select">
@@ -80,37 +80,51 @@
                 </div>
                 <div class="col-md-4">
                     <div class="form-floating">
-                        <input type="number" class="form-control" id="height" name="height" placeholder="Height (in inches)">
+                        <input type="number" class="form-control" id="heigth" name="heigth"
+                            placeholder="Height (in inches)">
+                        <span></span>
                         <label for="height">Height (in inches)</label>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-floating">
-                        <input type="number" class="form-control" id="width" name="width" placeholder="Width (in inches)">
+                        <input type="number" class="form-control" id="width" name="width"
+                            placeholder="Width (in inches)">
+                        <span></span>
                         <label for="width">Width (in inches)</label>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-floating">
-                        <input type="number" class="form-control" id="depth" name="depth" placeholder="Depth (in inches)">
+                        <input type="number" class="form-control" id="depth" name="depth"
+                            placeholder="Depth (in inches)">
+                        <span></span>
                         <label for="depth">Depth (in inches)</label>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="form-floating">
                         <input type="text" class="form-control" id="material" name="material" placeholder="Material">
                         <span></span>
+
                         <label for="name">Material</label>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="form-floating">
                         <input type="numeric" class="form-control" id="price" name="price" placeholder="Price">
                         <span></span>
                         <label for="name">Price</label>
                     </div>
                 </div>
-
+                <div class="col-md-4">
+                    <div class="form-floating">
+                        <input type="numeric" class="form-control" id="qty" name="qty" placeholder="Quantity"
+                            value="">
+                        <span></span>
+                        <label for="name">Quantity</label>
+                    </div>
+                </div>
                 <div class="col-md-6">
                     <label for="status" class="form-label">Status</label>
                     <select id="status" name="status" class="form-select">
@@ -119,6 +133,31 @@
                     </select>
                     <span></span>
                 </div>
+               
+                <div class="col-md-8">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea name="description" id="description" cols="30" rows="5" class="form-control">
+                    </textarea>
+                    <span></span>
+                </div>
+                <div class="col-md-8">
+                    <div class="card mb-3">
+                        <div class="card-body pt-4">
+                            <h2 class="h4 mb-3">Media</h2>
+                            <div id="image" class="dropzone dz-clickable p-4">
+                                <div class="dz-message needsclick">
+                                    <br>Drop files here or click to upload.<br><br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" id="tempimage">
+
+                </div>
+
+
 
                 <div class="text-start">
                     <button type="submit" class="btn btn-primary">Create</button>
@@ -150,10 +189,13 @@ type:'post',
 data: element.serializeArray(),
 dataType:'json',
 success:function(response){
-    $('button[type=submit]').prop('disabled', false)
+$('button[type=submit]').prop('disabled', false)
+if(response.ImageLimit == false){
+alert(response.error)
+}
 
 if(response.status == true){
-    window.location.href = "{{ route('Admin.product') }}"
+window.location.href = "{{ route('Admin.product') }}"
 
 $('#name').removeClass('is-invalid').siblings('span').removeClass('invalid-feedback')
 .html('')
@@ -168,7 +210,7 @@ $('#brand_id').removeClass('is-invalid').siblings('span').removeClass('invalid-f
 .html('')
 $('#style_id').removeClass('is-invalid').siblings('span').removeClass('invalid-feedback')
 .html('')
-$('#height').removeClass('is-invalid').siblings('span').removeClass('invalid-feedback')
+$('#heigth').removeClass('is-invalid').siblings('span').removeClass('invalid-feedback')
 .html('')
 $('#width').removeClass('is-invalid').siblings('span').removeClass('invalid-feedback')
 .html('')
@@ -177,6 +219,10 @@ $('#depth').removeClass('is-invalid').siblings('span').removeClass('invalid-feed
 $('#material').removeClass('is-invalid').siblings('span').removeClass('invalid-feedback')
 .html('')
 $('#price').removeClass('is-invalid').siblings('span').removeClass('invalid-feedback')
+.html('')
+$('#qty').removeClass('is-invalid').siblings('span').removeClass('invalid-feedback')
+.html('')
+$('#description').removeClass('is-invalid').siblings('span').removeClass('invalid-feedback')
 .html('')
 
 }
@@ -203,11 +249,25 @@ $('#category_id').addClass('is-invalid').siblings('span').addClass('invalid-feed
 $('#category_id').removeClass('is-invalid').siblings('span').removeClass(
 'invalid-feedback').html('')
 }
-if (error['sub_category_id']) {
-$('#sub_category_id').addClass('is-invalid').siblings('span').addClass('invalid-feedback')
-.html(error['sub_category_id'])
+if (error['qty']) {
+$('#qty').addClass('is-invalid').siblings('span').addClass('invalid-feedback')
+.html(error['qty'])
 } else {
-$('#sub_category_id').removeClass('is-invalid').siblings('span').removeClass(
+$('#qty').removeClass('is-invalid').siblings('span').removeClass(
+'invalid-feedback').html('')
+}
+if (error['description']) {
+$('#description').addClass('is-invalid').siblings('span').addClass('invalid-feedback')
+.html(error['description'])
+} else {
+$('#description').removeClass('is-invalid').siblings('span').removeClass(
+'invalid-feedback').html('')
+}
+if (error['subcategory_id']) {
+$('#subcategory_id').addClass('is-invalid').siblings('span').addClass('invalid-feedback')
+.html(error['subcategory_id'])
+} else {
+$('#subcategory_id').removeClass('is-invalid').siblings('span').removeClass(
 'invalid-feedback').html('')
 }
 if (error['brand_id']) {
@@ -224,11 +284,11 @@ $('#style_id').addClass('is-invalid').siblings('span').addClass('invalid-feedbac
 $('#style_id').removeClass('is-invalid').siblings('span').removeClass(
 'invalid-feedback').html('')
 }
-if (error['height']) {
-$('#height').addClass('is-invalid').siblings('span').addClass('invalid-feedback')
-.html(error['height'])
+if (error['heigth']) {
+$('#heigth').addClass('is-invalid').siblings('span').addClass('invalid-feedback')
+.html(error['heigth'])
 } else {
-$('#height').removeClass('is-invalid').siblings('span').removeClass(
+$('#heigth').removeClass('is-invalid').siblings('span').removeClass(
 'invalid-feedback').html('')
 }
 if (error['width']) {
@@ -284,32 +344,77 @@ $('#slug').val(respose['slug']);
 })
 
 
-    $(document).ready(function() {
-        // Fetch subcategories based on selected category
-        window.fetchSubcategories = function() {
-            var categoryId = $('#category_id').val();
-            $('#subcategory_id').empty().append('<option value="">Select a Sub Category</option>');
-    
-            if (categoryId) {
-                $.ajax({
-                    url: '{{ route("getSubcategories") }}', // Your route to get subcategories
-                    type: 'GET',
-                    data: { category_id: categoryId },
-                    dataType: 'json',
-                    success: function(response) {
-                        if (response.status) {
-                            response.subcategories.forEach(function(subcategory) {
-                                $('#subcategory_id').append(new Option(subcategory.name, subcategory.id));
-                            });
-                        }
-                    },
-                    error: function() {
-                        alert('Error fetching subcategories');
-                    }
-                });
-            }
-        };
-    });
-    
-    
+$(document).ready(function() {
+// Fetch subcategories based on selected category
+window.fetchSubcategories = function() {
+var categoryId = $('#category_id').val();
+$('#subcategory_id').empty().append('<option value="">Select a Sub Category</option>');
+
+if (categoryId) {
+$.ajax({
+url: '{{ route("getSubcategories") }}', // Your route to get subcategories
+type: 'GET',
+data: { category_id: categoryId },
+dataType: 'json',
+success: function(response) {
+if (response.status) {
+response.subcategories.forEach(function(subcategory) {
+$('#subcategory_id').append(new Option(subcategory.name, subcategory.id));
+});
+}
+},
+error: function() {
+alert('Error fetching subcategories');
+}
+});
+}
+};
+});
+
+Dropzone.autoDiscover = false;
+const dropzone = $("#image").dropzone({
+init: function() {
+this.on('addedfile', function(file) {
+$('button[type=submit]').prop('disabled', true)
+if (this.files.length > 4) {
+this.removeFile(file); // Remove the newly added file
+alert('You can only upload a maximum of 4 images.');
+}
+});
+},
+url: "{{ route('Temp-image') }}",
+maxFiles: 4, // Maximum files to allow
+paramName: 'image',
+addRemoveLinks: true,
+acceptedFiles: "image/jpeg,image/png,image/gif,image/webp",
+headers: {
+'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+},
+success: function(file, response) {
+$('button[type=submit]').prop('disabled', false)
+console.log(file);
+var html = `<div class="col-md-3" id="row-image-${response.Image_id}">
+    <div class="card">
+        <input type="hidden" name="img_array[]" value="${response.Image_id}">
+        <img src="${response.Image_path}" class="card-img-top" alt="..." width="100px">
+        <div class="card-body p-4">
+            <a href="javascript:void(0)" onclick="deleteTempImg(${response.Image_id})" class="btn btn-danger">Delete</a>
+        </div>
+    </div>
+</div>`;
+
+$('#tempimage').append(html);
+},
+complete: function(file) {
+// Remove the file from Dropzone after upload
+this.removeFile(file);
+}
+});
+
+
+
+function deleteTempImg(id) {
+$('#row-image-' + id).remove();
+}
+
 @endsection

@@ -6,14 +6,18 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\DesignerController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\TempImageController;
 use App\Http\Controllers\StyleController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\ConsultationController;
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -29,41 +33,103 @@ Route::get('/Blogs',[FrontController::class,'blog'])->name('Front.blog');
 Route::get('/Blog-Detail/{id}',[FrontController::class,'blogDetail'])->name('Front.blog.detail');
 Route::get('/Design',[FrontController::class,'design'])->name('Front.design');
 Route::get('/404',[FrontController::class,'error'])->name('Front.error');
+Route::get('/Cart',[FrontController::class,'cart'])->name('Front.cart');
 Route::get('/Category/{slug}', [FrontController::class, 'category'])->name('Front.category');
+Route::get('/Product-Detail/{id}', [FrontController::class, 'ProductDetail'])->name('Front.product.detail');
 
 
+// Order Routes
+Route::post('/Proceed',[OrderController::class,"proceed"])->name("Proceed");
+
+// Cart Routes
+Route::post('/Add-To-Cart',[CartController::class,"AddtoCart"])->name("AddtoCart");
+Route::post('/Update-Cart',[CartController::class,"UpdateCart"])->name("Update.Cart");
+Route::post('/Input-Update-Cart',[CartController::class,"CheckCart"])->name("Check.Cart");
+Route::post('/Delete-Cart',[CartController::class,"DeleteCart"])->name("Delete.Cart");
+
+// Wishlist Route
+Route::post('/Store-Wishlist', [WishlistController::class, 'store'])->name('Store.Wishlist');
+Route::delete('/Remove-Wishlist/{id}', [WishlistController::class, 'destroy'])->name('Remove.Wishlist');
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Profile Route
+
+
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+Route::get('/My-Wishlist',[FrontController::class,'wishlist'])->name('Front.wishlist');
+Route::get('/My-Orders',[FrontController::class,'order'])->name('Front.order');
+Route::get('/My-Order-Report/{id}',[FrontController::class,'orderDetail'])->name('Front.order.detail');
+
+
 });
 
 
 
 
 
+
+Route::get('/Checkout',[FrontController::class,'checkout'])->name('Front.chekout');
+
+
+Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Route::get('/my-design', function () {
+    return view('my-design');
+});
+
+Route::get('/designer-detail-1', function () {
+    return view('designers.designer-detail-1');
+});
+
+Route::get('/designer-detail-2', function () {
+    return view('designers.designer-detail-2');
+});
+
+Route::get('/designer-detail-3', function () {
+    return view('designers.designer-detail-3');
+});
 
 Route::get('/welcome', function () {
     return view('welcome');
 });
 
+Route::get('/order-detail', function () {
+    return view('order-detail');
+});
+
+Route::get('/booking', function () {
+    return view('booking');
+});
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 
 //Admin Profils
 
 
-Route::group(['middleware' => ['role-access']], function () {
+Route::group(['middleware' => ['auth','role-access']], function () {
 
 Route::get('/Admin/My-Profile',[AdminController::class,'profile'])->name('Admin.profile');
 
 Route::get('/Admin/Dashboard',[AdminController::class,'dashboard'])->name('Admin.dashboard');
 Route::get('/Admin/Order',[AdminController::class,'order'])->name('Admin.order');
+Route::get('/Admin/Order-Report/{id}',[AdminController::class,'orderDetail'])->name('Admin.order.report');
 
 // Category Routes
 
@@ -134,6 +200,8 @@ Route::get('/Admin/Product',[ProductController::class,'index'])->name('Admin.pro
 Route::get('/Admin/Create-Product',[ProductController::class,'create'])->name('Admin.product.create');
 Route::post('/Admin/Store-Product',[ProductController::class,'store'])->name('Admin.product.store');
 Route::get('/Admin/Edit-Product/{id}',[ProductController::class,'edit'])->name('Admin.product.edit');
+Route::delete('/Admin/Delete-Product-Image/',[ProductController::class,'DeleteImage'])->name('Admin.product.delete.image');
+Route::post('/Admin/Update-Product-Image/',[ProductController::class,'ImageUpdate'])->name('Admin.product.update.image');
 Route::post('/Admin/Update-Product/{id}',[ProductController::class,'update'])->name('Admin.product.update');
 Route::delete('/Admin/Delete-Product,/{id}',[ProductController::class,'destroy'])->name('Admin-product-delete');
 Route::get('/get-subcategories', [ProductController::class, 'getSubcategories'])->name('getSubcategories');
@@ -171,6 +239,13 @@ Route::get('/consultations', [ConsultationController::class, 'index'])->name('co
 // Projects Routes
 
 
+// Order
+Route::post('/Admin/Change-Status/{id}', [OrderController::class, 'ChangrStatus'])->name('Change.Order.Status');
+
+
+
+
+Route::post('/Admin/Temp-Images', [TempImageController::class, 'create'])->name('Temp-image');
 
 Route::get('Admin/getSlug', function(Request $request){
 

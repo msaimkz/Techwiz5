@@ -36,7 +36,7 @@
                                     </th>
                                     <th><b>Name</b></th>
                                     <th>Brand</th>
-                                    <th>Style</th>
+                                    <th>Qaunity</th>
                                     <th>Price</th>
                                     <th>Status</th>
                                     <th>Action</th>
@@ -49,8 +49,8 @@
                                 <tr>
                                     <td>{{$product->id}}</td>
                                     <td>{{$product->name}}</td>
-                                    <td>{{$product->brand}}</td>
-                                    <td>{{$product->style}}</td>
+                                    <td>{{$product->brand_name}}</td>
+                                    <td>{{$product->qty}}left in stock</td>
                                     <td>${{$product->price}}/-</td>
                                     <td>
                                         @if($product->status == 1)
@@ -91,9 +91,7 @@
                                                     clip-rule="evenodd"></path>
                                             </svg>
                                         </a>
-                                        <a href="{{ route('Admin.product',$product->id) }}" class="btn btn-success">
-                                            <i class="fa-solid fa-eye"></i>
-                                        </a>
+                                      
                                     </td>
                                 </tr>
                                 @endforeach

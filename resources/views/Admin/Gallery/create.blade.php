@@ -139,7 +139,7 @@ const dropzone = $("#image").dropzone({
             $('button[type=submit]').prop('disabled', true)
             if (this.files.length > 4) {
                 this.removeFile(file); // Remove the newly added file
-                alert('You can only upload a maximum of 4 images.');
+                alert('You can only upload a maximum of 5 images.');
             }
         });
     },

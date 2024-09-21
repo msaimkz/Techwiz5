@@ -26,25 +26,43 @@
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Customer</th>
-                                    <th scope="col">Product</th>
+                                    <th scope="col">Purchase Date</th>
                                     <th scope="col">Price</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @if (!empty($orders))
+                                @foreach ($orders as $order)
                                 <tr>
-                                    <th scope="row"><a href="#">#2457</a></th>
-                                    <td>Brandon Jacob</td>
-                                    <td><a href="#" class="text-primary">At praesentium minu</a></td>
-                                    <td>$64</td>
-                                    <td><span class="badge bg-success">Approved</span></td>
+                                    <th scope="row"><a href="#">#{{ $order->id }}</a></th>
+                                    <td>{{ $order->first_name }} {{$order->last_name }}</td>
+                                    <td><a href="#"
+                                            class="text-primary">{{ \Carbon\Carbon::parse($order->created_at)->format('d M ,Y') }}</a>
+                                    </td>
+                                    <td>${{ number_format($order->grand_total,2) }}</td>
                                     <td>
-                                        <a href="#" class="btn btn-info">
+                                        @if($order->delivery_status == 'pending')
+                                        <span class="badge bg-danger">Pending</span>
+                                        @elseif($order->delivery_status == 'shipped')
+                                        <span class="badge bg-info">Shipped</span>
+                                        @elseif($order->delivery_status == 'delivered')
+                                        <span class="badge bg-success">Delivered</span>
+                                        @else
+                                        <span class="badge bg-danger">Cancelled</span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('Admin.order.report',$order->id) }}" class="btn btn-info">
                                             <i class="fa-solid fa-eye"></i>
                                         </a>
                                     </td>
                                 </tr>
+                                @endforeach
+
+                                @endif
+
 
                             </tbody>
                         </table>

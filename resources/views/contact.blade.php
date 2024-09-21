@@ -82,17 +82,20 @@
                             <div class="col-xl-6">
                                 <div class="contact__form-input">
                                     <input name="name" id="lname" type="text" placeholder="Name">
+                                    <span></span>
                                 </div>
                             </div>
                             <div class="col-xl-6">
                                 <div class="contact__form-input">
                                     <input name="email" id="email" type="email" placeholder="Email">
+                                    <span></span>
                                 </div>
                             </div>
 
                             <div class="col-xl-6">
                                 <div class="contact__form-input">
                                     <input name="number" id="number" type="number" placeholder="Phone">
+                                    <span></span>
                                 </div>
                             </div>
 
@@ -103,13 +106,15 @@
                                         <option value="order">Event Order</option>
                                         <option value="objection">Objection</option>
                                     </select>
+                                    <span></span>
                                 </div>
                             </div>
 
                             <div class="col-sm-12">
                                 <div class="contact__form-input">
                                     <div class="validation__wrapper-up position-relative">
-                                        <textarea name="textarea" id="textarea" placeholder="Type Your Message"></textarea>
+                                        <textarea name="textarea" id="textarea" placeholder="Type Your Message" class=""></textarea>
+                                        <span></span>
                                     </div>
                                 </div>
                             </div>
@@ -117,13 +122,13 @@
                             <div class="col-12">
                                 <button type="submit" class="rr-btn">
                                         <span class="btn-wrap">
-                                            <span class="text-one">Make An Order
+                                            <span class="text-one">Send
                                                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M1 6H11" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                 <path d="M6 1L11 6L6 11" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                 </svg>
                                             </span>
-                                            <span class="text-two">Make An Order
+                                            <span class="text-two">Send
                                                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M1 6H11" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                 <path d="M6 1L11 6L6 11" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>

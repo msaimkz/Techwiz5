@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\TempImage;
 use App\Models\Blog;
 use App\Models\User;
+use App\Models\Order;
+use App\Models\OrderItem;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Auth;
@@ -47,6 +49,8 @@ class AdminController extends Controller
         $user =  $request->user();
         
         return view('Admin.Profile.profile',compact('user'));
+        TempImage::where('id', $tempImage->id)->delete();
+       
     }
 
     public function order(Request $request){

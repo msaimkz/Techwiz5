@@ -7,14 +7,23 @@ use App\Models\Blog;
 use App\Models\Gallery;
 use App\Models\Category;
 use App\Models\SubCategory;
+use App\Models\Product;
+use App\Models\Comment;
+use App\Models\CustomerDetail;
+use App\Models\Wishlist;
+use App\Models\Order;
+use App\Models\OrderItem;
+use Illuminate\Support\Facades\Auth;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 class FrontController extends Controller
 {
     public function index(){
 
-        $blogs = Blog::where('status',1)->latest()->limit(5)->get();
+        $blogs = Blog::where('status',1)->latest()->limit(4)->get();
+        $products = Product::where('status',1)->latest()->limit(4)->get();
 
-        return view('index',compact('blogs'));
+        return view('index',compact('blogs','products'));
     }
 
     public function gallery(){
@@ -28,6 +37,61 @@ class FrontController extends Controller
 
         return view('contact');
     }
+
+    public function wishlist(){
+
+        $user = Auth::user();
+
+        $wishlists = Wishlist::where("user_id", $user->id)->with('product')->get();
+
+        return view('wishlist',compact('wishlists'));
+    }
+
+    public function order(){
+
+        $user = Auth::user();
+
+        $orders = Order::where('user_id', $user->id)->orderBy('created_at', 'DESC')->get();
+
+
+        return view('orders',compact('orders'));
+    }
+
+    public function orderDetail($orderId){
+
+        $order = Order::find($orderId);
+
+        $orderItems = OrderItem::where('order_id', $orderId)->get();
+        $orderCounts = OrderItem::where('order_id', $orderId)->count();
+
+        return view('order-detail',compact('order', 'orderItems', 'orderCounts'));
+    }
+
+
+    public function cart(){
+        $cartItems = Cart::content();
+      
+
+        return view('cart',compact('cartItems'));
+    }
+
+    public function checkout(){
+        if (Cart::count() == 0) {
+            return redirect()->route('Front.cart');
+        }
+
+        if (Auth::check() == false) {
+           
+
+            return redirect()->route('login');
+        }
+
+       
+        $Customers = CustomerDetail::where('user_id', Auth::user()->id)->first();
+       
+        return view('checkout',compact('Customers'));
+    }
+
 
     public function about(){
 
@@ -62,7 +126,15 @@ class FrontController extends Controller
 
         $blog = Blog::find($id);
 
-        return view('blog-detail',compact('blog'));
+        return view('blog-details',compact('blog'));
+    }
+
+    public function ProductDetail(Request $request, $id){
+
+        $product = Product::find($id);
+        $comments = Comment::where('product_id', $id)->with('user')->get();
+
+        return view('detail',compact('product','comments'));
     }
 
     public function design(){
