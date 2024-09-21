@@ -12,6 +12,7 @@ use App\Models\Comment;
 use App\Models\CustomerDetail;
 use App\Models\Wishlist;
 use App\Models\Order;
+use App\Models\OrderItem;
 use Illuminate\Support\Facades\Auth;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
@@ -54,6 +55,16 @@ class FrontController extends Controller
 
 
         return view('orders',compact('orders'));
+    }
+
+    public function orderDetail($orderId){
+
+        $order = Order::find($orderId);
+
+        $orderItems = OrderItem::where('order_id', $orderId)->get();
+        $orderCounts = OrderItem::where('order_id', $orderId)->count();
+
+        return view('order-detail',compact('order', 'orderItems', 'orderCounts'));
     }
 
 

@@ -32,7 +32,7 @@
     <section class=" section-11 ">
         <div class="container  mt-5">
             <div class="row order-row">
-                <div class="col-md-9">
+                <div class="col-md-12">
                     <div style="margin-bottom: 30px;" class="card order-card">
                         <div class="card-header">
                             <h2 style="color: #5e5246;padding: 10px 10px;" class="Order-title mb-0 pt-2 pb-2 nav-nigth">
@@ -86,9 +86,9 @@
                                             <td class="nav-nigth">${{number_format($order->grand_total,2)}}</td>
                                             <td class="nav-nigth">
                                                 <button
-                                                    style="background: #685544;color: white;padding: 10px 17px;font-size: 19px;font-weight: 500;"><a
-                                                        href="{{ route('Front.chekout') }}"
-                                                        onMouseOver="this.style.color='white'"
+                                                    style="background: #685544; color: white; padding: 10px 17px;font-size: 19px;font-weight: 500;"><a
+                                                        href="{{ route('Front.order.detail',$order->id) }}"
+                                                        onMouseHover="this.style.color='white'"
                                                         class="gear-button">View More</a></button>
                                             </td>
                                         </tr>

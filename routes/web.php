@@ -56,6 +56,7 @@ Route::delete('/Remove-Wishlist/{id}', [WishlistController::class, 'destroy'])->
 Route::middleware('auth')->group(function () {
 Route::get('/My-Wishlist',[FrontController::class,'wishlist'])->name('Front.wishlist');
 Route::get('/My-Orders',[FrontController::class,'order'])->name('Front.order');
+Route::get('/My-Order-Report/{id}',[FrontController::class,'orderDetail'])->name('Front.order.detail');
 
 
 });
@@ -64,19 +65,12 @@ Route::get('/My-Orders',[FrontController::class,'order'])->name('Front.order');
 
 
 
-
-// Route::get('/Checkout',[FrontController::class,'checkout'])->name('Front.chekout');
 
 Route::get('/Checkout',[FrontController::class,'checkout'])->name('Front.chekout');
 
 
-// Route::get('/Checkout', function () {
-//     return view('checkout');
-// });
-// Route to store a comment
 Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
 
-});
 
 
 
@@ -86,9 +80,7 @@ Route::post('/comments', [CommentController::class, 'store'])->name('comments.st
 
 
 
-Route::get('/Checkout', function () {
-    return view('checkout');
-});
+
 
 
 
@@ -218,6 +210,10 @@ Route::get('/get-subcategories', [ProductController::class, 'getSubcategories'])
 
 
 // Temp Images Route
+
+// Order
+Route::post('/Admin/Change-Status/{id}', [OrderController::class, 'ChangrStatus'])->name('Change.Order.Status');
+
 
 
 

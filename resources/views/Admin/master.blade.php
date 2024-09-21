@@ -33,6 +33,8 @@
     <link href="{{ asset('Asset/Admin/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
     <link href="{{ asset('Asset/Admin/vendor/simple-datatables/style.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('Asset/Admin/js/dropzone/dropzone.css')}}">
+   <link rel="stylesheet" href="{{asset('Asset/Admin/css/datetimepicker.css')}}">
+
 
     <!-- Template Main CSS File -->
     <link href="{{asset('Asset/Admin/css/style.css')}}" rel="stylesheet">
@@ -67,7 +69,8 @@
 
                 <li class="nav-item dropdown pe-3">
 
-                    <a class="nav-link nav-profile d-flex align-items-center pe-0" href="{{ route('Admin.dashboard') }}" data-bs-toggle="dropdown">
+                    <a class="nav-link nav-profile d-flex align-items-center pe-0" href="{{ route('Admin.dashboard') }}"
+                        data-bs-toggle="dropdown">
                         <img src="{{asset('Asset/Admin/img/profile-img.jpg')}}" alt="Profile" class="rounded-circle">
                         <span class="d-none d-md-block dropdown-toggle ps-2">{{ Auth::user()->name }}</span>
                     </a><!-- End Profile Iamge Icon -->
@@ -98,8 +101,7 @@
                         <li>
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
-                                <a class="dropdown-item d-flex align-items-center"  href="route('logout')"
-                                    onclick="event.preventDefault();
+                                <a class="dropdown-item d-flex align-items-center" href="route('logout')" onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                                     <i class="bi bi-box-arrow-right"></i>
                                     <span>Sign Out</span>
@@ -144,7 +146,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="{{ route('Admin.brand') }}">
-                <i class="fa-solid fa-layer-group"></i>
+                    <i class="fa-solid fa-layer-group"></i>
                     <span>Brands</span>
                 </a>
             </li>
@@ -223,6 +225,8 @@
     <script src="{{ asset('Asset/Admin/vendor/simple-datatables/simple-datatables.js') }}"></script>
     <script src="{{asset('Asset/Admin/vendor/tinymce/tinymce.min.js')}}"></script>
     <script src="{{ asset('Asset/Admin/vendor/php-email-form/validate.js') }}"></script>
+    <script src="{{asset('Asset/Admin/js/datetimepicker.js')}}"></script>
+
 
     <script type="text/javascript">
     $.ajaxSetup({

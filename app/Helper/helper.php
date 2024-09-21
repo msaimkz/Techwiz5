@@ -8,6 +8,8 @@ use App\Models\ProductImage;
  function Category(){
 
     $categories = Category::where('status',1)->get();
+    
+   
 
     return $categories;
 

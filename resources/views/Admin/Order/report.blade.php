@@ -16,7 +16,7 @@
     </div><!-- End Page Title -->
     <section class="section">
         <div class="content-wrapper">
-            @include("Message.message")
+ 
             <!-- Content Header (Page header) -->
             <section class="content-header">
                 <div class="container-fluid my-2">
@@ -143,7 +143,7 @@
                                         <div class="mb-3">
                                             <label for="shipping_date">Shipped Date</label>
                                             <input type="text" class="form-control" autocomplete="off"
-                                                name="shipping_date" id="shipping_date">
+                                                name="shipping_date" id="shipping_date" value="{{ ($order->shipping_date) ? $order->shipping_date : ''  }}">
                                         </div>
                                         <div class="mb-3">
                                             <button class="btn btn-primary">Update</button>
@@ -165,4 +165,32 @@
 </main><!-- End #main -->
 
 
+@endsection
+
+@section('js')
+$(document).ready(function() {
+    $('#shipping_date').datetimepicker({
+        // options here
+        format: 'Y-m-d H:i:s',
+    });
+
+});
+$('#StatusForm').submit(function(event) {
+    event.preventDefault();
+    if (confirm("Are you want to Sure Change Order Status")) {
+        $.ajax({
+            url: '{{ route("Change.Order.Status",$order->id) }}',
+            type: 'post',
+            data: $(this).serializeArray(),
+            dataType: 'json',
+            success: function(response) {
+
+                window.location.href = "{{ route('Admin.order.report',$order->id) }}"
+
+            }
+
+
+        })
+    }
+})
 @endsection
