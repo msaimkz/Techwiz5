@@ -12,6 +12,7 @@ use App\Http\Controllers\StyleController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
@@ -33,6 +34,9 @@ Route::get('/Cart',[FrontController::class,'cart'])->name('Front.cart');
 Route::get('/Category/{slug}', [FrontController::class, 'category'])->name('Front.category');
 Route::get('/Product-Detail/{id}', [FrontController::class, 'ProductDetail'])->name('Front.product.detail');
 
+
+// Order Routes
+Route::post('/Proceed',[OrderController::class,"proceed"])->name("Proceed");
 
 // Cart Routes
 Route::post('/Add-To-Cart',[CartController::class,"AddtoCart"])->name("AddtoCart");
@@ -66,8 +70,12 @@ Route::post('/comments', [CommentController::class, 'store'])->name('comments.st
 
 
 
+Route::get('/Checkout',[FrontController::class,'checkout'])->name('Front.chekout');
 
 
+// Route::get('/Checkout', function () {
+//     return view('checkout');
+// });
 
 
 
