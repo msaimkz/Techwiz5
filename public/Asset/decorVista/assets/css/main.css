@@ -15968,14 +15968,17 @@ font-size: 20px;
 
 .summery-end {
 padding-top: 20px;
-border-top: 1px solid #46464969;
+border-top: 1px solid #46464969;pdf
 }
 
 .apply-coupan input {
 padding: 15px;
 font-family: "jost", sans-serif;
 }
-
+body.nigth .card-body ul li {
+  background-color: #000;
+  border: 2px solid #fff;
+}
 #button-addon2 {
 font-size: 19px;
 font-weight: 500;
@@ -16209,15 +16212,16 @@ font-size: 23px;
 
 .download-pdf-button {
 float: right;
+margin-top: 35px;
 margin-right: 105px;
 font-size: 18px;
 font-weight: 600;
 font-family: "jost", sans-serif;
 text-decoration: none;
 padding: 7px 20px;
-background-color: #23b24c;
+background-color: #685642;
 color: #fff;
-border: 1px solid #23b24c;
+border: 1px solid #685642;
 display: inline-block;
 transition: all 0.5s;
 }

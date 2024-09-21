@@ -65,12 +65,30 @@ Route::get('/My-Orders',[FrontController::class,'order'])->name('Front.order');
 
 
 
+// Route::get('/Checkout',[FrontController::class,'checkout'])->name('Front.chekout');
+
 Route::get('/Checkout',[FrontController::class,'checkout'])->name('Front.chekout');
 
 
 // Route::get('/Checkout', function () {
 //     return view('checkout');
 // });
+// Route to store a comment
+Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
+
+});
+
+
+
+
+
+
+
+
+
+Route::get('/Checkout', function () {
+    return view('checkout');
+});
 
 
 
@@ -92,6 +110,14 @@ Route::get('/designer-detail-3', function () {
 
 Route::get('/welcome', function () {
     return view('welcome');
+});
+
+Route::get('/order-detail', function () {
+    return view('order-detail');
+});
+
+Route::get('/booking', function () {
+    return view('booking');
 });
 
 Route::get('/dashboard', function () {
