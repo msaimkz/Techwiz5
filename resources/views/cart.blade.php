@@ -63,7 +63,7 @@
                         </thead>
                         <tbody style="font-size: 28px;color: #000;font-weight: 400;" class="cart-tbody">
                             @foreach($cartItems as $cartItem)
-                            <tr>
+                            <tr id="item-{{ $cartItem->rowId }}">
                                 <td>
                                     <div class="d-flex align-items-center justify-content-start">
                                         @if(!empty($cartItem->options->productImage->image))
@@ -76,7 +76,8 @@
                                         <h3 style="margin-left: 14px;" class="nav-nigth">{{ $cartItem->name }}</h3>
                                     </div>
                                 </td>
-                                <td style="padding-top: 25px;font-weight: 600;" class="nav-nigth" id = "price-{{ $cartItem->rowId }}">
+                                <td style="padding-top: 25px;font-weight: 600;" class="nav-nigth"
+                                    id="price-{{ $cartItem->rowId }}">
                                     ${{ $cartItem->price }}</td>
                                 <td>
 
@@ -90,7 +91,9 @@
 
                                         <input type="text"
                                             style="width: 40px; color: #525368; background-color: #fff; border: none; border-radius: 4px;"
-                                            class="form-control form-control-sm" id = "qty-{{ $cartItem->rowId }}" value="{{ $cartItem->qty }}">
+                                            class="form-control form-control-sm qty-input"
+                                            id="qty-{{ $cartItem->rowId }}" value="{{ $cartItem->qty }}"
+                                            data-id="{{ $cartItem->rowId }}" readonly>
 
                                         <button class="btn btn-sm btn-plus p-2 pt-1 pb-1 add gear-button"
                                             data-id="{{$cartItem->rowId}}"
@@ -100,12 +103,13 @@
                                     </div>
 
                                 </td>
-                                <td style="padding-top: 25px;font-weight: 600;" id = "total-{{ $cartItem->rowId }}" class="nav-nigth">
+                                <td style="padding-top: 25px;font-weight: 600;" id="total-{{ $cartItem->rowId }}"
+                                    class="nav-nigth">
                                     ${{$cartItem->price * $cartItem->qty}}
                                 </td>
                                 <td>
-                                    <button style="margin-left: 61px; margin-top: 25px;" 
-                                        class="btn btn-sm btn-danger" onclick="DeleteCart('{{$cartItem->rowId}}')"><i style="font-size: 17px;"
+                                    <button style="margin-left: 61px; margin-top: 25px;" class="btn btn-sm btn-danger"
+                                        onclick="DeleteCart('{{$cartItem->rowId}}')"><i style="font-size: 17px;"
                                             class="fa fa-times"></i></button>
                                 </td>
                             </tr>
@@ -182,6 +186,48 @@ $('.sub').click(function() {
 });
 
 
+$('.qty-input').change(function() {
+
+    var rowid = $(this).data("id");
+    var qty = $(this).val();
+
+    $.ajax({
+        url: '{{route("Check.Cart")}}',
+        type: 'post',
+        data: {
+            rowid: rowid,
+            qty: qty,
+
+        },
+        dataType: 'json',
+        success: function(response) {
+            if (response.status == true) {
+                var item = response.cartitem;
+
+
+                $(`#price-${item.rowId}`).html('$' + item.price)
+                $(`#qty-${item.rowId}`).val(item.qty)
+                $(`#total-${item.rowId}`).html('$' + item.price * item.qty)
+                $(`.subtotal`).html('$' + response.subTotal)
+            } else {
+                if(response.isZero == true)
+                alert(response.msg)
+                var item = response.cartitem;
+                $(`#qty-${item.rowId}`).val(item.qty)
+
+            }
+
+
+
+
+        },
+
+    })
+})
+
+
+
+
 function UpdateCart(rowid, qty) {
 
     $.ajax({
@@ -194,20 +240,31 @@ function UpdateCart(rowid, qty) {
         },
         dataType: 'json',
         success: function(response) {
+            if (response.status == true) {
+                var item = response.cartitem;
 
-          var  item = response.cartitem;
-    
 
-           $(`#price-${item.rowId}`).html('$' + item.price)
-           $(`#qty-${item.rowId}`).val(item.qty)
-           $(`#total-${item.rowId}`).html('$' + item.price * item.qty)
-           $(`.subtotal`).html('$' + response.subTotal)
-           
+                $(`#price-${item.rowId}`).html('$' + item.price)
+                $(`#qty-${item.rowId}`).val(item.qty)
+                $(`#total-${item.rowId}`).html('$' + item.price * item.qty)
+                $(`.subtotal`).html('$' + response.subTotal)
+            } else {
+                alert(response.msg)
+                var item = response.cartitem;
+                $(`#qty-${item.rowId}`).val(item.qty)
+
+            }
+
+
+
+
         },
 
     })
 
 }
+
+
 
 function DeleteCart(rowid) {
     if (confirm("Are You Want to Delete")) {
@@ -219,7 +276,17 @@ function DeleteCart(rowid) {
             },
             dataType: 'json',
             success: function(response) {
-                window.location.href = "{{route('Front.cart')}}"
+
+                if (response.status == true) {
+                    $(`#item-${response.rowid}`).remove()
+                    $(`.subtotal`).html('$' + response.subTotal)
+                    if (response.CartCount == 0) {
+                        window.location.href = " {{ route('Front.cart') }} "
+                    }
+
+
+                }
+
             },
 
         })

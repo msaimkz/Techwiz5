@@ -35,6 +35,7 @@ Route::get('/Product-Detail/{id}', [FrontController::class, 'ProductDetail'])->n
 // Cart Routes
 Route::post('/Add-To-Cart',[CartController::class,"AddtoCart"])->name("AddtoCart");
 Route::post('/Update-Cart',[CartController::class,"UpdateCart"])->name("Update.Cart");
+Route::post('/Input-Update-Cart',[CartController::class,"CheckCart"])->name("Check.Cart");
 Route::post('/Delete-Cart',[CartController::class,"DeleteCart"])->name("Delete.Cart");
 
 
