@@ -29,6 +29,9 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+
+        
+        
         $request->validate([
             'name' => ['required', 'string', 'min:3', new Alpha],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
@@ -40,6 +43,7 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'contact' => $request->phone,
+            'role' => $request->role,
             'password' => Hash::make($request->password),
         ]);
 
@@ -51,7 +55,14 @@ class RegisteredUserController extends Controller
         {
             return redirect()->route('Admin.dashboard');
         }
-
-        return redirect()->route('Front.index');
+        else if(Auth::user()->role == "designer")
+        {
+            return redirect()->route('designer.dashboard');
+        }
+        else 
+        {
+            return redirect()->route('Front.index');
+        }
+      
     }
 }

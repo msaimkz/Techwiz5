@@ -38,7 +38,30 @@
     <link href="{{asset('Asset/Admin/css/style.css')}}" rel="stylesheet">
 
     <meta name="csrf-token" content="{{csrf_token()}}">
-
+    <style>
+        .form-check-input:checked + .form-check-label::before {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 18px;
+            height: 18px;
+            background-color: #007bff;
+            border-radius: 3px;
+            border: 2px solid #007bff;
+        }
+    
+        .form-check-input:checked + .form-check-label {
+            font-weight: bold;
+            color: #007bff;
+        }
+    
+        .form-check:hover {
+            background-color: #f1f1f1;
+            cursor: pointer;
+        }
+    </style>
 
 </head>
 
@@ -48,7 +71,7 @@
     <header id="header" class="header fixed-top d-flex align-items-center">
 
         <div class="d-flex align-items-center justify-content-between">
-            <a href="{{route('Admin.dashboard')}}" class="logo d-flex align-items-center">
+            <a href="{{route('designer.dashboard')}}" class="logo d-flex align-items-center">
                 <img src="{{ asset('Asset/Admin/img/logo.png') }}" alt="">
                 <span class="d-none d-lg-block">Decor Vista</span>
             </a>
@@ -67,7 +90,7 @@
 
                 <li class="nav-item dropdown pe-3">
 
-                    <a class="nav-link nav-profile d-flex align-items-center pe-0" href="{{ route('Admin.dashboard') }}" data-bs-toggle="dropdown">
+                    <a class="nav-link nav-profile d-flex align-items-center pe-0" href="{{ route('designer.dashboard') }}" data-bs-toggle="dropdown">
                         <img src="{{asset('Asset/Admin/img/profile-img.jpg')}}" alt="Profile" class="rounded-circle">
                         <span class="d-none d-md-block dropdown-toggle ps-2">{{ Auth::user()->name }}</span>
                     </a><!-- End Profile Iamge Icon -->
@@ -75,14 +98,14 @@
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
                             <h6>{{ Auth::user()->name }}</h6>
-                            <span>Admin</span>
+                            <span>Designer</span>
                         </li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
 
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="{{ route('Admin.profile') }}">
+                            <a class="dropdown-item d-flex align-items-center" href="{{ route('designer.profile') }}">
                                 <i class="bi bi-person"></i>
                                 <span>My Profile</span>
                             </a>
@@ -123,74 +146,46 @@
         <ul class="sidebar-nav" id="sidebar-nav">
 
             <li class="nav-item">
-                <a class="nav-link " href="{{ route('Admin.dashboard') }}">
+                <a class="nav-link " href="{{ route('designer.dashboard') }}">
                     <i class="bi bi-grid"></i>
                     <span>Dashboard</span>
                 </a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('Admin.category') }}">
-                    <i class="fa-solid fa-list"></i>
-                    <span>Category</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('Admin.sub-category') }}">
-                    <i class="fa-solid fa-layer-group"></i>
-                    <span>Sub Category</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('Admin.brand') }}">
-                <i class="fa-solid fa-layer-group"></i>
-                    <span>Brands</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('Admin.style') }}">
-                    <i class="fa-solid fa-shapes"></i>
-                    <span>Style</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('Admin.product') }}">
-                    <i class="fa-solid fa-shapes"></i>
-                    <span>Products</span>
-                </a>
-            </li>
-
-
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="{{route('Admin.gallery')}}">
-                    <i class="bi bi-images"></i>
-                    <span>Gallery</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('Admin.order') }}">
-                    <i class="bi bi-box2-fill"></i>
-                    <span>Order</span>
-                </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ url('/admin/users') }}">
+                <a class="nav-link collapsed" href="{{ route('Designer.project') }}">
                     <i class="bi bi-person"></i>
-                    <span>Users</span>
+                    <span>Projects</span>
                 </a>
             </li>
-
             <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ url('Admin/Blog') }}">
-                    <i class="bi bi-newspaper"></i>
-                    <span>Blogs</span>
+                <a class="nav-link collapsed" href="{{ route('Designer.Portfolio.create') }}">
+                    <i class="bi bi-person"></i>
+                    <span>Portfolio</span>
                 </a>
             </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link collapsed dropdown-toggle" href="#" id="consultationsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-person"></i>
+                    <span>Consultations</span>
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="consultationsDropdown">
+                    <li>
+                        <a class="dropdown-item" href="{{ route('consultations.create') }}">
+                            Create Consultation
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" href="{{ route('consultations.index') }}">
+                            View Consultations
+                        </a>
+                    </li>
+                    <!-- Add more dropdown items as needed -->
+                </ul>
+            </li>
+            
+            
+
 
 
         </ul>

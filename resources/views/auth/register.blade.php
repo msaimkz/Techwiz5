@@ -19,10 +19,16 @@
 
         <div class="mt-4">
             <x-input-label for="phone" :value="__('Phone')" />
-            <x-text-input id="phone" class="block mt-1 w-full" type="number" name="phone" :value="old('phone')" required autocomplete="username" />
+            <x-text-input id="phone" class="block mt-1 w-full" type="text" name="phone" :value="old('phone')" required autocomplete="username" />
             <x-input-error :messages="$errors->get('phone')" class="mt-2" />
         </div>
-
+        <div class="mt-4">
+            <x-input-label for="role" :value="__('Role')" />
+          
+            <x-text-input id="role" class="block mt-1" type="radio" name="role"  required value="user"  />User
+            <x-text-input id="role" class="block mt-1" type="radio" name="role"  required value="designer" />Designer
+            <x-input-error :messages="$errors->get('role')" class="mt-2" />
+        </div>
         
 
         <!-- Password -->

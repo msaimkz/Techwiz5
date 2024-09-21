@@ -8,58 +8,57 @@ use App\Models\Blog;
 use App\Models\User;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Auth;
 class AdminController extends Controller
 {
 
-    
- public function dashboard(){
+     public function dashboard()
+     {
 
-    // Delete Temp images here
+        $lastBeforeDate = Carbon::now()->subDay(1)->format('Y-m-d H:i:s');
+        $tempImages = TempImage::where('created_at', '<=', $lastBeforeDate)->get();
 
-    $lastBeforeDate = Carbon::now()->subDay(1)->format('Y-m-d H:i:s');
-    $tempImages = TempImage::where('created_at', '<=', $lastBeforeDate)->get();
+        foreach ($tempImages as $tempImage) {
 
-    foreach ($tempImages as $tempImage) {
+            $path = public_path('/temp/' . $tempImage->image);
+            $Thumbpath = public_path('/temp/thumb/' . $tempImage->image);
+            if (File::exists($path)) {
+                File::delete($path);
+            }
 
-        $path = public_path('/temp/' . $tempImage->image);
-        $Thumbpath = public_path('/temp/thumb/' . $tempImage->image);
+            // Thmb Images Delete Here
 
-
-
-
-        if (File::exists($path)) {
-            File::delete($path);
+            if (File::exists($Thumbpath)) {
+                File::delete($Thumbpath);
+            }
+            TempImage::where('id', $tempImage->id)->delete();
         }
 
-        // Thmb Images Delete Here
+            $blogs = Blog::where('status',1)->latest()->limit(5)->get();
 
-        if (File::exists($Thumbpath)) {
-            File::delete($Thumbpath);
+            $customers = User::where('role','user')->count();
+
+
+            return view('Admin.dashboard',compact('blogs','customers'));
         }
-        TempImage::where('id', $tempImage->id)->delete();
+
+    public function profile(Request $request){
+
+        $user =  $request->user();
+        
+        return view('Admin.Profile.profile',compact('user'));
     }
 
-    $blogs = Blog::where('status',1)->latest()->limit(5)->get();
+    public function order(Request $request){
+        
+        return view('Admin.Order.order');
+    }
+    public function logout()
+    {
+        Auth::logout();
 
-    $customers = User::where('role','user')->count();
-
-
-    return view('Admin.dashboard',compact('blogs','customers'));
- }
-
- public function profile(Request $request){
-
-    $user =  $request->user();
-    
-    return view('Admin.Profile.profile',compact('user'));
-}
-
-public function order(Request $request){
-
-    
-    
-    return view('Admin.Order.order');
-}
+        return redirect()->route('login')->with('success', 'You have been logged out successfully.');
+    }
 
 }
 

@@ -28,7 +28,7 @@
 
 
                         <!-- Table with stripped rows -->
-                        <table class="table datatable">
+                        <table class="table datatable" id="myTable">
                             <thead>
                                 <tr>
                                     <th>

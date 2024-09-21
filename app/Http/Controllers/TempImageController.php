@@ -21,21 +21,21 @@ class TempImageController extends Controller
             $Temp = new TempImage();
             $Temp->image = 'null';
             $Temp->save();
-
+            
             $ImgNew = $Temp->id.'-'.time().'.'.$ext;
             $Temp->image = $ImgNew;
             $Temp->save();
-
+            
             $image->move(public_path().'/temp',$ImgNew);
-
+            
             $manager = new ImageManager(new Driver());
             $spath = public_path().'/temp/'.$ImgNew;
             $dpath = public_path().'/temp/thumb/'.$ImgNew;
             $image = $manager->read($spath);
             $image->cover(300,275);
             $image->save($dpath);
-          
-
+            
+        
 
             return response()->json([
                 'status' => true,

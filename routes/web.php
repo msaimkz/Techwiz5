@@ -5,12 +5,15 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SubCategoryController;
+use App\Http\Controllers\DesignerController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\TempImageController;
 use App\Http\Controllers\StyleController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\FrontController;
+use App\Http\Controllers\ConsultationController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -50,15 +53,7 @@ Route::get('/welcome', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
 
 //Admin Profils
 
@@ -143,14 +138,39 @@ Route::post('/Admin/Update-Product/{id}',[ProductController::class,'update'])->n
 Route::delete('/Admin/Delete-Product,/{id}',[ProductController::class,'destroy'])->name('Admin-product-delete');
 Route::get('/get-subcategories', [ProductController::class, 'getSubcategories'])->name('getSubcategories');
 
+});
 
-// Temp Images Route
 
 Route::post('/Admin/Temp-Images', [TempImageController::class, 'create'])->name('Temp-image');
-Route::get('/Admin/Temp-Imag', [AdminController::class, 'delete'])->name('Temp');
+//Designer Controller
+Route::get('/Designer/My-Profile',[DesignerController::class,'profile'])->name('designer.profile');
+Route::get('/Designer/Dashboard',[DesignerController::class,'dashboard'])->name('designer.dashboard');
+
+Route::get('/Designer/Create-Designer',[DesignerController::class,'create'])->name('Designer.Portfolio.create');
+Route::post('/portfolio/store', [DesignerController::class, 'store'])->name('portfolio.store');
+Route::get('/Designer/portfolios', [DesignerController::class, 'portfolio'])->name('portfolio.index');
+Route::delete('/portfolios/{id}', [DesignerController::class, 'destroy'])->name('portfolio.delete');
+// Designer Routes
+Route::get('/Designer/Project',[ProjectController::class,'index'])->name('Designer.project');
+Route::get('/Designer/Create-Project',[ProjectController::class,'create'])->name('Designer.project.create');
+Route::post('/Designer/Store-Project',[ProjectController::class,'store'])->name('Designer.project.store');
+Route::get('/Designer/Edit-Project/{id}',[ProjectController::class,'edit'])->name('Designer.project.edit');
+Route::delete('/Designer/Delete-Project-Image/',[ProjectController::class,'DeleteImage'])->name('Designer.project.delete.image');
+Route::post('/Designer/Update-Project-Image/',[ProjectController::class,'ImageUpdate'])->name('Designer.project.update.image');
+Route::post('/Designer/Update-Project/{id}',[ProjectController::class,'update'])->name('Designer.project.update');
+Route::delete('/Designer/Delete-Project,/{id}',[ProjectController::class,'destroy'])->name('Designer.project.delete');
+
+//Consultation Routes
+
+Route::get('/consultations/create', [ConsultationController::class, 'create'])->name('consultations.create');
+Route::post('/consultations/store', [ConsultationController::class, 'store'])->name('consultations.store');
+Route::get('/consultations', [ConsultationController::class, 'index'])->name('consultations.index');
 
 
-});
+
+// Projects Routes
+
+
 
 Route::get('Admin/getSlug', function(Request $request){
 

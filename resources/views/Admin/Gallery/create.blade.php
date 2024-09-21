@@ -176,6 +176,7 @@ $('button[type=submit]').prop('disabled', false)
 
 function deleteTempImg(id) {
 $('#row-image-' + id).remove();
+
 }
 
 @endsection

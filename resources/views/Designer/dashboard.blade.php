@@ -1,14 +1,14 @@
-@extends('Admin.master')
+@extends('Designer.master')
 
 @section('content')
 <main id="main" class="main">
 
     <div class="pagetitle">
-        <h1>Dashboard</h1>
+        <h1>Designer Dashboard</h1>
         <nav>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="{{route('Admin.dashboard')}}">Home</a></li>
-                <li class="breadcrumb-item active">Dashboard</li>
+                <li class="breadcrumb-item"><a href="{{route('designer.dashboard')}}">Home</a></li>
+                <li class="breadcrumb-item active">Designer Dashboard</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
@@ -35,7 +35,7 @@
                                         <i class="bi bi-cart"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>145</h6>
+                                        <h6>76</h6>
 
 
                                     </div>
@@ -85,7 +85,7 @@
                                         <i class="bi bi-people"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>{{ $customers }}</h6>
+                                        <h6>54</h6>
 
 
                                     </div>

@@ -32,8 +32,16 @@ class AuthenticatedSessionController extends Controller
         {
             return redirect()->route('Admin.dashboard');
         }
+        else if(Auth::user()->role == "designer")
+        {
+            return redirect()->route('designer.dashboard');
+        }
+        else 
+        {
+            return redirect()->route('Front.index');
+        }
 
-        return redirect()->route('Front.index');
+        // return redirect()->route('Front.index');
     }
 
     /**

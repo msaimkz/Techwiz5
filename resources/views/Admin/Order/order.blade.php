@@ -21,7 +21,7 @@
                 <div class="card recent-sales overflow-auto">
                     <div class="card-body">
                         <h5 class="card-title">Recent Sales</h5>
-                        <table class="table table-borderless datatable">
+                        <table class="table table-borderless datatable" id="myTable">
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>

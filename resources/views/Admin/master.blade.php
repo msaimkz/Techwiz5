@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">0
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -33,6 +34,7 @@
     <link href="{{ asset('Asset/Admin/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
     <link href="{{ asset('Asset/Admin/vendor/simple-datatables/style.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('Asset/Admin/js/dropzone/dropzone.css')}}">
+    
 
     <!-- Template Main CSS File -->
     <link href="{{asset('Asset/Admin/css/style.css')}}" rel="stylesheet">
@@ -223,6 +225,8 @@
     <script src="{{ asset('Asset/Admin/vendor/simple-datatables/simple-datatables.js') }}"></script>
     <script src="{{asset('Asset/Admin/vendor/tinymce/tinymce.min.js')}}"></script>
     <script src="{{ asset('Asset/Admin/vendor/php-email-form/validate.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 
     <script type="text/javascript">
     $.ajaxSetup({
@@ -239,6 +243,11 @@
     <script>
     @yield('js')
     </script>
+    <script>
+        $(document).ready(function() {
+            $('#myTable').DataTable();
+        });
+        </script>
 
 
 </body>

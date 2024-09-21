@@ -11,8 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('image')->nullable()->after('role');
+        Schema::create('projects_images', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('project_id')->constrained('projects')->onDelete('cascade');
+            $table->string('image');
+            $table->timestamps();
         });
     }
 
@@ -21,8 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('projects_images');
     }
 };
