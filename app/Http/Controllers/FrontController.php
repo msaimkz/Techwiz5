@@ -8,6 +8,7 @@ use App\Models\Gallery;
 use App\Models\Category;
 use App\Models\SubCategory;
 use App\Models\Product;
+use App\Models\Comment;
 use App\Models\Wishlist;
 use Illuminate\Support\Facades\Auth;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -111,8 +112,9 @@ class FrontController extends Controller
     public function ProductDetail(Request $request, $id){
 
         $product = Product::find($id);
+        $comments = Comment::where('product_id', $id)->with('user')->get();
 
-        return view('detail',compact('product'));
+        return view('detail',compact('product','comments'));
     }
 
     public function design(){

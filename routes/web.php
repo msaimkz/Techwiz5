@@ -13,6 +13,7 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\FrontController;
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -51,6 +52,12 @@ Route::delete('/Remove-Wishlist/{id}', [WishlistController::class, 'destroy'])->
 Route::middleware('auth')->group(function () {
 Route::get('/My-Wishlist',[FrontController::class,'wishlist'])->name('Front.wishlist');
 Route::get('/Checkout',[FrontController::class,'checkout'])->name('Front.chekout');
+
+// Route to display the product details, including the comments section
+Route::get('/product/{id}', 'ProductController@show')->name('product.show');
+
+// Route to store a comment
+Route::post('/comments', [CommentController::class, 'store'])->name('comments.store');
 
 });
 
