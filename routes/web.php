@@ -11,6 +11,7 @@ use App\Http\Controllers\TempImageController;
 use App\Http\Controllers\StyleController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\FrontController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -37,6 +38,16 @@ Route::post('/Add-To-Cart',[CartController::class,"AddtoCart"])->name("AddtoCart
 Route::post('/Update-Cart',[CartController::class,"UpdateCart"])->name("Update.Cart");
 Route::post('/Input-Update-Cart',[CartController::class,"CheckCart"])->name("Check.Cart");
 Route::post('/Delete-Cart',[CartController::class,"DeleteCart"])->name("Delete.Cart");
+
+// Wishlist Route
+Route::post('/Store-Wishlist', [WishlistController::class, 'store'])->name('Store.Wishlist');
+Route::delete('/Remove-Wishlist/{id}', [WishlistController::class, 'destroy'])->name('Remove.Wishlist');
+
+
+// Profile Route
+
+Route::get('/My-Wishlist',[FrontController::class,'wishlist'])->name('Front.wishlist');
+
 
 
 

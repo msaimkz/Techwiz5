@@ -50,7 +50,7 @@
                 <h2 class="section__title mb-25 title-animation">{{$product->name }}</h2>
                 <h3 style="color: #906e50;">$120</h3>
                 <p style="padding-top: 40px" class="mb-0">{{ $product->description}}</p>
-                < <button type="button" onclick="AddtoCart('{{$product->id}}')" style="margin-top: 40px" type="submit"
+                <button type="button" onclick="AddtoCart('{{$product->id}}')" style="margin-top: 40px" type="submit"
                     class="rr-btn">
                     <span class="btn-wrap">
                         <span class="text-one">Add to Cart
@@ -72,29 +72,30 @@
                             </svg>
                         </span>
                     </span>
-                    </button>
-                    <button style="margin-top: 40px" type="submit" class="rr-btn">
-                        <span class="btn-wrap">
-                            <span class="text-one">Add to Wishlist
-                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M1 6H11" stroke="white" stroke-width="1.5" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M6 1L11 6L6 11" stroke="white" stroke-width="1.5" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-                            </span>
-                            <span class="text-two">Add to Wishlist
-                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M1 6H11" stroke="white" stroke-width="1.5" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M6 1L11 6L6 11" stroke="white" stroke-width="1.5" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-                            </span>
+                </button>
+                <button type="button" style="margin-top: 40px" type="submit" class="rr-btn"
+                    onclick="AddWishlist('{{$product->id}}')">
+                    <span class="btn-wrap">
+                        <span class="text-one">Add to Wishlist
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 6H11" stroke="white" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M6 1L11 6L6 11" stroke="white" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
                         </span>
-                    </button>
+                        <span class="text-two">Add to Wishlist
+                            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 6H11" stroke="white" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M6 1L11 6L6 11" stroke="white" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </span>
+                    </span>
+                </button>
             </div>
         </div>
         <div class="container">
@@ -358,6 +359,24 @@ function AddtoCart(id) {
         success: function(response) {
             if (response.status == true) {
                 window.location.href = "{{route('Front.cart')}}"
+            } else {
+                alert(response.msg)
+            }
+        },
+    });
+}
+
+function AddWishlist(id) {
+    $.ajax({
+        url: '{{route("Store.Wishlist")}}',
+        type: 'post',
+        data: {
+            id: id
+        },
+        dataType: 'json',
+        success: function(response) {
+            if (response.status == true) {
+                alert(response.msg)
             } else {
                 alert(response.msg)
             }

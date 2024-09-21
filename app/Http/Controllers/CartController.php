@@ -34,9 +34,9 @@ class CartController extends Controller
                 }
             }
             if ($productAlreadyExist == false) {
-                Cart::add($product->id, $product->title, 1, $product->price, ["productImage" => (!empty($product->image->first())) ? $product->image->first() : '']);
+                Cart::add($product->id, $product->name, 1, $product->price, ["productImage" => (!empty($product->image->first())) ? $product->image->first() : '']);
                 $status = true;
-                $message = $product->title . ' Added in Cart';
+                $message = $product->name . ' Added in Cart';
             }
              else {
 

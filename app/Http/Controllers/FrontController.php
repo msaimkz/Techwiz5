@@ -8,6 +8,8 @@ use App\Models\Gallery;
 use App\Models\Category;
 use App\Models\SubCategory;
 use App\Models\Product;
+use App\Models\Wishlist;
+use Illuminate\Support\Facades\Auth;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
 class FrontController extends Controller
@@ -30,6 +32,15 @@ class FrontController extends Controller
     public function contact(){
 
         return view('contact');
+    }
+
+    public function wishlist(){
+
+        $user = Auth::user();
+
+        $wishlists = Wishlist::where("user_id", $user->id)->with('product')->get();
+
+        return view('wishlist',compact('wishlists'));
     }
 
 
