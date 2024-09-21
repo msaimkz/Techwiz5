@@ -46,10 +46,13 @@ Route::delete('/Remove-Wishlist/{id}', [WishlistController::class, 'destroy'])->
 
 // Profile Route
 
+
+
+Route::middleware('auth')->group(function () {
 Route::get('/My-Wishlist',[FrontController::class,'wishlist'])->name('Front.wishlist');
 Route::get('/Checkout',[FrontController::class,'checkout'])->name('Front.chekout');
 
-
+});
 
 
 

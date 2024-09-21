@@ -12,7 +12,7 @@
     <!-- Place favicon.ico in the root directory -->
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('Asset/decorVista/assets/imgs/favicon.svg')}}">
     <!-- CSS here -->
-   
+
     <link rel="stylesheet" href="{{asset('Asset/decorVista/assets/css/vendor/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('Asset/decorVista/assets/css/vendor/animate.min.css')}}">
     <link rel="stylesheet" href="{{asset('Asset/decorVista/assets/css/plugins/swiper.min.css')}}">
@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="{{asset('Asset/decorVista/assets/css/plugins/odometer-theme-default.css')}}">
     <link rel="stylesheet" href="{{asset('Asset/decorVista/assets/css/plugins/carouselTicker.css')}}">
     <link rel="stylesheet" href="{{asset('Asset/decorVista/assets/css/main.css')}}">
-    
+
 
 
     <meta name="csrf-token" content="{{csrf_token()}}">
@@ -200,8 +200,9 @@
                                                 </li>
 
                                                 <form method="post" action="{{ route('logout') }}">
+                                                    @csrf
                                                     <li>
-                                                        <a href="{{route('logout')}}" onclick="event.preventDefault();
+                                                        <a href="route('logout')" onclick="event.preventDefault();
                                                             this.closest('form').submit();">Sign Out</a>
 
                                                     </li>
@@ -212,7 +213,15 @@
                                             </ul>
                                         </li>
                                         @else
-                                        <li><a href="{{route('login')}}">login</a></li>
+                                        <li class="has-dropdown">
+                                            <a href="#">Sign</a>
+                                            <ul class="submenu">
+                                            <li><a href="{{route('login')}}">login</a></li>
+                                            <li><a href="{{route('register')}}">Register</a></li>
+                                        </ul>
+                                        </li>
+                                        
+
 
                                         @endif
 
