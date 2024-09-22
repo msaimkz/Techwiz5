@@ -12,6 +12,7 @@ use App\Models\Comment;
 use App\Models\CustomerDetail;
 use App\Models\Wishlist;
 use App\Models\Order;
+use App\Models\User;
 use App\Models\OrderItem;
 use Illuminate\Support\Facades\Auth;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -22,8 +23,8 @@ class FrontController extends Controller
 
         $blogs = Blog::where('status',1)->latest()->limit(4)->get();
         $products = Product::where('status',1)->latest()->limit(4)->get();
-
-        return view('index',compact('blogs','products'));
+        $designers = User::where('role','designer')->get();
+        return view('index',compact('blogs','products','designers'));
     }
 
     public function gallery(){
@@ -148,7 +149,7 @@ class FrontController extends Controller
     }
 
     public function category( $slug) {
-        $category = Category::where('slug', $slug)->first();
+        $category = Category::where('id', $slug)->first();
         $galleries = collect(); // Initialize as a collection
         
         if (empty($category)) {
