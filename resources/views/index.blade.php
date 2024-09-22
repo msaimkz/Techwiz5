@@ -316,7 +316,7 @@
                             <div class="overlay-box">
                                 <h4><a href="{{ route('Front.product.detail',$product->id) }}">{{$product->name}}</a></h4>
                                 <div class="btn-box">
-                                    <a href="{{asset('uploads/product/large/'.$img->image)}}" class="lightbox-image" data-fancybox="gallery"><i class="fa fa-search"></i></a>
+                                    <a href="" class="lightbox-image" data-fancybox="gallery"><i class="fa fa-search"></i></a>
                                     <a href="{{ route('Front.product.detail',$product->id) }}"><i class="fa fa-external-link"></i></a>
                                 </div>
                                 <span class="tag">{{$product->name}}</span>
