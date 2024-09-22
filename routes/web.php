@@ -36,7 +36,11 @@ Route::get('/404',[FrontController::class,'error'])->name('Front.error');
 Route::get('/Cart',[FrontController::class,'cart'])->name('Front.cart');
 Route::get('/Category/{slug}', [FrontController::class, 'category'])->name('Front.category');
 Route::get('/Product-Detail/{id}', [FrontController::class, 'ProductDetail'])->name('Front.product.detail');
-
+Route::get('/AllProducts/{slug}', [FrontController::class, 'showProducts'])->name('subcategory.products');
+Route::get('/logout', function () {
+    Auth::logout();
+    return redirect('/');
+})->name('logout');
 
 // Order Routes
 Route::post('/Proceed',[OrderController::class,"proceed"])->name("Proceed");

@@ -1,107 +1,72 @@
-
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Login Page</title>
-        <style>
-            body {
-                font-family: Arial, sans-serif;
-                background-image: url('assets/imgs/banner-1/banner-1.jpg');
-                background-size: cover;
-                background-position: center;
-                background-repeat: no-repeat;
-                margin: 0;
-                padding: 0;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 100vh;
-            }
-            .login-container {
-                background-color: rgba(255, 255, 255, 0.8);
-                padding: 20px;
-                width: 310px;
-                border-radius: 8px;
-                display:flex;
-                flex-direction:column;
-                align-items:center;
-                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            }
-            h2 {
-                margin-bottom: 20px;
-                color: #333;
-                text-align : center;
-            }
-            input[type="text"], input[type="password"] {
-                width: 100%;
-                padding: 15px;
-                margin: 8px 0;
-                border: 1px solid #ccc;
-                border-radius: 4px;
-                box-sizing: border-box;
-            }
-            button {
-                width: 200px;
-                background-color: #906e50;
-                color: white;
-                padding: 10px;
-                border: none;
-                border-radius: 4px;
-                text-align : center;
-                transition : all 0.5s ease;
-                cursor: pointer;
-            }
-            button:hover {
-                background-color: #000000;
-            }
-            .link {
-                text-align: center;
-                margin-top: 10px;
-            }
-            .link a {
-                color: #007bff;
-                text-decoration: none;
-            }
-            .link a:hover {
-                text-decoration: underline;
-                color: #906e50;
-            }
-        </style>
-    </head>
-
- 
-
-    <div class="login-container">
-        <h2 class="text-center">Login</h2>
-        
-        <!-- Session Status -->
-        <x-auth-session-status class="mb-4" :status="session('status')" />
-
-        <form method="POST" action="{{ route('login') }}" id="loginForm">
-            @csrf
-            
-            <!-- Email Address -->
-            <label for="email">Email</label>
-            <input type="text" id="email" name="email" placeholder="Enter email" required value="{{ old('email') }}" autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-            
-            <!-- Password -->
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" placeholder="Enter password" required autocomplete="current-password" />
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-
-            <!-- Remember Me -->
-            
-
-            <button type="submit">Log in</button>
-        </form>
-
-        <div class="link">
-           
+@extends('master')
+@section('content')
+    <!--Page Title-->
+    <section class="page-title" style="background-image:url({{ asset('user/images/background/10.jpg') }});">
+        <div class="auto-container">
+            <div class="inner-container clearfix">
+                <div class="title-box">
+                    <h1>Login</h1>
+                    <span class="title">The Interior speak for themselves</span>
+                </div>
+                <ul class="bread-crumb clearfix">
+                    <li><a href="{{ url('/') }}">Home</a></li>
+                    <li>Login</li>
+                </ul>
+            </div>
         </div>
-    </div>
+    </section>
+    <!--End Page Title-->
 
-    <script>
-        
-    </script>
+    <!--Login Section-->
+    <section class="login-section">
+        <div class="auto-container">
+            <div class="row clearfix">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <div class="column col-lg-16 col-md-12 col-sm-12">
+                        <h2>Login</h2>
+                        
+                        <!-- Login Form -->
+                        <div class="login-form">
+                            <!--Login Form-->
+                            <x-auth-session-status class="mb-4" :status="session('status')" />
+                            <form method="POST" action="{{ route('login') }}" id="loginForm">
+                                @csrf
+                                <div class="form-group">
+                                    <input type="text" id="email" name="email" placeholder="Enter email" required
+                                        value="{{ old('email') }}" autofocus autocomplete="username" />
+                                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                                </div>
+    
+                                <div class="form-group">
+                                    <input type="password" id="password" name="password" placeholder="Enter password" required
+                                        autocomplete="current-password" />
+                                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                                </div>
+    
+                                <div class="clearfix">
+    
+                                    <div class="pull-right">
+                                        <div class="form-group no-margin">
+                                            <button class="theme-btn btn-style-one" type="submit"
+                                                name="submit-form">LOGIN</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <a href="{{route('register')}}">Are you new ?Click Here</a><br>
+                                    <a href="{{ route('password.request') }}">Forget your password</a>
+                                </div>
+                            </form>
+                        </div>
+                        <!--End Login Form -->
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
 
+
+            </div>
+        </div>
+    </section>
+    <!--End Login Section-->
+@endsection

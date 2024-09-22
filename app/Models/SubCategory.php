@@ -18,5 +18,12 @@ class SubCategory extends Model
     {
         return $this->hasMany(Gallery::class, 'subCategory_id');
     }
-
+    public function products()
+    {
+        return $this->hasMany(Product::class,'sub_category','id');
+    }
+    public function images()
+    {
+        return $this->hasMany(ProductImage::class, 'product_id');
+    }
 }

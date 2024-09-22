@@ -109,7 +109,7 @@
                                 <h3><a href="service-detail.html">Architectural Design</a></h3>
                                 <div class="text">Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they.</div>
                                 <div class="link-box">
-                                    <a href="service-detail.html">Lorn More <i class="fa fa-long-arrow-right"></i></a>
+                                    <a href="service-detail.html">Learn More <i class="fa fa-long-arrow-right"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -359,66 +359,6 @@
     </section>
     <!--End Team Section -->
 
-    <!-- Testimonial Section -->
-    <section class="testimonial-section">
-        <div class="outer-container clearfix">
-            <!-- Title Column -->
-            <div class="title-column clearfix">
-                <div class="inner-column">
-                    <div class="sec-title">
-                        <span class="float-text">testimonial</span>
-                        <h2>What Client Says</h2>
-                    </div>
-                    <div class="text">Looking at its layout. The point of using very profectly is that it has a more-or-less normal distribution of letters, as opposed</div>
-                </div>
-            </div>
-
-            <!-- Testimonial Column -->
-            <div class="testimonial-column clearfix" style="background-image: url({{asset('user/images/background/4.jpg')}})">
-                <div class="inner-column">
-                    <div class="testimonial-carousel owl-carousel owl-theme">
-                        <!-- Testimonial Block -->
-                        <div class="testimonial-block">
-                            <div class="inner-box">
-                                <div class="image-box"><img src="{{asset('user/images/resource/thumb-1.jpg')}}" alt=""></div>
-                                <div class="text">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot.</div>
-                                <div class="info-box">
-                                    <h4 class="name">Jane Smith</h4>
-                                    <span class="designation">CEO, InDesign</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Testimonial Block -->
-                        <div class="testimonial-block">
-                            <div class="inner-box">
-                                <div class="image-box"><img src="{{asset('user/images/resource/thumb-1.jp')}}g" alt=""></div>
-                                <div class="text">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot.</div>
-                                <div class="info-box">
-                                    <h4 class="name">Jane Smith</h4>
-                                    <span class="designation">CEO, InDesign</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Testimonial Block -->
-                        <div class="testimonial-block">
-                            <div class="inner-box">
-                                <div class="image-box"><img src="{{asset('user/images/resource/thumb-1.jp')}}g" alt=""></div>
-                                <div class="text">A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart. I am alone, and feel the charm of existence in this spot.</div>
-                                <div class="info-box">
-                                    <h4 class="name">Jane Smith</h4>
-                                    <span class="designation">CEO, InDesign</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--End Testimonial Section -->
-
     <!-- News Section -->
     <section class="news-section">
         <div class="auto-container">
@@ -466,241 +406,18 @@
             <div class="sponsors-outer">
                 <!--Sponsors Carousel-->
                 <ul class="sponsors-carousel owl-carousel owl-theme">
-                    <li class="slide-item"><figure class="image-box"><a href="#"><img src="{{asset('user/images/clients/1.png')}}" alt=""></a></figure></li>
-                    <li class="slide-item"><figure class="image-box"><a href="#"><img src="{{asset('user/images/clients/2.png')}}" alt=""></a></figure></li>
-                    <li class="slide-item"><figure class="image-box"><a href="#"><img src="{{asset('user/images/clients/3.png')}}" alt=""></a></figure></li>
-                    <li class="slide-item"><figure class="image-box"><a href="#"><img src="{{asset('user/images/clients/4.png')}}" alt=""></a></figure></li>
-                    <li class="slide-item"><figure class="image-box"><a href="#"><img src="{{asset('user/images/clients/5.png')}}" alt=""></a></figure></li>
-                    <li class="slide-item"><figure class="image-box"><a href="#"><img src="{{asset('user/images/clients/1.png')}}" alt=""></a></figure></li>
-                    <li class="slide-item"><figure class="image-box"><a href="#"><img src="{{asset('user/images/clients/2.png')}}" alt=""></a></figure></li>
-                    <li class="slide-item"><figure class="image-box"><a href="#"><img src="{{asset('user/images/clients/3.png')}}" alt=""></a></figure></li>
-                    <li class="slide-item"><figure class="image-box"><a href="#"><img src="{{asset('user/images/clients/4.png')}}" alt=""></a></figure></li>
-                    <li class="slide-item"><figure class="image-box"><a href="#"><img src="{{asset('user/images/clients/5.png')}}" alt=""></a></figure></li>
+                    <li class="slide-item"><figure class="image-box"><a href="https://bginteriorsanddecor.com/landing-page/?gad_source=1&gclid=Cj0KCQjwurS3BhCGARIsADdUH53aJYvSTEZGjTjIgyRFpJj5NMX6AOl7UsKl0fbqHOMjkLz05PlVzzYaAngxEALw_wcB"><img src="{{asset('user/images/clients/1.png')}}" alt=""></a></figure></li>
+                    <li class="slide-item"><figure class="image-box"><a href="https://deinterior.com.pk/"><img src="{{asset('user/images/clients/2.png')}}" alt=""></a></figure></li>
+                    <li class="slide-item"><figure class="image-box"><a href="https://hiline.pk/interior-designer-in-karachi"><img src="{{asset('user/images/clients/3.png')}}" alt=""></a></figure></li>
+                    <li class="slide-item"><figure class="image-box"><a href="https://www.styleyourspace.pk/"><img src="{{asset('user/images/clients/4.png')}}" alt=""></a></figure></li>
+                    <li class="slide-item"><figure class="image-box"><a href="https://landscape.com.pk/interior-designer-in-karachi/"><img src="{{asset('user/images/clients/5.png')}}" alt=""></a></figure></li>
+                   
                 </ul>
             </div>
         </div>
     </section>
-    <!--End Clients Section-->
-
-
-    {{-- products --}}
-    {{-- <div class="1">
-        <div class="container">
-            <div style="margin-block: 45px" class="row mb-minus-30">
-                <div class="section__title-wrapper text-center mb-55 mb-xs-40">
-                    <span style="margin-top: 20px;" class="section__subtitle justify-content-center">Our Products</span>
-                    <h2 class="section__title title-animation">Our Latest Products</h2>
-                </div>
-                @if (!empty($products))
-                @foreach ($products as $product)
-                @php
-                $img = productImages($product->id);
-                @endphp
-
-                <div class=" col-md-6 col-lg-4 col-xl-3">
-                    <div class="our-featured-service__item">
-                        <div class="our-featured-service__media wow clip-a-z">
-                            @if (!empty($img))
-
-                            <img src="{{asset('uploads/product/large/'.$img->image)}}" alt="image not found">
-                            @endif
-
-                        </div>
-                        <div class="our-featured-service__content">
-                            <div class="our-featured-service__text">
-                                <h6 class="title-animation"><a
-                                        href="{{ route('Front.product.detail',$product->id) }}">{{$product->name}}</a>
-                                </h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-                @endif
-
-
-            </div>
-        </div>
-    </div> --}}
-    {{-- products --}}
-    <!-- why-choose-us start -->
-    {{-- <section class="why-choose-us section-space__top">
-        <div class="container">
-            <div class="row">
-                <div class="section__title-wrapper text-center mb-55 mb-xs-40">
-                    <span class="section__subtitle justify-content-center">Why Choose Us</span>
-                    <h2 class="section__title title-animation">Why Choose DecorVista</h2>
-                </div>
-            </div>
-            <div class="row align-items-center">
-                <div class="col-lg-5">
-                    <div class="why-choose-us__content">
-                        <div class="why-choose-us__item">
-                            <div class="why-choose-us__icon">
-                                <img src="{{asset('Asset/decorVista/assets/imgs/why-choose-us/design.svg')}}"
-                                    alt="image not found">
-                            </div>
-                            <div class="why-choose-us__text">
-                                <h6 class="mb-10 title-animation">Modern Design</h6>
-                                <p class="mb-0">Decoral is one of the most popular for those who want to explore the</p>
-                            </div>
-                        </div>
-                        <div class="why-choose-us__item">
-                            <div class="why-choose-us__icon">
-                                <img src="{{asset('Asset/decorVista/assets/imgs/why-choose-us/expert.svg')}}"
-                                    alt="image not found">
-                            </div>
-                            <div class="why-choose-us__text">
-                                <h6 class="mb-10 title-animation">Expert Team</h6>
-                                <p class="mb-0">Decoral is one of the most popular for those who want to explore the</p>
-                            </div>
-                        </div>
-                        <div class="why-choose-us__item">
-                            <div class="why-choose-us__icon">
-                                <img src="{{asset('Asset/decorVista/assets/imgs/why-choose-us/price.svg')}}"
-                                    alt="image not found">
-                            </div>
-                            <div class="why-choose-us__text">
-                                <h6 class="mb-10 title-animation">Reasonable Price</h6>
-                                <p class="mb-0">Decoral is one of the most popular for those who want to explore the</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-7">
-                    <div class="row align-items-center">
-                        <div class="col-sm-7">
-                            <div class="why-choose-us__media-wrapper">
-                                <div class="why-choose-us__media img1 wow clip-a-z">
-                                    <img src="{{asset('Asset/decorVista/assets/imgs/why-choose-us/why-choose-us-1.jpg')}}"
-                                        alt="image not found">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-5">
-                            <div class="why-choose-us__media img2 wow clip-a-z mb-30">
-                                <img src="{{asset('Asset/decorVista/assets/imgs/why-choose-us/why-choose-us-2.jpg')}}"
-                                    alt="image not found">
-                            </div>
-                            <div class="why-choose-us__media">
-                                <div class="why-choose-us__media img3 wow clip-a-z">
-                                    <img src="{{asset('Asset/decorVista/assets/imgs/why-choose-us/why-choose-us-3.jpg')}}"
-                                        alt="image not found">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section> --}}
-    <!-- why-choose-us end -->
-
-  
-
-
-    <!-- blog area start -->
-{{--   
-    <section class="blog-grid section-space">
-        <div class="container">
-            <div class="row">
-                <div class="section__title-wrapper text-center mb-55 mb-xs-40">
-                    <span class="section__subtitle justify-content-center">News & Articles</span>
-                    <h2 class="section__title title-animation">Our Latest Blog Posts</h2>
-                </div>
-            </div>
-            <div class="row mb-minus-30">
-
-                @if (!empty($blogs))
-
-                @foreach ($blogs as $blog )
-                <div class="col-lg-4">
-                    <div class="blog-grid__item">
-                        <a href="{{ route('Front.blog.detail',$blog->id) }}" class="blog-grid__media">
-                            @if (!empty($blog->image))
-                            <img src="{{ asset('uploads/Blog/small/' . $blog->image) }}" alt="image not found">
-                            @else
-                            <img src="{{ asset('Asset/Admin/img/default.png') }}" alt="image not found">
-
-
-                            @endif
-
-                        </a>
-                        <span
-                            class="blog-grid__date">{{ \Carbon\Carbon::parse($blog->created_at)->format('M,d, Y') }}</span>
-                        <div class="blog-grid__content">
-
-                            <h6 class="mb-10"><a
-                                    href="{{ route('Front.blog.detail',$blog->id) }}">{{ $blog->title }}</a>
-                            </h6>
-
-                            <p>{{ $blog->short_description }}</p>
-
-                            <a class="read-more" href="{{ route('Front.blog.detail',$blog->id) }}">Read More
-                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M1 6H11" stroke="#767676" stroke-width="1.5" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M6 1L11 6L6 11" stroke="#767676" stroke-width="1.5" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
-
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-
-                @endif
-
-            </div>
-        </div>
-    </section> --}}
-
-    <!-- blog area start -->
+                      
 </main>
-{{-- <div style="margin-top: 140px " class="footer__top">
-    <div class="container">
-        <div class="footer__top-shape">
-            <img src="{{asset('Asset/decorVista/assets/imgs/footer-1/footer-cta-shape.png')}}" alt="image not found">
-        </div>
-        <div class="row align-items-center">
-            <div class="col-lg-6 text-lg-start text-center rr-mb-40-md">
-                <div class="footer-cta__content-text">
-                    <h2 class="footer-cta__content-title color-white">Subscribe to Our Newsletter</h2>
-                </div>
-            </div>
-            <div class="col-lg-6 text-lg-end text-center">
-                <div class="footer__widget-subscribe ">
-                    <input type="email" placeholder="Enter your email address">
-                    <button type="submit" class="rr-btn">
-                        <span class="btn-wrap">
-                            <span class="text-one">Contact Us
-                                <svg width="12" height="13" viewBox="0 0 12 13" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M1 6.5H11" stroke="white" stroke-width="1.5" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M6 1.5L11 6.5L6 11.5" stroke="white" stroke-width="1.5"
-                                        stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-                            </span>
-                            <span class="text-two">Contact Us
-                                <svg width="12" height="13" viewBox="0 0 12 13" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M1 6.5H11" stroke="white" stroke-width="1.5" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M6 1.5L11 6.5L6 11.5" stroke="white" stroke-width="1.5"
-                                        stroke-linecap="round" stroke-linejoin="round" />
-                                </svg>
-                            </span>
-                        </span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> --}}
+
 
 @endsection

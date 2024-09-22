@@ -1,192 +1,112 @@
 @extends('master');
 @section('content')
-<main>
-    <!-- Breadcrumb area start  -->
-    <div style="margin-top: -29px" class="breadcrumb__area header__background-color breadcrumb__header-up breadcrumb-space overly overflow-hidden">
-        <div class="breadcrumb__background" data-background="{{asset('Asset/decorVista/assets/imgs/breadcrumb/page-header-1.png')}}"></div>
-        <div class="container">
-            <div class="breadcrumb__bg-left"></div>
-            <div class="breadcrumb__bg-right"></div>
-            <div class="row align-items-center justify-content-between">
-                <div class="col-12">
-                    <div style="margin-top: 100px;" class="breadcrumb__content text-center">
-                        <h2 class="breadcrumb__title mb-15 mb-sm-10 mb-xs-5 color-white title-animation">Contact Us</h2>
+ <!--Page Title-->
+ <section class="page-title" style="background-image:url({{asset('user/images/background/10.jpg')}});">
+    <div class="auto-container">
+        <div class="inner-container clearfix">
+            <div class="title-box">
+                <h1>Contact Us</h1>
+                <span class="title">The Interior speak for themselves</span>
+            </div>
+            <ul class="bread-crumb clearfix">
+                <li><a href="index-2.html">Home</a></li>
+                <li>Contact Us</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!--End Page Title-->
 
-                        <div class="breadcrumb__menu">
-                            <nav>
-                                <ul>
-                                    <li><span><a href="{{url('/')}}">Home</a></span></li>
-                                    <li class="active"><span>Contact Us</span></li>
-                                </ul>
-                            </nav>
+<!-- Contact Page Section -->
+<section class="contact-page-section">
+    <div class="auto-container">
+        <div class="row">
+            <!-- Form Column -->
+            <div class="form-column col-lg-7 col-md-12 col-sm-12">
+                <div class="inner-column">
+                    <div class="sec-title">
+                        <span class="float-text">informaer</span>
+                        <h2>Contact Us</h2>
+                    </div>
+
+                    <div class="contact-form">
+                        <form method="post" action="#" id="contact-form">
+                            <div class="row">
+                                <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                                    <input type="text" name="username" placeholder="Name" required="">
+                                </div>
+                                
+                                <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                                    <input type="text" name="phone" placeholder="Phone" required="">
+                                </div>
+
+                                <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                                    <input type="text" name="company" placeholder="Company">
+                                </div>
+
+                                <div class="form-group col-lg-6 col-md-12 col-sm-12">
+                                    <input type="email" name="email" placeholder="Email" required="">
+                                </div>
+
+                                <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                                    <textarea name="message" placeholder="Massage"></textarea>
+                                </div>
+
+                                <div class="form-group col-lg-12 col-md-12 col-sm-12">
+                                    <button class="theme-btn btn-style-three" type="submit" name="submit-form">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="contact-info">
+                        <div class="row">
+                            <div class="info-block col-lg-4 col-md-4 col-sm-12">
+                                <div class="inner">
+                                    <h4>Location</h4>
+                                    <p>Complax interprice company, 882 street Latrobe, PA 15786</p>
+                                </div>
+                            </div>
+
+                            <div class="info-block col-lg-4 col-md-4 col-sm-12">
+                                <div class="inner">
+                                    <h4>Call Us</h4>
+                                    <p>+88 169 787 5256</p>
+                                    <p>+88 165 358 5678</p>
+                                </div>
+
+                            </div>
+
+                            <div class="info-block col-lg-4 col-md-4 col-sm-12">
+                                <div class="inner">
+                                    <h4>Email</h4>
+                                    <p><a href="#">support@contra.com</a></p>
+                                    <p><a href="#">info@contra.com</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="map-column col-lg-5 col-md-12 col-sm-12">
+                <div class="inner-column">
+                     <div class="map-outer">
+                        <div class="map-canvas"
+                            data-zoom="12"
+                            data-lat="-37.817085"
+                            data-lng="144.955631"
+                            data-type="roadmap"
+                            data-hue="#ffc400"
+                            data-title="Envato"
+                            data-icon-path="images/icons/map-marker.png"
+                            data-content="Melbourne VIC 3000, Australia<br><a href='mailto:info@youremail.com'>info@youremail.com</a>">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Breadcrumb area start  -->
-
-    <!-- "error  area start -->
-    <section class="contact-us section-space">
-        <div class="container">
-            <div class="row mb-minus-30">
-                <div class="col-md-6 col-lg-4">
-                    <div class="contact-us__info-item">
-                        <div class="contact-us__icon">
-                            <img src="{{asset('Asset/decorVista/assets/imgs/contact-us/location.svg')}}" alt="image not found">
-                        </div>
-                        <div class="contact-us__text">
-                            <h6>Visit our office</h6>
-                            <a href="#">93X Hilgard Ave, Los Angeles, CA 900XX, United States.</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="contact-us__info-item">
-                        <div class="contact-us__icon">
-                            <img src="{{asset('Asset/decorVista/assets/imgs/contact-us/email.svg')}}" alt="image not found">
-                        </div>
-                        <div class="contact-us__text">
-                            <h6>email address</h6>
-                            <a href="mailto:example@exdosstudio.com">example@exdosstudio.com</a>
-                            <a href="mailto:info@exdosstudio.com">info@exdosstudio.com</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6 col-lg-4">
-                    <div class="contact-us__info-item">
-                        <div class="contact-us__icon">
-                            <img src="{{asset('Asset/decorVista/assets/imgs/contact-us/phone.svg')}}" alt="image not found">
-                        </div>
-                        <div class="contact-us__text">
-                            <h6>Phone number</h6>
-                            <a href="tel:123534352555">+1-2353-4352-555</a>
-                            <a href="tel:01541258360">01 (541) 258 360</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- "error  area end -->
-
-    <section class="contact section-space__bottom">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="contact__from">
-                        <h4 class="title-animation mb-10">Get in touch</h4>
-                        <p>Select layout follower boolean editor flows. Scrolling variant move font group variant layout device share.</p>
-                        <div class="row">
-                            <div class="col-xl-6">
-                                <div class="contact__form-input">
-                                    <input name="name" id="lname" type="text" placeholder="Name">
-                                    <span></span>
-                                </div>
-                            </div>
-                            <div class="col-xl-6">
-                                <div class="contact__form-input">
-                                    <input name="email" id="email" type="email" placeholder="Email">
-                                    <span></span>
-                                </div>
-                            </div>
-
-                            <div class="col-xl-6">
-                                <div class="contact__form-input">
-                                    <input name="number" id="number" type="number" placeholder="Phone">
-                                    <span></span>
-                                </div>
-                            </div>
-
-                            <div class="col-xl-6">
-                                <div class="contact__form-input-select d-flex flex-column">
-                                    <select name="subject" id="subject" style="display: none;">
-                                        <option value="">Subject</option>
-                                        <option value="order">Event Order</option>
-                                        <option value="objection">Objection</option>
-                                    </select>
-                                    <span></span>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-12">
-                                <div class="contact__form-input">
-                                    <div class="validation__wrapper-up position-relative">
-                                        <textarea name="textarea" id="textarea" placeholder="Type Your Message" class=""></textarea>
-                                        <span></span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-12">
-                                <button type="submit" class="rr-btn">
-                                        <span class="btn-wrap">
-                                            <span class="text-one">Send
-                                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M1 6H11" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                                <path d="M6 1L11 6L6 11" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                                </svg>
-                                            </span>
-                                            <span class="text-two">Send
-                                                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M1 6H11" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                                <path d="M6 1L11 6L6 11" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                                </svg>
-                                            </span>
-                                        </span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="map">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14600.157880481716!2d90.35107202273903!3d23.81719545680701!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755c12c1b289e39%3A0x8d3bdfb80d3ebe88!2sRd%20No.%204%2C%20Dhaka%201216!5e0!3m2!1sen!2sbd!4v1701837409513!5m2!1sen!2sbd" width="100%" height="555" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-       
-      
-
-
-</main>
- {{-- <div class="footer__top">
-            <div class="container">
-                <div class="footer__top-shape">
-                    <img src="{{asset('Asset/decorVista/assets/imgs/footer-1/footer-cta-shape.png')}}" alt="image not found">
-                </div>
-                <div class="row align-items-center">
-                    <div class="col-lg-6 text-lg-start text-center rr-mb-40-md">
-                        <div class="footer-cta__content-text">
-                            <h2 class="footer-cta__content-title color-white">Subscribe to Our Newsletter</h2>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 text-lg-end text-center">
-                        <div class="footer__widget-subscribe ">
-                            <input type="email" placeholder="Enter your email address">
-                            <button type="submit" class="rr-btn">
-                                <span class="btn-wrap">
-                                    <span class="text-one">Contact Us
-                                        <svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M1 6.5H11" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                            <path d="M6 1.5L11 6.5L6 11.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-                                    </span>
-                                    <span class="text-two">Contact Us
-                                        <svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M1 6.5H11" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                            <path d="M6 1.5L11 6.5L6 11.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-                                    </span>
-                                </span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>  --}}
+</section>
+<!--End Contact Page Section -->
 @endsection

@@ -36,12 +36,29 @@ class AdminController extends Controller
             TempImage::where('id', $tempImage->id)->delete();
         }
 
-            $blogs = Blog::where('status',1)->latest()->limit(5)->get();
+        $blogs = Blog::where('status',1)->latest()->limit(5)->get();
 
-            $customers = User::where('role','user')->count();
+        $customers = User::where('role','user')->count();
+        $orders = Order::latest()->limit(5)->get();
+
+        $currentdate = Carbon::now()->format('Y-m-d');
+        $thismonthstartDate = Carbon::now()->startOfMonth()->format('Y-m-d');
+    
+      
+        $Reveneuthismonth = Order::where('delivery_status', '!=', "cancelled")
+        ->whereDate('created_at', '>=', $thismonthstartDate)
+        ->whereDate('created_at', '<=', $currentdate)
+        ->sum('grand_total');
+    
+        $ThisDaySale = Order::where('delivery_status', '!=', "cancelled")
+        ->whereDate('created_at', $currentdate)
+        ->count();
 
 
-            return view('Admin.dashboard',compact('blogs','customers'));
+        return view('Admin.dashboard',compact('blogs','customers','orders','Reveneuthismonth','ThisDaySale'));
+
+
+
         }
 
     public function profile(Request $request){

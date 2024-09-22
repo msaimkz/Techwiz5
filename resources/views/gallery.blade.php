@@ -1,88 +1,77 @@
 @extends('master');
 @section('content')
-
-<main>
-    <!-- Breadcrumb area start  -->
-    <div style="margin-top: -29px"
-        class="breadcrumb__area header__background-color breadcrumb__header-up breadcrumb-space overly overflow-hidden">
-        <div class="breadcrumb__background"
-            data-background="{{asset('Asset/decorVista/assets/imgs/breadcrumb/page-header-1.png')}}"></div>
-        <div class="container">
-            <div class="breadcrumb__bg-left"></div>
-            <div class="breadcrumb__bg-right"></div>
-            <div class="row align-items-center justify-content-between">
-                <div class="col-12">
-                    <div style="margin-top: 100px;" class="breadcrumb__content text-center">
-                        <h2 class="breadcrumb__title mb-15 mb-sm-10 mb-xs-5 color-white title-animation">Gallery</h2>
-
-                        <div class="breadcrumb__menu">
-                            <nav>
-                                <ul>
-                                    <li><span><a href="{{route('Front.index')}}">Home</a></span></li>
-                                    <li class="active"><span>Gallery</span></li>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
+<!--Page Title-->
+<section class="page-title" style="background-image:url({{asset('user/images/background/10.jpg')}});">
+    <div class="auto-container">
+        <div class="inner-container clearfix">
+            <div class="title-box">
+                <h1>Gallery</h1>
+                <span class="title">The Interior speak for themselves</span>
             </div>
+            <ul class="bread-crumb clearfix">
+                <li><a href="{{url('/')}}">Home</a></li>
+                <li>Gallery</li>
+            </ul>
         </div>
     </div>
-    <!-- Breadcrumb area start  -->
+</section>
+<!--End Page Title-->
 
-    <section class="protfolio section-space__top">
-        <div class="container">
-           
-
-            <div class="protfolio__item-wrapper">
-                <div class="row grid mb-minus-30">
-                    @if (!empty('$galleries'))
+<!-- Projects Section -->
+<section class="projects-section alternate">
+    <div class="auto-container">
+         <!--MixitUp Galery-->
+        <div class="mixitup-gallery">
+        
+                                        
+            <div class="filter-list row">
+                <!-- Project Block -->
+                  @if (!empty('$galleries'))
                     @foreach ($galleries as $gallery )
                     @php
                     $img = $gallery->images->first()
                     @endphp
-                    <div class="col-lg-4 col-sm-6 grid-item corporate interior">
-                        <div class="protfolio__item">
-                            <div class="protfolio__item-media ">
-                                @if (!empty($img->image))
+                <div class="project-block all mix interior architecture landescape col-lg-4 col-md-6 col-sm-12">
+                    <div class="image-box">
+                        <figure class="image">
+                             @if (!empty($img->image))
                                 <img src="{{ asset('uploads/gallery/large/' . $img->image) }}"
                                 class="img-fluid" alt="image not found">
-                                @endif
-                                
-                            </div>
-                            @if (!empty($gallery->images))
-                            @foreach ($gallery->images as $Galleryimage )
-                                <a href="{{ asset('uploads/gallery/small/' . $Galleryimage->image) }}"
-                            @endforeach
-                                
-                            @endif
-                            
-                                class="protfolio__item-icon popup-image">
-                                <svg width="54" height="54" viewBox="0 0 54 54" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M27 2V52" stroke="white" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                    <path d="M2 27H52" stroke="white" stroke-width="4" stroke-linecap="round"
-                                        stroke-linejoin="round" />
-                                </svg>
+                                @endif</figure>
+                                @if (!empty($gallery->images))
+                                    @foreach ($gallery->images as $Galleryimage )
+                                        <a href="{{ asset('uploads/gallery/small/' . $Galleryimage->image) }}">
+                                    @endforeach       
+                                 @endif
+                        
                             </a>
-                            <div class="protfolio__item-text">
-
-                               
-                                <h6>{{ $gallery->subcategory->name }}</h6>
-
+                        <div class="overlay-box">
+                            <h4><a href="project-detail.html">{{ $gallery->subcategory->name }}</a></h4>
+                            <div class="btn-box">
+                                <a href="images/gallery/2-1.jpg" class="lightbox-image" data-fancybox="gallery"><i class="fa fa-search"></i></a>
+                                <a href=""><i class="fa fa-external-link"></i></a>
                             </div>
+                            <span class="tag">{{ $gallery->subcategory->name }}</span>
                         </div>
                     </div>
-                    @endforeach
-
-                    @endif
-
-                   
                 </div>
-    </section>
+            @endforeach
+             @endif
+             
+            </div>
+        </div>
 
-  
-</main>
+        <!--Post Share Options-->
+        <div class="styled-pagination">
+            <ul class="clearfix">
+                <li class="prev-post"><a href="#"><span class="fa fa-long-arrow-left"></span> Prev</a></li>
+                <li><a href="#">1</a></li>
+                <li class="active"><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li class="next-post"><a href="#"> Next <span class="fa fa-long-arrow-right"></span> </a></li>
+            </ul>
+        </div>
+    </div>
+</section>
 
 @endsection

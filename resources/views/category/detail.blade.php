@@ -5,7 +5,7 @@
     <div class="auto-container">
         <div class="inner-container clearfix">
             <div class="title-box">
-                <h1>Services</h1>
+                <h1>{{ $category->name }}</h1>
                 <span class="title">The Interior speak for themselves</span>
             </div>
             <ul class="bread-crumb clearfix">
@@ -26,30 +26,38 @@
         </div>
         {{-- {{$galleries}} --}}
         <div class="services-carousel-two owl-carousel owl-theme">
-            <!-- Service Block -->
             @if (!empty($galleries))
-            @foreach ($galleries as $gallery)
-            @php
-            $img = $gallery->images->first()
-            @endphp
-            <div class="service-block-two">
-                <div class="inner-box">
-                    <div class="image-box"><figure class="image"><a href="services.html">
-                        @if (!empty($img))
-                        <img src="{{ asset('uploads/gallery/large/' . $img->image) }}"
-                        alt="image not found">
-                        @endif
-                    </a></figure></div>
-                    <div class="caption-box">
-                        <h3><a href="services.html">{{ $gallery->subcategory->name }}</a></h3>
-                        <div class="link-box"><a href="service-detail.html">Read More <i class="fa fa-angle-double-right"></i></a></div>
+                @foreach ($galleries as $gallery)
+                    @php
+                    $img = $gallery->images->first();
+                    @endphp
+                    <div class="service-block-two">
+                        <div class="inner-box">
+                            <div class="image-box">
+                                <figure class="image">
+                                    <a href="{{ route('subcategory.products', $gallery->subcategory->slug) }}">
+                                        @if (!empty($img))
+                                            <img src="{{ asset('uploads/gallery/large/' . $img->image) }}" alt="image not found">
+                                        @endif
+                                    </a>
+                                </figure>
+                            </div>
+                            <div class="caption-box">
+                                <h3>
+                                    <a href="{{ route('subcategory.products', $gallery->subcategory->slug) }}">{{ $gallery->subcategory->name }}</a>
+                                </h3>
+                                <div class="link-box">
+                                    <a href="{{ route('subcategory.products', $gallery->subcategory->slug) }}">
+                                        Read More <i class="fa fa-angle-double-right"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            @endforeach
-
+                @endforeach
             @endif
         </div>
+        
     </div>
 </section>
 {{-- <main>
