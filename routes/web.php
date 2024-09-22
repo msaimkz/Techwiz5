@@ -205,7 +205,6 @@ Route::post('/Admin/Update-Product-Image/',[ProductController::class,'ImageUpdat
 Route::post('/Admin/Update-Product/{id}',[ProductController::class,'update'])->name('Admin.product.update');
 Route::delete('/Admin/Delete-Product,/{id}',[ProductController::class,'destroy'])->name('Admin-product-delete');
 Route::get('/get-subcategories', [ProductController::class, 'getSubcategories'])->name('getSubcategories');
-
 });
 
 
