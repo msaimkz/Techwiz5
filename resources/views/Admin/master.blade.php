@@ -24,6 +24,8 @@
     <link
         href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
         rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/dropzone.min.css" />
 
     <!-- Vendor CSS Files -->
     <link href="{{asset('Asset/Admin/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
@@ -213,9 +215,10 @@
     </footer><!-- End Footer -->
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-            class="bi bi-arrow-up-short"></i></a>
-
-    <!-- Vendor JS Files -->
+        class="bi bi-arrow-up-short"></i></a>
+        
+        <!-- Vendor JS Files -->
+        
     <script src="{{asset('Asset/Admin/js/jquery/jquery.js')}}"></script>
     <script src="{{asset('Asset/Admin/js/dropzone/dropzone.js')}}"></script>
     <script src="{{asset('Asset/Admin/vendor/apexcharts/apexcharts.min.js')}}"></script>
@@ -238,7 +241,6 @@
         }
     });
     </script>
-
 
     <!-- Template Main JS File -->
     <script src="{{asset( 'Asset/Admin/js/main.js' )}}"></script>
