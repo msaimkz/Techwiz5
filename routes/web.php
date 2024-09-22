@@ -17,6 +17,7 @@ use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\ConsultationController;
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
@@ -58,15 +59,21 @@ Route::delete('/Remove-Wishlist/{id}', [WishlistController::class, 'destroy'])->
 
 // Profile Route
 
+Route::get('/My-Designer-Portfolio/{id}',[BookingController::class,'index'])->name('Front.designer.detail');
 
 
 Route::middleware('auth')->group(function () {
 Route::get('/My-Wishlist',[FrontController::class,'wishlist'])->name('Front.wishlist');
 Route::get('/My-Orders',[FrontController::class,'order'])->name('Front.order');
 Route::get('/My-Order-Report/{id}',[FrontController::class,'orderDetail'])->name('Front.order.detail');
+Route::get('/My-Booking/{id}',[BookingController::class,'create'])->name('Front.designer.booking');
+Route::post('/Booking-Time',[BookingController::class,'show'])->name('Front.designer.booking.time');
+Route::post('/Booking-Store',[BookingController::class,'store'])->name('Front.designer.booking.store');
 
 
 });
+
+
 
 
 
@@ -82,7 +89,11 @@ Route::post('/comments', [CommentController::class, 'store'])->name('comments.st
 
 
 
-
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 
 
 
@@ -229,13 +240,16 @@ Route::get('/Designer/Edit-Project/{id}',[ProjectController::class,'edit'])->nam
 Route::delete('/Designer/Delete-Project-Image/',[ProjectController::class,'DeleteImage'])->name('Designer.project.delete.image');
 Route::post('/Designer/Update-Project-Image/',[ProjectController::class,'ImageUpdate'])->name('Designer.project.update.image');
 Route::post('/Designer/Update-Project/{id}',[ProjectController::class,'update'])->name('Designer.project.update');
-Route::delete('/Designer/Delete-Project,/{id}',[ProjectController::class,'destroy'])->name('Designer.project.delete');
+Route::delete('/Designer/Delete-Project/{id}',[ProjectController::class,'destroy'])->name('Designer.project.delete');
 
 //Consultation Routes
 
 Route::get('/consultations/create', [ConsultationController::class, 'create'])->name('consultations.create');
 Route::post('/consultations/store', [ConsultationController::class, 'store'])->name('consultations.store');
 Route::get('/consultations', [ConsultationController::class, 'index'])->name('consultations.index');
+Route::get('/consultations/Edit/{id}', [ConsultationController::class, 'edit'])->name('consultations.edit');
+Route::put('/consultations/Update/{id}', [ConsultationController::class, 'update'])->name('consultations.update');
+Route::delete('/consultations/Delete/{id}',[ConsultationController::class,'destroy'])->name('consultations.destroy');
 
 
 

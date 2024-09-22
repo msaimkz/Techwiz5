@@ -13,19 +13,20 @@ use App\Models\Product;
 use App\Models\SubCategory;
 use App\Models\User;
 use App\Models\Wishlist;
+use Illuminate\Support\Facades\Auth;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class FrontController extends Controller
 {
     public function index()
     {
 
-        $blogs = Blog::where('status', 1)->latest()->limit(4)->get();
-        $products = Product::where('status', 1)->latest()->limit(4)->get();
-        $designers = User::where('role', 'designer')->get();
-        return view('index', compact('blogs', 'products', 'designers'));
+        $blogs = Blog::where('status',1)->latest()->limit(4)->get();
+        $products = Product::where('status',1)->latest()->limit(4)->get();
+        $desginer = User::where('role','designer')->latest()->limit(4)->get();
+
+        return view('index',compact('blogs','products','desginer'));
     }
 
     public function gallery()

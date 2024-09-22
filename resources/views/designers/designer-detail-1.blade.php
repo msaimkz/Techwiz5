@@ -41,7 +41,7 @@
 
                 <div class="col-lg-7">
                     <div class="team-details__content">
-                        <h2 class="name title-animation">Daniel Smith</h2>
+                        <h2 class="name title-animation">{{ $designer->name }}</h2>
                         <span class="designation">Designer </span>
                         <p>Eros justo, posuere loborti viverra laoreet matti ullamcorper posuere viverra .Aliquam eros justo, posuere lobortis, viverra laoreet augue mattis fermentum ullamcorper viverra laoreet Aliquam eros justo, posuere loborti viverra laoreet matti ullamcorper posuere</p>
 
@@ -75,15 +75,15 @@
                         </div>
 
                         <div class="team-details__wrapper">
-                            <a href="{{url('/contact-us')}}" class="rr-btn">
+                            <a href="{{route('Front.designer.booking',$designer->id)}}" class="rr-btn">
                                 <span class="btn-wrap">
-                                    <span class="text-one">Contact Now
+                                    <span class="text-one">Book Now
                                         <svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M1 6.5H11" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                                         <path d="M6 1.5L11 6.5L6 11.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                                         </svg>
                                     </span>
-                                    <span class="text-two">Contact Now
+                                    <span class="text-two">Book Now
                                         <svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M1 6.5H11" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                                         <path d="M6 1.5L11 6.5L6 11.5" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
