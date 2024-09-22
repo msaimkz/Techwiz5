@@ -194,6 +194,12 @@
                     <span>Blogs</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="{{ url('Admin/Contact') }}">
+                    <i class="bi bi-newspaper"></i>
+                    <span>Contact</span>
+                </a>
+            </li>
 
 
         </ul>

@@ -1,6 +1,8 @@
 @extends('master');
 @section('content')
 <main>
+   
+
     <!-- Breadcrumb area start  -->
     <div style="margin-top: -29px" class="breadcrumb__area header__background-color breadcrumb__header-up breadcrumb-space overly overflow-hidden">
         <div class="breadcrumb__background" data-background="{{asset('Asset/decorVista/assets/imgs/breadcrumb/page-header-1.png')}}"></div>
@@ -15,7 +17,7 @@
                         <div class="breadcrumb__menu">
                             <nav>
                                 <ul>
-                                    <li><span><a href="{{url('/')}}">Home</a></span></li>
+                                    <li><span><a href="{{route('Front.index')}}">Home</a></span></li>
                                     <li class="active"><span>Contact Us</span></li>
                                 </ul>
                             </nav>
@@ -26,7 +28,12 @@
         </div>
     </div>
     <!-- Breadcrumb area start  -->
-
+    @if (session('success'))
+    
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
     <!-- "error  area start -->
     <section class="contact-us section-space">
         <div class="container">
@@ -78,66 +85,56 @@
                     <div class="contact__from">
                         <h4 class="title-animation mb-10">Get in touch</h4>
                         <p>Select layout follower boolean editor flows. Scrolling variant move font group variant layout device share.</p>
-                        <div class="row">
-                            <div class="col-xl-6">
-                                <div class="contact__form-input">
-                                    <input name="name" id="lname" type="text" placeholder="Name">
-                                    <span></span>
-                                </div>
-                            </div>
-                            <div class="col-xl-6">
-                                <div class="contact__form-input">
-                                    <input name="email" id="email" type="email" placeholder="Email">
-                                    <span></span>
-                                </div>
-                            </div>
-
-                            <div class="col-xl-6">
-                                <div class="contact__form-input">
-                                    <input name="number" id="number" type="number" placeholder="Phone">
-                                    <span></span>
-                                </div>
-                            </div>
-
-                            <div class="col-xl-6">
-                                <div class="contact__form-input-select d-flex flex-column">
-                                    <select name="subject" id="subject" style="display: none;">
-                                        <option value="">Subject</option>
-                                        <option value="order">Event Order</option>
-                                        <option value="objection">Objection</option>
-                                    </select>
-                                    <span></span>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-12">
-                                <div class="contact__form-input">
-                                    <div class="validation__wrapper-up position-relative">
-                                        <textarea name="textarea" id="textarea" placeholder="Type Your Message" class=""></textarea>
+                        <form action="{{ route('contact.store') }}" method="POST">
+                            @csrf
+                            <div class="row">
+                                <div class="col-xl-6">
+                                    <div class="contact__form-input">
+                                        <input name="name" id="lname" type="text" placeholder="Name" required>
                                         <span></span>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="col-12">
-                                <button type="submit" class="rr-btn">
+                                <div class="col-xl-6">
+                                    <div class="contact__form-input">
+                                        <input name="email" id="email" type="email" placeholder="Email" required>
+                                        <span></span>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6">
+                                    <div class="contact__form-input">
+                                        <input name="subject" id="subject" type="text" placeholder="Subject" required>
+                                        <span></span>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12">
+                                    <div class="contact__form-input">
+                                        <div class="validation__wrapper-up position-relative">
+                                            <textarea name="textarea" id="textarea" placeholder="Type Your Message" required></textarea>
+                                            <span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="rr-btn">
                                         <span class="btn-wrap">
                                             <span class="text-one">Send
                                                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M1 6H11" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                                <path d="M6 1L11 6L6 11" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    <path d="M1 6H11" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    <path d="M6 1L11 6L6 11" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                 </svg>
                                             </span>
                                             <span class="text-two">Send
                                                 <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M1 6H11" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                                <path d="M6 1L11 6L6 11" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    <path d="M1 6H11" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                    <path d="M6 1L11 6L6 11" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                 </svg>
                                             </span>
                                         </span>
-                                </button>
+                                    </button>
+                                </div>
                             </div>
-                        </div>
+                        </form>
+                        
                     </div>
                 </div>
                 <div class="col-lg-6">

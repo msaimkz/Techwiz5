@@ -18,6 +18,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\ConsultationController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -234,7 +235,9 @@ Route::get('/consultations/create', [ConsultationController::class, 'create'])->
 Route::post('/consultations/store', [ConsultationController::class, 'store'])->name('consultations.store');
 Route::get('/consultations', [ConsultationController::class, 'index'])->name('consultations.index');
 
-
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+Route::post('/Contact/destroy,/{id}', [ContactController::class, 'destroy'])->name('Admin-Contact-delete');
+Route::get('Admin/Contact', [ContactController::class, 'index']);
 
 // Projects Routes
 

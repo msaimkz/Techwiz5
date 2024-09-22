@@ -14,8 +14,7 @@ use Illuminate\Support\Facades\Auth;
 class AdminController extends Controller
 {
 
-     public function dashboard()
-     {
+     public function dashboard(){  
 
         $lastBeforeDate = Carbon::now()->subDay(1)->format('Y-m-d H:i:s');
         $tempImages = TempImage::where('created_at', '<=', $lastBeforeDate)->get();
@@ -34,17 +33,35 @@ class AdminController extends Controller
                 File::delete($Thumbpath);
             }
             TempImage::where('id', $tempImage->id)->delete();
+
+            
         }
 
             $blogs = Blog::where('status',1)->latest()->limit(5)->get();
 
             $customers = User::where('role','user')->count();
+            $orders = Order::latest()->limit(5)->get();
+    
+            $currentdate = Carbon::now()->format('Y-m-d');
+            $thismonthstartDate = Carbon::now()->startOfMonth()->format('Y-m-d');
+        
+          
+            $Reveneuthismonth = Order::where('delivery_status', '!=', "cancelled")
+            ->whereDate('created_at', '>=', $thismonthstartDate)
+            ->whereDate('created_at', '<=', $currentdate)
+            ->sum('grand_total');
+        
+            $ThisDaySale = Order::where('delivery_status', '!=', "cancelled")
+            ->whereDate('created_at', $currentdate)
+            ->count();
 
 
-            return view('Admin.dashboard',compact('blogs','customers'));
+            return view('Admin.dashboard',compact('blogs','customers','orders','Reveneuthismonth','ThisDaySale'));
+    
+
         }
-
-    public function profile(Request $request){
+    
+        public function profile(Request $request){
 
         $user =  $request->user();
         
@@ -65,5 +82,3 @@ class AdminController extends Controller
     }
 
 }
-
-
