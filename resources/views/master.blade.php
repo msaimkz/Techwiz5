@@ -182,6 +182,7 @@
                                     <li><a href="{{url('/design')}}">Design</a></li>
                                     <li><a href="{{route('Front.blog')}}">blog</a></li>
                                     <li><a href="{{route('Front.contact')}}">Contact</a></li>
+                                    <li><a href="{{route('Front.contact')}}">Booking</a></li>
                                     @if(Auth::check())
                                         <li><a href="{{route('logout')}}">Logout</a></li>
                                     @else

@@ -13,6 +13,7 @@ use App\Models\CustomerDetail;
 use App\Models\Wishlist;
 use App\Models\Order;
 use App\Models\OrderItem;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
@@ -22,8 +23,9 @@ class FrontController extends Controller
 
         $blogs = Blog::where('status',1)->latest()->limit(4)->get();
         $products = Product::where('status',1)->latest()->limit(4)->get();
+        $desginer = User::where('role','designer')->latest()->limit(4)->get();
 
-        return view('index',compact('blogs','products'));
+        return view('index',compact('blogs','products','desginer'));
     }
 
     public function gallery(){
