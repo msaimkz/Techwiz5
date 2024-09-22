@@ -32,7 +32,7 @@
     <link href="{{ asset('Asset/Admin/vendor/quill/quill.snow.css') }}" rel="stylesheet">
     <link href="{{ asset('Asset/Admin/vendor/quill/quill.bubble.css') }}" rel="stylesheet">
     <link href="{{ asset('Asset/Admin/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
-    <link href="{{ asset('Asset/Admin/vendor/simple-datatables/style.css') }}" rel="stylesheet">
+    <!-- <link href="{{ asset('Asset/Admin/vendor/simple-datatables/style.css') }}" rel="stylesheet"> -->
     <link rel="stylesheet" href="{{asset('Asset/Admin/js/dropzone/dropzone.css')}}">
    <link rel="stylesheet" href="{{asset('Asset/Admin/css/datetimepicker.css')}}">
 
@@ -227,8 +227,12 @@
     <script src="{{asset('Asset/Admin/vendor/tinymce/tinymce.min.js')}}"></script>
     <script src="{{ asset('Asset/Admin/vendor/php-email-form/validate.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-    <script src="{{asset('Asset/Admin/js/datetimepicker.js')}}"></script>
+    <!-- <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script> -->
+    <!-- <script src="{{asset('Asset/Admin/js/datetimepicker.js')}}"></script> -->
+     
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/min/dropzone.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.3/min/dropzone.min.js"></script>
+    <script src="{{asset( 'Asset/Admin/js/main.js' )}}"></script>
 
 
     <script type="text/javascript">
@@ -241,16 +245,11 @@
 
 
     <!-- Template Main JS File -->
-    <script src="{{asset( 'Asset/Admin/js/main.js' )}}"></script>
 
     <script>
     @yield('js')
     </script>
-    <script>
-        $(document).ready(function() {
-            $('#myTable').DataTable();
-        });
-        </script>
+    
 
 
 </body>

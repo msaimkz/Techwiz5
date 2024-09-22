@@ -50,7 +50,7 @@
                                     <td>{{$product->id}}</td>
                                     <td>{{$product->name}}</td>
                                     <td>{{$product->brand_name}}</td>
-                                    <td>{{$product->qty}}left in stock</td>
+                                    <td>{{$product->qty}} left in stock</td>
                                     <td>${{$product->price}}/-</td>
                                     <td>
                                         @if($product->status == 1)

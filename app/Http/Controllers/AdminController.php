@@ -67,8 +67,24 @@ class AdminController extends Controller
     }
 
     public function order(Request $request){
+        $orders = Order::latest()->get();
+
         
-        return view('Admin.Order.order');
+        return view('Admin.Order.order',compact('orders'));
+    }
+
+    public function OrderDetail(Request $request , $id){
+
+        $order = Order::find($id);
+
+        if(empty($order)){
+
+            return $request->session()->flash('error','Order Not Found');
+        }
+
+        $items = OrderItem::where('order_id',$id)->get();
+
+        return view('Admin.Order.report',compact('order','items'));
     }
     public function logout()
     {

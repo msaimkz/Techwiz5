@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Booking;
 use App\Models\Consultation;
+use Illuminate\Support\Facades\Validator;
+
 class BookingController extends Controller
 {
     /**
@@ -47,9 +50,39 @@ class BookingController extends Controller
         $validator = Validator::make($request->all(), [
           
             'day' => 'required',
-            'day' => 'required',
-            'a' => 'required|',
+            'time' => 'required',
+            'address' => 'required',
         ]);
+
+
+        if($validator->passes()){
+
+            $user = Auth::user();
+
+            $booking = new Booking();
+            $booking->consaltation_id = $request->time;
+            $booking->user_id = $user->id;
+            $booking->address = $request->address;
+            $booking->save();
+
+
+            
+        $request->session()->flash('success','Booking Added Successfully');
+
+        return response()->json([
+            'status' => true,
+            'msg' =>'Booking Added Successfully',
+        ]);
+
+
+        }
+
+        else{
+            return response()->json([
+                'status' => false,
+                'errors' => $validator->errors(),
+            ]);
+        }
     }
 
     /**

@@ -89,6 +89,7 @@
                                                 @endforeach
 
                                             </select>
+                                            <p></p>
                                         </div>
                                     </div>
 
@@ -207,7 +208,7 @@ $('#BookingForm').submit(function(elem) {
             $('button[type=submit]').prop('disabled', true)
 
             if (response.status == true) {
-                window.location.href = "{{ route('Admin.product') }}"
+                window.location.href = "{{ route('Front.index') }}"
 
                 $('#address').removeClass('is-invalid').siblings('p').removeClass(
                         'invalid-feedback')
