@@ -1,7 +1,58 @@
 @extends('master');
 @section('content')
+  <!--Page Title-->
+  <section class="page-title" style="background-image:url({{asset('user/images/background/10.jpg')}});">
+    <div class="auto-container">
+        <div class="inner-container clearfix">
+            <div class="title-box">
+                <h1>Services</h1>
+                <span class="title">The Interior speak for themselves</span>
+            </div>
+            <ul class="bread-crumb clearfix">
+                <li><a href="{{route('Front.index')}}">Home</a></li>
+                <li>{{ $category->name }}</li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!--End Page Title-->
 
-<main>
+<!-- Specialize Section -->
+<section class="specialize-section">
+    <div class="auto-container">
+        <div class="sec-title">
+            <span class="float-text">SubCategories</span>
+            <h2>Our SubCategories</h2>
+        </div>
+        {{-- {{$galleries}} --}}
+        <div class="services-carousel-two owl-carousel owl-theme">
+            <!-- Service Block -->
+            @if (!empty($galleries))
+            @foreach ($galleries as $gallery)
+            @php
+            $img = $gallery->images->first()
+            @endphp
+            <div class="service-block-two">
+                <div class="inner-box">
+                    <div class="image-box"><figure class="image"><a href="services.html">
+                        @if (!empty($img))
+                        <img src="{{ asset('uploads/gallery/large/' . $img->image) }}"
+                        alt="image not found">
+                        @endif
+                    </a></figure></div>
+                    <div class="caption-box">
+                        <h3><a href="services.html">{{ $gallery->subcategory->name }}</a></h3>
+                        <div class="link-box"><a href="service-detail.html">Read More <i class="fa fa-angle-double-right"></i></a></div>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+
+            @endif
+        </div>
+    </div>
+</section>
+{{-- <main>
     <!-- Breadcrumb area start  -->
     <div style="margin-top: -29px"
         class="breadcrumb__area header__background-color breadcrumb__header-up breadcrumb-space overly overflow-hidden">
@@ -31,49 +82,7 @@
     </div>
     <!-- Breadcrumb area start  -->
 
-    <section class="our-featured-service background-gay  section-space">
-        <div class="1">
-            <div class="container">
-                <div class="row mb-minus-30">
-                    @if (!empty($galleries))
-                    @foreach ($galleries as $gallery)
-                    @php
-                    $img = $gallery->images->first()
-                    @endphp
-                    <div class=" col-md-6 col-lg-4 col-xl-3">
-                        <div class="our-featured-service__item">
-                            <div class="our-featured-service__media wow clip-a-z">
-                                @if (!empty($img))
-                                <img src="{{ asset('uploads/gallery/large/' . $img->image) }}"
-                                alt="image not found">
-                                @endif
-                                
-                            </div>
-                            <div class="our-featured-service__content">
-                                <div class="our-featured-service__text">
-                                    <h6 class="title-animation">{{ $gallery->subcategory->name }}</h6>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
-
-                    @endif
-
-
-
-                </div>
-            </div>
-        </div>
-
-
-        </div>
-
-
-    </section>
-
-
- 
-</main>
+   
+</main> --}}
 
 @endsection
